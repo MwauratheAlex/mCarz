@@ -7,17 +7,19 @@ import { ChevronDown } from "lucide-react";
 
 export function Header() {
     return (
-        <header className="flex justify-between items-center">
-            <Logo />
-            <ul className="flex gap-4">
-                <li><NavDropDown text="Vehicles" /></li>
-                <li><NavDropDown text="Bikes" /></li>
-                <li><NavLink text="Sell Your Car" /></li>
-                <li><NavLink text="About" /></li>
-                <li><NavLink text="Contact" /></li>
-                <li><NavLink text="FAQ" /></li>
-                <li><ThemeChangeBtn /></li>
-            </ul>
+        <header className="bg-gray-100 px-4">
+            <div className="flex justify-between items-center shadow-black">
+                <Logo />
+                <ul className="flex gap-4">
+                    <li><NavDropDown text="Vehicles" /></li>
+                    <li><NavDropDown text="Bikes" /></li>
+                    <li><NavLink text="Sell Your Car" /></li>
+                    <li><NavLink text="About" /></li>
+                    <li><NavLink text="Contact" /></li>
+                    <li><NavLink text="FAQ" /></li>
+                    <li><ThemeChangeBtn /></li>
+                </ul>
+            </div>
         </header>
     );
 }
@@ -27,7 +29,7 @@ function Logo() {
         <div className="text-center">
             <Image src={logoImg} alt="logo image" className="w-20" />
             <div className="text-sm font-mono tracking-wider">
-                mCarz
+                <span className="text-green-600 font-semibold text-base">m</span>Carz
             </div>
         </div>
     );
