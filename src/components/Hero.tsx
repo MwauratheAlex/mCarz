@@ -1,12 +1,21 @@
+'use client'
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import scrollDownSvg from "@/images/Scrolldown.svg"
-import gwagonImg from "@/images/hero_gwagon.svg"
+import scrollDownSvg from "@/../public/Scrolldown.svg"
+import gwagonImg from "@/../public/hero_gwagon.svg"
 
 export function Hero() {
+    const scrollFunc = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        const search = document.getElementById("search");
+        e.preventDefault();
+        if (search) {
+            search.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    }
+
     return (
-        <div className="flex flex-col py-16 items-center relative bg-gray-100 h-[calc(70vh)] z-0">
+        <div className="flex flex-col py-[22vh] items-center relative bg-gray-500/10 h-[calc(85vh)] z-0">
             <div className="text-center flex flex-col w-2/4 mx-auto">
                 <div className="text-5xl font-serif py-4">
                     The <span className="text-green-600 font-semibold">only safe way</span> to<br /> buy a car in Kenya
@@ -16,7 +25,7 @@ export function Hero() {
                     <HeroDropDown text="Buy a Bike" />
                     <HeroButton text="Sell Your Car" />
                 </div>
-                <button className="w-full flex flex-col items-center gap-2 py-4 ">
+                <button onClick={e => scrollFunc(e)} className="w-full scroll-smooth flex flex-col items-center gap-2 py-4 ">
                     <Image src={scrollDownSvg} alt="scroll down image" className="w-32" />
                     <ChevronDown />
                 </button>

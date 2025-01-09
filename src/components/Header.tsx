@@ -1,13 +1,13 @@
 
 import Image from "next/image";
-import logoImg from "@/images/logo.svg"
+import logoImg from "@/../public/logo.svg"
 import { FaMoon } from "react-icons/fa";
 
 import { ChevronDown } from "lucide-react";
 
 export function Header() {
     return (
-        <header className="bg-gray-100 px-4">
+        <header className="bg-white/75 backdrop-blur-lg px-4 fixed z-[999] w-full">
             <div className="flex justify-between items-center shadow-black">
                 <Logo />
                 <ul className="flex gap-4">
