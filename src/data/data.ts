@@ -44,4 +44,15 @@ const bodyTypes = [
     { name: "Vans", icon: vans },
 ] as const
 
-export { brands, bodyTypes }
+
+const priceRanges = [
+    { range: "0 - 500K" },
+    { range: "500K - 1M" },
+    { range: "1M - 2M" },
+    { range: "2M - 3M" },
+    { range: "3M - 5M" },
+    { range: "5M - 10M" },
+    { range: "Above 10M" },
+] as const
+
+export { brands, bodyTypes, priceRanges }

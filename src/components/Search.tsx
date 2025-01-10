@@ -3,24 +3,27 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 
-import { bodyTypes, brands } from "@/data/data";
+import { bodyTypes, brands, priceRanges } from "@/data/data";
+import { Filter } from "lucide-react";
 
 export function Search() {
     const [searchType, setSearchType] = useState<string>("name");
 
     return (
-        <div className="pt-[20vh]" >
+        <div className="pt-[20vh] mx-auto" >
             <div className="h-[86vh] flex flex-col items-center gap-4" id="search" >
                 <h1 className="font-serif text-3xl tracking-wide font-semibold">
                     Find what fits you
                 </h1>
                 <p className="">We help you find a car that fits your <span className="text-green-600 font-semibold">personality, dream and pocket!</span></p>
                 <div>
-                    <div className="flex gap-8 justify-center">
+                    <div className="flex gap-4 justify-center border-2 
+                    border-gray-100 my-2
+                    w-max mx-auto rounded-xl p-1">
                         <button
                             className={cn(
-                                "daisy-btn daisy-btn-ghost daisy-btn-sm transition-colors",
-                                searchType != "name" && "font-normal text-gray-600"
+                                "daisy-btn bg-gray-200 daisy-btn-sm transition-colors",
+                                searchType != "name" && "font-normal text-gray-600 bg-gray-50"
 
                             )}
                             onClick={() => setSearchType("name")}
@@ -29,8 +32,8 @@ export function Search() {
                         </button>
                         <button
                             className={cn(
-                                "daisy-btn daisy-btn-ghost daisy-btn-sm transition-colors",
-                                searchType != "brand" && "font-normal text-gray-600"
+                                "daisy-btn bg-gray-200 daisy-btn-sm transition-colors",
+                                searchType != "brand" && "font-normal text-gray-600 bg-gray-50"
 
                             )}
                             onClick={() => setSearchType("brand")}
@@ -39,8 +42,8 @@ export function Search() {
                         </button>
                         <button
                             className={cn(
-                                "daisy-btn daisy-btn-ghost daisy-btn-sm transition-colors",
-                                searchType != "body" && "font-normal text-gray-600"
+                                "daisy-btn bg-gray-200 daisy-btn-sm transition-colors",
+                                searchType != "body" && "font-normal text-gray-600 bg-gray-50"
 
                             )}
                             onClick={() => setSearchType("body")}
@@ -60,13 +63,17 @@ export function Search() {
 }
 
 function SearchByName() {
+    const [
+        selectedRange, setSelectedRange,
+    ] = useState<string>(priceRanges[0].range);
+
     return (
-        <div className="flex flex-col gap-1 py-2">
-            <p className="font-semibold">Search vehicle</p>
-            <p>Simply write the vehicle name and press the search button (e.g. demio or vitz)</p>
-            <form className="py-2 gap-2">
-                <label className="daisy-input daisy-input-bordered rounded-none flex items-center gap-2">
-                    <input type="text" className="grow" placeholder="Search vehicle name" />
+        <div className="w-full flex flex-col gap-4">
+            <div className="flex flex-col gap-1 py-2 w-full">
+                <p className="font-semibold">Search vehicle</p>
+                <p>Simply write the vehicle name and press the search button (e.g. demio or vitz)</p>
+                <label className="daisy-input daisy-input-lg daisy-input-bordered w-full rounded-none flex items-center gap-2">
+                    <input type="text" className="grow py-4" placeholder="Search vehicle name" />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
@@ -78,7 +85,64 @@ function SearchByName() {
                             clipRule="evenodd" />
                     </svg>
                 </label>
-            </form>
+            </div>
+
+            <div className="flex flex-col gap-1 py-2">
+                <p className="font-semibold">Filter by budget</p>
+                <div className={`grid grid-rows-1 grid-cols-8 gap-2`}>
+                    {priceRanges.map(priceRange => (
+                        <div
+                            key={priceRange.range}
+                            className={cn(
+                                "border p-4 w-full text-center hover:bg-blue-600/5",
+                                "cursor-pointer",
+                                selectedRange == priceRange.range &&
+                                "border-gray-500 bg-gray-600/10"
+                            )}
+                            onClick={() => setSelectedRange(priceRange.range)}
+                        >
+                            {priceRange.range}
+                        </div>
+                    ))}
+                    {selectedRange != "" && (
+                        <div
+                            className={cn(
+                                "border py-4 text-center w-full bg-blue-600/5",
+                                "hover:bg-blue-600/10 cursor-pointer"
+                            )}
+                            onClick={() => setSelectedRange("")}
+                        >
+                            Clear
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            <div className="flex flex-col gap-1 py-2">
+                <button
+                    className="daisy-btn daisy-btn-ghost 
+                    flex justify-between px-0 rounded-none"
+                >
+                    <span>
+                        Click here for more Advanced search
+                    </span>
+                    <Filter className="w-4 h-4" />
+                </button>
+                <div className="daisy-divider my-0 -mt-1 h-0.5"></div>
+            </div>
+
+
+            <div className="flex flex-col gap-1 py-2">
+                <button
+                    className="daisy-btn bg-gray-900 text-gray-50 hover:bg-gray-950 hover:text-white daisy-btn-lg rounded-none"
+                >
+                    Search
+                </button>
+            </div>
+
+
+
+
         </div>
     );
 }

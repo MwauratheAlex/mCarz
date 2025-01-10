@@ -28,8 +28,8 @@ function Logo() {
     return (
         <div className="text-center">
             <Image src={logoImg} alt="logo image" className="w-20" />
-            <div className="text-sm font-mono tracking-wider">
-                <span className="text-green-600 font-semibold text-base">m</span>Carz
+            <div className="text-sm font-mono tracking-wider font-semibold">
+                <span className="text-green-600 text-base">m</span>Carz
             </div>
         </div>
     );
