@@ -5,13 +5,14 @@ import { useState } from "react";
 
 import { bodyTypes, brands, priceRanges } from "@/data/data";
 import { Filter } from "lucide-react";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./ui/select";
 
 export function Search() {
     const [searchType, setSearchType] = useState<string>("name");
 
     return (
-        <div className="pt-[20vh] mx-auto" >
-            <div className="h-[86vh] flex flex-col items-center gap-4" id="search" >
+        <div className="pt-[20vh] pb-16 mx-auto" >
+            <div className=" flex flex-col items-center gap-4" id="search" >
                 <h1 className="font-serif text-3xl tracking-wide font-semibold">
                     Find what fits you
                 </h1>
@@ -118,17 +119,26 @@ function SearchByName() {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-1 py-2">
-                <button
-                    className="daisy-btn daisy-btn-ghost 
-                    flex justify-between px-0 rounded-none"
-                >
+
+            <div className="daisy-collapse rounded-none
+                py-2 ">
+                <input type="checkbox" />
+                <div className="daisy-collapse-title flex text-sm text-gray-950
+                    font-semibold border-b-2 px-0 shadow-black/5 shadow-lg
+                    flex-row items-center justify-between">
                     <span>
                         Click here for more Advanced search
                     </span>
                     <Filter className="w-4 h-4" />
-                </button>
-                <div className="daisy-divider my-0 -mt-1 h-0.5"></div>
+                </div>
+                <div className="daisy-collapse-content block overflow-auto px-0">
+                    <form className="py-4 flex flex-col gap-2">
+                        <FormInputSelect title="Brand & Model" />
+                        <FormInputSelect title="Year of Manufacture" />
+                        <FormInputSelect title="Price" />
+                        <FormInputSelect title="Location" />
+                    </form>
+                </div>
             </div>
 
 
@@ -139,10 +149,46 @@ function SearchByName() {
                     Search
                 </button>
             </div>
+        </div>
+    );
+}
 
-
-
-
+function FormInputSelect(props: { title: string }) {
+    return (
+        <div className="flex flex-col gap-1 py-2 w-full">
+            <p className="font-semibold">{props.title}</p>
+            <div className="flex gap-4">
+                <Select>
+                    <SelectTrigger className="w-full h-16 rounded-none">
+                        <SelectValue placeholder="Select a fruit" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup>
+                            <SelectLabel>Fruits</SelectLabel>
+                            <SelectItem value="apple">Apple</SelectItem>
+                            <SelectItem value="banana">Banana</SelectItem>
+                            <SelectItem value="blueberry">Blueberry</SelectItem>
+                            <SelectItem value="grapes">Grapes</SelectItem>
+                            <SelectItem value="pineapple">Pineapple</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+                <Select>
+                    <SelectTrigger className="w-full h-16 rounded-none">
+                        <SelectValue placeholder="Select a fruit" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup>
+                            <SelectLabel>Fruits</SelectLabel>
+                            <SelectItem value="apple">Apple</SelectItem>
+                            <SelectItem value="banana">Banana</SelectItem>
+                            <SelectItem value="blueberry">Blueberry</SelectItem>
+                            <SelectItem value="grapes">Grapes</SelectItem>
+                            <SelectItem value="pineapple">Pineapple</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+            </div>
         </div>
     );
 }
@@ -151,8 +197,10 @@ function FilterByBrand() {
     return (
         <div className=" grid grid-cols-4 gap-6 p-4">
             {brands.map(type => (
-                <button key={type.name} className="daisy-btn daisy-btn-ghost w-40 h-40 shadow-lg shadow-gray-600/5 rounded-none bg-gray-100">
-                    <Image src={type.icon} alt="type.name" priority className="w-24 h-24" />
+                <button key={type.name} className="daisy-btn daisy-btn-ghost 
+                    w-40 h-36 shadow-lg shadow-gray-600/5 rounded-none bg-gray-100">
+                    <Image src={type.icon} alt="type.name" priority
+                        className="w-20 h-20" />
                 </button>
             ))}
         </div>
@@ -163,7 +211,9 @@ function FilterByBobyType() {
     return (
         <div className=" grid grid-cols-3 gap-4 p-4">
             {bodyTypes.map(type => (
-                <button key={type.name} className="py-8 px-16 daisy-btn daisy-btn-ghost w-full h-full shadow-lg shadow-gray-600/5 rounded-none bg-gray-100">
+                <button key={type.name} className="py-8 px-16 daisy-btn 
+                    daisy-btn-ghost w-full h-full shadow-lg shadow-gray-600/5 
+                    rounded-none bg-gray-100">
                     <Image src={type.icon} alt={type.name} priority />
                 </button>
             ))}
