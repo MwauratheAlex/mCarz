@@ -10,7 +10,7 @@ export function StepsToOwn() {
         { heading: "three", subheading: "Pay", icon: IoBagCheckOutline },
     ];
     return (
-        <div className="relative
+        <div className="relative overflow-hidden
       flex-col min-h-screen">
             <div className="absolute bg-gray-500/10 top-24 h-1/2 border w-full z-0 
         flex">

@@ -11,9 +11,9 @@ export function Search() {
     const [searchType, setSearchType] = useState<string>("name");
 
     return (
-        <div className="pt-[20vh] pb-16 mx-auto" >
-            <div className=" flex flex-col items-center gap-4" id="search" >
-                <h1 className="font-serif text-3xl tracking-wide font-semibold">
+        <div className="pt-[15vh] mt-10 pb-16 mx-auto" id="search" >
+            <div className=" flex flex-col items-center gap-4" >
+                <h1 className="font-serif text-5xl tracking-wide font-semibold">
                     Find what fits you
                 </h1>
                 <p className="">We help you find a car that fits your <span className="text-green-600 font-semibold">personality, dream and pocket!</span></p>
@@ -124,7 +124,7 @@ function SearchByName() {
                 py-2 ">
                 <input type="checkbox" />
                 <div className="daisy-collapse-title flex text-sm text-gray-950
-                    font-semibold border-b-2 px-0 shadow-black/5 shadow-lg
+                    font-semibold border-gray-100 border-b-2 px-0 shadow-black/5 shadow-lg
                     flex-row items-center justify-between">
                     <span>
                         Click here for more Advanced search
