@@ -2,6 +2,7 @@ import Image from "next/image";
 import logoImg from "@/../public/logo.svg"
 import { MdOutgoingMail } from "react-icons/md";
 import { FaInstagram, FaXTwitter, FaYoutube } from "react-icons/fa6";
+import Link from "next/link";
 
 export function Footer() {
     return (
@@ -64,23 +65,23 @@ export function Footer() {
                 </aside>
                 <nav className="px-4 md:px-0">
                     <h6 className="daisy-footer-title">Services</h6>
-                    <a className="daisy-link daisy-link-hover">Buy a car</a>
-                    <a className="daisy-link daisy-link-hover">Sell a car</a>
-                    <a className="daisy-link daisy-link-hover">Marketing</a>
+                    <Link href="" className="daisy-link daisy-link-hover">Buy a car</Link>
+                    <Link href="" className="daisy-link daisy-link-hover">Sell a car</Link>
+                    <Link href="" className="daisy-link daisy-link-hover">Marketing</Link>
                 </nav>
                 <nav className="px-4 md:px-0">
                     <h6 className="daisy-footer-title">Company</h6>
-                    <a className="daisy-link daisy-link-hover">About us</a>
-                    <a className="daisy-link daisy-link-hover">
+                    <Link href="" className="daisy-link daisy-link-hover">About us</Link>
+                    <Link href="/faq" className="daisy-link daisy-link-hover">
                         Frequently Asked Questions
-                    </a>
-                    <a className="daisy-link daisy-link-hover">Contact</a>
+                    </Link>
+                    <Link href="" className="daisy-link daisy-link-hover">Contact</Link>
                 </nav>
                 <nav className="px-4 md:px-0">
                     <h6 className="daisy-footer-title">Legal</h6>
-                    <a className="daisy-link daisy-link-hover">Terms of use</a>
-                    <a className="daisy-link daisy-link-hover">Privacy policy</a>
-                    <a className="daisy-link daisy-link-hover">Cookie policy</a>
+                    <Link href="" className="daisy-link daisy-link-hover">Terms of use</Link>
+                    <Link href="" className="daisy-link daisy-link-hover">Privacy policy</Link>
+                    <Link href="" className="daisy-link daisy-link-hover">Cookie policy</Link>
                 </nav>
             </footer>
         </div>

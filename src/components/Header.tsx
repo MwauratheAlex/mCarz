@@ -9,6 +9,7 @@ import { IoIosMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Header() {
     return (
@@ -66,12 +67,14 @@ function MobileNav() {
 }
 
 function NavContent({ className }: { className: string }) {
+    const pathname = usePathname()
+
     const navLinks = [
-        { title: "Vehicles", url: "" },
-        { title: "Bikes", url: "" },
-        { title: "Sell Your Car", url: "" },
-        { title: "About", url: "" },
-        { title: "Contact", url: "" },
+        { title: "Vehicles", url: "/vehicles" },
+        { title: "Bikes", url: "/bikes" },
+        { title: "Sell Your Car", url: "/sell-car" },
+        { title: "About", url: "/about" },
+        { title: "Contact", url: "/contact" },
         { title: "FAQ", url: "/faq" },
     ]
     return (
@@ -80,10 +83,13 @@ function NavContent({ className }: { className: string }) {
                 <Link
                     href={link.url}
                     key={`navlink-${idx}`}
-                    className="daisy-btn daisy-btn-ghost rounded-none 
-                    hover:bg-white/0 font-normal hover:underline 
-                    underline-offset-8 w-full md:w-max py-8 md:py-2 
-                    md:border-none border border-gray-200">
+                    className={cn(
+                        "daisy-btn daisy-btn-ghost rounded-none",
+                        "hover:bg-white/0 font-normal hover:underline",
+                        "underline-offset-8 w-full md:w-max py-8 md:py-2",
+                        "md:border-none border border-gray-200",
+                        pathname === link.url && "font-semibold underline"
+                    )}>
                     {link.title}
                 </Link>
             ))}
