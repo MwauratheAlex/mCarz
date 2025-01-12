@@ -55,4 +55,61 @@ const priceRanges = [
     { range: "Above 10M" },
 ] as const
 
-export { brands, bodyTypes, priceRanges }
+const faqs = [
+    {
+        question: "Are cars brand new or used?",
+        answer: "We offer both brand new and certified pre-owned vehicles to cater for various customer preferences."
+    },
+    {
+        question: "Do you provide financing options?",
+        answer: "Yes, we offer a variety of financing options through our trusted financial partners to help you purchase your desired car."
+    },
+    {
+        question: "Can I trade in my old car?",
+        answer: "Absolutely! You can trade in your current vehicle, and we'll provide a fair valuation based on its condition and market demand."
+    },
+    {
+        question: "Is there a return policy for purchased vehicles?",
+        answer: "Yes, we offer a 7-day return policy on selected vehicles, provided they meet our return criteria."
+    },
+    {
+        question: "Do the used cars come with a warranty?",
+        answer: "Yes, all certified pre-owned vehicles come with a limited warranty and have undergone a thorough inspection process."
+    },
+    {
+        question: "Can I book a test drive before purchasing a car?",
+        answer: "Yes, you can schedule a test drive by selecting a vehicle and contacting us to arrange a convenient time."
+    },
+    {
+        question: "Are there any additional fees when buying a car?",
+        answer: "Apart from the vehicle price, additional costs may include taxes, registration fees, and documentation charges."
+    },
+    {
+        question: "How can I sell my car through your platform?",
+        answer: "You can list your car for sale by creating an account, providing details about your vehicle, and uploading high-quality photos."
+    },
+    {
+        question: "How do you ensure the quality of used cars?",
+        answer: "All used cars listed on our platform undergo a comprehensive multi-point inspection and are certified for quality and safety."
+    },
+    {
+        question: "Do you offer car insurance services?",
+        answer: "Yes, we collaborate with leading insurance providers to offer competitive insurance packages for both new and used cars."
+    },
+    {
+        question: "Is it possible to reserve a car online?",
+        answer: "Yes, you can reserve a car online by making a refundable deposit, which ensures that the car remains unavailable to other buyers."
+    },
+    {
+        question: "How can I contact customer support?",
+        answer: "You can reach our customer support team via phone, email, or live chat for assistance with any inquiries or issues."
+    },
+    {
+        question: "Are there special offers or discounts available?",
+        answer: "Yes, we regularly provide special offers and discounts on various vehicles. Keep an eye on our promotions page for the latest deals."
+    }
+] as const;
+
+
+
+export { brands, bodyTypes, priceRanges, faqs }

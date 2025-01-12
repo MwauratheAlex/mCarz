@@ -25,7 +25,7 @@ export function Hero() {
                 </div>
 
                 <div className="flex flex-col md:flex-row gap-4 
-                justify-center py-4 md:py-8 z-50">
+                justify-center py-4 md:py-8 z-[999]">
                     <HeroDropDown text="Explore Vehicles" active />
                     <HeroDropDown text="Buy a Bike" />
                     <HeroButton text="Sell Your Car" />

@@ -8,13 +8,17 @@ import { useState } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export function Header() {
     return (
         <header className="bg-white/75 backdrop-blur-lg px-4 sticky
             z-[999] w-full top-0">
             <div className="flex justify-between items-center shadow-black">
-                <Logo />
+                <Link href="/">
+                    <Logo />
+                </ Link>
+
                 <div className="flex gap-4">
                     <NavContent className="hidden md:flex md:gap-2 lg:gap-4" />
                     <ThemeChangeBtn />
@@ -62,14 +66,27 @@ function MobileNav() {
 }
 
 function NavContent({ className }: { className: string }) {
+    const navLinks = [
+        { title: "Vehicles", url: "" },
+        { title: "Bikes", url: "" },
+        { title: "Sell Your Car", url: "" },
+        { title: "About", url: "" },
+        { title: "Contact", url: "" },
+        { title: "FAQ", url: "/faq" },
+    ]
     return (
         <ul className={className}>
-            <li><NavLink text="Vehicles" /></li>
-            <li><NavLink text="Bikes" /></li>
-            <li><NavLink text="Sell Your Car" /></li>
-            <li><NavLink text="About" /></li>
-            <li><NavLink text="Contact" /></li>
-            <li><NavLink text="FAQ" /></li>
+            {navLinks.map((link, idx) => (
+                <Link
+                    href={link.url}
+                    key={`navlink-${idx}`}
+                    className="daisy-btn daisy-btn-ghost rounded-none 
+                    hover:bg-white/0 font-normal hover:underline 
+                    underline-offset-8 w-full md:w-max py-8 md:py-2 
+                    md:border-none border border-gray-200">
+                    {link.title}
+                </Link>
+            ))}
         </ul>
     );
 }
@@ -107,19 +124,6 @@ export function NavDropDown(props: { text: string }) {
 
     );
 }
-
-
-function NavLink(props: { text: string }) {
-    return (
-        <a className="daisy-btn daisy-btn-ghost rounded-none 
-            hover:bg-white/0 font-normal hover:underline underline-offset-8
-            w-full md:w-max py-8 md:py-2 md:border-none border border-gray-200
-            ">
-            {props.text}
-        </a>
-    )
-}
-
 
 function ThemeChangeBtn() {
     return (
