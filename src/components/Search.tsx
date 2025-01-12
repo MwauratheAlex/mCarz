@@ -23,7 +23,7 @@ export function Search() {
                     w-max mx-auto rounded-xl p-1">
                         <button
                             className={cn(
-                                "daisy-btn text-wrap bg-gray-200 daisy-btn-sm transition-colors whitespace-normal max-w-[100px]",
+                                "daisy-btn text-wrap bg-gray-200 daisy-btn-sm transition-colors whitespace-normal max-w-[90px]",
                                 "md:max-w-96",
                                 searchType != "name" && "font-normal text-gray-600 bg-gray-50"
 
@@ -34,7 +34,7 @@ export function Search() {
                         </button>
                         <button
                             className={cn(
-                                "daisy-btn bg-gray-200 daisy-btn-sm transition-colors whitespace-normal max-w-[100px] md:max-w-96",
+                                "daisy-btn bg-gray-200 daisy-btn-sm transition-colors whitespace-normal max-w-[90px] md:max-w-96",
                                 searchType != "brand" && "font-normal text-gray-600 bg-gray-50"
 
                             )}
@@ -44,13 +44,13 @@ export function Search() {
                         </button>
                         <button
                             className={cn(
-                                "daisy-btn bg-gray-200 daisy-btn-sm transition-colors whitespace-normal max-w-[100px] md:max-w-96",
+                                "daisy-btn bg-gray-200 daisy-btn-sm transition-colors whitespace-normal max-w-[90px] md:max-w-96",
                                 searchType != "body" && "font-normal text-gray-600 bg-gray-50"
 
                             )}
                             onClick={() => setSearchType("body")}
                         >
-                            Filter by Body Type
+                            Filter by BodyType
                         </button>
                     </div>
                     <div>
@@ -58,6 +58,10 @@ export function Search() {
                         {searchType == "brand" && <FilterByBrand />}
                         {searchType == "body" && <FilterByBobyType />}
                     </div>
+                    {
+                        /*
+                         */
+                    }
                 </div>
             </div>
         </div>

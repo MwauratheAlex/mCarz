@@ -27,6 +27,11 @@ export function Header() {
 
 function MobileNav() {
     const [isOpen, setIsOpen] = useState(false);
+
+    const handleToggle = () => {
+        setIsOpen(prev => !prev);
+    }
+
     return (
         <div className="md:hidden" >
             <label
@@ -34,7 +39,7 @@ function MobileNav() {
                 daisy-swap-rotate z-[999]"
             >
                 {/* this hidden checkbox controls the state */}
-                <input type="checkbox" onClick={() => setIsOpen(prev => !prev)} />
+                <input type="checkbox" onChange={handleToggle} checked={isOpen} />
 
                 {/* hamburger icon */}
                 <IoIosMenu size={30} className="daisy-swap-off" />
@@ -42,15 +47,16 @@ function MobileNav() {
                 {/* close icon */}
                 <IoClose className="daisy-swap-on" size={30} />
             </label>
-            <div className={cn(
-                "absolute top-0 w-full left-0 transition-all animate-in",
-                "slide-in-from-top fade-in duration-500",
-                "ease-in-out",
-                isOpen ? "block opacity-100" : "hidden opacity-0"
-            )}>
-                <NavContent className="text-center bg-gray-50 
+            {isOpen && (
+                <div className={cn(
+                    "absolute top-0 w-full left-0 shadow-2xl shadow-black/10",
+                    "transition-all ease-in-out",
+                    "animate-in slide-in-from-top fade-in-100 duration-500"
+                )}>
+                    <NavContent className="text-center bg-gray-50 
                     flex flex-col pt-28" />
-            </div>
+                </div>
+            )}
         </div>
     );
 }

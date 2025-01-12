@@ -62,13 +62,13 @@ export function Footer() {
                         </div>
                     </div>
                 </aside>
-                <nav>
+                <nav className="px-4 md:px-0">
                     <h6 className="daisy-footer-title">Services</h6>
                     <a className="daisy-link daisy-link-hover">Buy a car</a>
                     <a className="daisy-link daisy-link-hover">Sell a car</a>
                     <a className="daisy-link daisy-link-hover">Marketing</a>
                 </nav>
-                <nav>
+                <nav className="px-4 md:px-0">
                     <h6 className="daisy-footer-title">Company</h6>
                     <a className="daisy-link daisy-link-hover">About us</a>
                     <a className="daisy-link daisy-link-hover">
@@ -76,7 +76,7 @@ export function Footer() {
                     </a>
                     <a className="daisy-link daisy-link-hover">Contact</a>
                 </nav>
-                <nav>
+                <nav className="px-4 md:px-0">
                     <h6 className="daisy-footer-title">Legal</h6>
                     <a className="daisy-link daisy-link-hover">Terms of use</a>
                     <a className="daisy-link daisy-link-hover">Privacy policy</a>
