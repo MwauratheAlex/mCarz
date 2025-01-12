@@ -1,32 +1,77 @@
+'use client'
 
 import Image from "next/image";
 import logoImg from "@/../public/logo.svg"
 
 import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { IoIosMenu } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
+import { cn } from "@/lib/utils";
 
 export function Header() {
     return (
-        <header className="bg-white/75 backdrop-blur-lg px-4 fixed z-[999] w-full">
+        <header className="bg-white/75 backdrop-blur-lg px-4 sticky
+            z-[999] w-full top-0">
             <div className="flex justify-between items-center shadow-black">
                 <Logo />
-                <ul className="flex gap-4">
-                    <li><NavDropDown text="Vehicles" /></li>
-                    <li><NavDropDown text="Bikes" /></li>
-                    <li><NavLink text="Sell Your Car" /></li>
-                    <li><NavLink text="About" /></li>
-                    <li><NavLink text="Contact" /></li>
-                    <li><NavLink text="FAQ" /></li>
-                    <li><ThemeChangeBtn /></li>
-                </ul>
+                <div className="flex gap-4">
+                    <NavContent className="hidden md:flex md:gap-2 lg:gap-4" />
+                    <ThemeChangeBtn />
+                    <MobileNav />
+                </div>
             </div>
         </header>
     );
 }
 
+function MobileNav() {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <div className="md:hidden" >
+            <label
+                className="daisy-btn daisy-btn-circle daisy-swap 
+                daisy-swap-rotate z-[999]"
+            >
+                {/* this hidden checkbox controls the state */}
+                <input type="checkbox" onClick={() => setIsOpen(prev => !prev)} />
+
+                {/* hamburger icon */}
+                <IoIosMenu size={30} className="daisy-swap-off" />
+
+                {/* close icon */}
+                <IoClose className="daisy-swap-on" size={30} />
+            </label>
+            <div className={cn(
+                "absolute top-0 w-full left-0 transition-all animate-in",
+                "slide-in-from-top fade-in duration-500",
+                "ease-in-out",
+                isOpen ? "block opacity-100" : "hidden opacity-0"
+            )}>
+                <NavContent className="text-center bg-gray-50 
+                    flex flex-col pt-28" />
+            </div>
+        </div>
+    );
+}
+
+function NavContent({ className }: { className: string }) {
+    return (
+        <ul className={className}>
+            <li><NavLink text="Vehicles" /></li>
+            <li><NavLink text="Bikes" /></li>
+            <li><NavLink text="Sell Your Car" /></li>
+            <li><NavLink text="About" /></li>
+            <li><NavLink text="Contact" /></li>
+            <li><NavLink text="FAQ" /></li>
+        </ul>
+    );
+}
+
 function Logo() {
     return (
-        <div className="text-center">
-            <Image src={logoImg} alt="logo image" className="w-20" />
+        <div className="text-center z-[999]">
+            <Image src={logoImg} priority alt="logo image" className="w-20" />
             <div className="text-sm font-mono tracking-wider font-semibold">
                 <span className="text-green-600 text-base">m</span>Carz
             </div>
@@ -34,10 +79,12 @@ function Logo() {
     );
 }
 
-function NavDropDown(props: { text: string }) {
+export function NavDropDown(props: { text: string }) {
     return (
         <div className="daisy-dropdown">
-            <div tabIndex={0} role="button" className="daisy-btn daisy-btn-ghost daisy-btn-sm">
+            <div tabIndex={0} role="button" className="daisy-btn daisy-btn-ghost 
+            daisy-btn-sm rounded-none hover:bg-white/0 hover:underline
+            underline-offset-8">
                 <div className="flex gap-1 items-center font-normal">
                     <span>
                         {props.text}
@@ -45,7 +92,7 @@ function NavDropDown(props: { text: string }) {
                     <ChevronDown className="font-normal w-4" />
                 </div>
             </div>
-            <ul tabIndex={0} className="daisy-dropdown-content daisy-menu bg-base-100 rounded-box z-[1] p-2 w-max shadow">
+            <ul tabIndex={0} className="daisy-dropdown-content daisy-menu bg-base-100  z-[1] p-2 w-max shadow rounded-md">
                 <li><a>All {props.text}</a></li>
                 <li><a>Available in Kenya</a></li>
                 <li><a>Direct Import/International</a></li>
@@ -58,14 +105,19 @@ function NavDropDown(props: { text: string }) {
 
 function NavLink(props: { text: string }) {
     return (
-        <a className="daisy-btn daisy-btn-ghost daisy-btn-sm font-normal">{props.text}</a>
+        <a className="daisy-btn daisy-btn-ghost rounded-none 
+            hover:bg-white/0 font-normal hover:underline underline-offset-8
+            w-full md:w-max py-8 md:py-2 md:border-none border border-gray-200
+            ">
+            {props.text}
+        </a>
     )
 }
 
 
 function ThemeChangeBtn() {
     return (
-        <label className="daisy-swap daisy-swap-rotate daisy-btn-square daisy-btn-sm">
+        <label className="daisy-swap z-[999] daisy-swap-rotate daisy-btn-square">
             {/* this hidden checkbox controls the state */}
             <input type="checkbox" />
 

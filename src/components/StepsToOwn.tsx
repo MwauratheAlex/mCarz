@@ -11,24 +11,24 @@ export function StepsToOwn() {
     ];
     return (
         <div className="relative overflow-hidden
-      flex-col min-h-screen">
-            <div className="absolute bg-gray-500/10 top-24 h-1/2 border w-full z-0 
-        flex">
+      flex-col min-h-screen py-16 px-1">
+            <div className="absolute bg-gray-500/10 top-0 h-1/2 
+                w-full z-0 flex py-28">
                 <Image src={logoImg} alt="logo image" className="h-full 
-           -ml-96 opacity-5" />
+           md:-ml-96 -mt-28 md:-mt-0  opacity-5" />
                 <div className="absolute top-[36%] left-[16%] w-full">
                     <FadedText />
                 </div>
             </div>
             <div className="flex relative items-center justify-center
       flex-col min-h-screen z-50">
-                <h1 className="font-serif text-5xl tracking-wide text-center">
+                <h1 className="font-serif text-3xl md:text-5xl tracking-wide text-center">
                     Owning a car is as simple as<br />
                     <span className="font-semibold text-green-600">
                         One, Two, Three
                     </span>
                 </h1>
-                <div className="grid grid-cols-3 w-3/4 px-8 py-16 gap-4">
+                <div className="grid w-full grid-cols-1 md:grid-cols-3 md:w-3/4 px-8 py-16 gap-4">
                     {steps.map(step => (
                         <Step
                             key={step.heading}
