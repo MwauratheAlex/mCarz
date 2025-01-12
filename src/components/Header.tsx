@@ -4,7 +4,7 @@ import Image from "next/image";
 import logoImg from "@/../public/logo.svg"
 
 import { ChevronDown } from "lucide-react";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { cn } from "@/lib/utils";
