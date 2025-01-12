@@ -4,7 +4,7 @@ import Image from "next/image";
 import logoImg from "@/../public/logo.svg"
 
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { cn } from "@/lib/utils";
@@ -58,15 +58,18 @@ function MobileNav() {
                     "transition-all ease-in-out",
                     "animate-in slide-in-from-top fade-in-100 duration-500"
                 )}>
-                    <NavContent className="text-center bg-gray-50 
-                    flex flex-col pt-28" />
+                    <NavContent
+                        className="text-center bg-gray-50 
+                        flex flex-col pt-28"
+                        setNavOpen={setIsOpen}
+                    />
                 </div>
             )}
         </div>
     );
 }
 
-function NavContent({ className }: { className: string }) {
+function NavContent({ className, setNavOpen }: { className: string, setNavOpen?: Dispatch<SetStateAction<boolean>> }) {
     const pathname = usePathname()
 
     const navLinks = [
@@ -77,12 +80,20 @@ function NavContent({ className }: { className: string }) {
         { title: "Contact", url: "/contact" },
         { title: "FAQ", url: "/faq" },
     ]
+
+    const closeMobileNav = () => {
+        if (setNavOpen) {
+            setNavOpen(false);
+        }
+    }
+
     return (
         <ul className={className}>
             {navLinks.map((link, idx) => (
                 <Link
                     href={link.url}
                     key={`navlink-${idx}`}
+                    onClick={closeMobileNav}
                     className={cn(
                         "daisy-btn daisy-btn-ghost rounded-none",
                         "hover:bg-white/0 font-normal hover:underline",

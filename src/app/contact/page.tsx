@@ -1,6 +1,6 @@
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
-import { FaSearch } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
+import { IoPersonSharp } from "react-icons/io5";
 
 export default function ContactPage() {
   return (
@@ -8,12 +8,12 @@ export default function ContactPage() {
       <PaddingWrapper>
         <div className="text-center flex flex-col gap-4">
           <h1 className="text-5xl font-semibold">Get in Touch</h1>
-          <form className="max-w-2xl mx-auto flex flex-col gap-4">
-            <div className="flex justify-between gap-4">
+          <form className="md:max-w-2xl mx-auto flex flex-col gap-4">
+            <div className="flex justify-between gap-4 flex-col md:flex-row">
               <label className="daisy-input w-full daisy-input-bordered flex 
               items-center gap-2 rounded-none">
-                <input type="text" className="grow" placeholder="Search" />
-                <FaSearch className="text-gray-500" />
+                <IoPersonSharp className="text-gray-500" />
+                <input type="text" className="grow" placeholder="Name" />
               </label>
               <label className="daisy-input daisy-input-bordered flex 
               items-center gap-2 w-full rounded-none">

@@ -23,8 +23,8 @@ export default function AboutPage() {
             Get Started
           </Link>
 
-          <div className="absolute -right-24 -top-2 flex flex-col 
-          items-center justify-center">
+          <div className="absolute -right-24 -top-2 flex-col 
+          items-center justify-center hidden md:flex">
             <p className="rotate-12 pl-4 font-mono -mr-20 tracking-tight">
               Browse our catalog
             </p>
