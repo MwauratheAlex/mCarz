@@ -16,7 +16,7 @@ export function Header() {
         <header className="bg-white/75 backdrop-blur-lg px-4 sticky
             z-[999] w-full top-0">
             <div className="flex justify-between items-center shadow-black">
-                <Link href="/">
+                <Link href="/" className="z-[999]">
                     <Logo />
                 </ Link>
 
@@ -69,7 +69,10 @@ function MobileNav() {
     );
 }
 
-function NavContent({ className, setNavOpen }: { className: string, setNavOpen?: Dispatch<SetStateAction<boolean>> }) {
+function NavContent({ className, setNavOpen }: {
+    className: string,
+    setNavOpen?: Dispatch<SetStateAction<boolean>>
+}) {
     const pathname = usePathname()
 
     const navLinks = [
