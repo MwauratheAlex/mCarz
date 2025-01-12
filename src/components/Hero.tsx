@@ -86,7 +86,7 @@ function HeroDropDown(props: { text: string, active?: boolean }) {
 
 function HeroImage() {
     return (
-        <Image src={gwagonImg} alt="image of a gwagon car" />
+        <Image src={gwagonImg} priority alt="image of a gwagon car" />
     );
 }
 
