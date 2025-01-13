@@ -171,5 +171,3 @@ function ThemeChangeBtn() {
         </label>
     );
 }
-<button className="daisy-btn daisy-btn-sm daisy-btn-square daisy-btn-ghost">
-</button>
