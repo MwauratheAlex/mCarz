@@ -39,3 +39,7 @@ export async function CreateVehicle(formData: SellCarFormInput) {
 
     })
 }
+
+export async function GetVehicles() {
+    return await db.vehicle.findMany();
+}
