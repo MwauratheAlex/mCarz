@@ -2,48 +2,39 @@
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
 import { cn } from "@/lib/utils";
 import { useMemo, useState } from "react"
-import { useForm, UseFormRegisterReturn, FieldError, UseFormRegister, FieldErrors, UseFormTrigger, UseFormWatch } from "react-hook-form"
+import {
+  useForm,
+  UseFormRegisterReturn,
+  FieldError,
+  UseFormRegister,
+  FieldErrors,
+  UseFormTrigger,
+  UseFormSetValue,
+  UseFormGetValues
+} from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import Link from "next/link";
+import { CreateVehicle } from "@/actions/actions";
+import { SellCarFormDataSchema, SellCarFormInput } from "@/types/types";
+import { ImageUpload } from "@/components/ui/ImageUpload";
 
-type CarDetailsInput = {
-  regNumber: string
-  make: string
-  model: string
-  color: string
-  yearOfManufacture: string
-  mileage: string
-  mileageUnits: string
-  hasAccidentHistory: string
-  askingPrice: string
-  location: string
-}
-
-type ContactDetailsInput = {
-  firstname: string
-  lastname: string
-  email: string
-  phone: string
-  preferedContactMethod: string
-}
 
 
 export default function SellCarPage() {
   const [activeStep, setActiveStep] = useState<string>("car-details");
 
-  const { register, handleSubmit, formState, trigger, watch } = useForm<{
-    carDetails: CarDetailsInput,
-    contactDetails: ContactDetailsInput
-  }>({
-    defaultValues: {
-      carDetails: {},
-      contactDetails: {},
-    },
+  const {
+    register, handleSubmit, formState, trigger, setValue, getValues, reset
+  } = useForm<SellCarFormInput>({
+    resolver: zodResolver(SellCarFormDataSchema),
+    mode: "onBlur",
   })
 
-  const onSubmit = (data: {
-    carDetails: CarDetailsInput, contactDetails: ContactDetailsInput
-  }) => {
-    console.log("submitted Data")
-    console.log(data)
+  const onSubmit = async (data: SellCarFormInput) => {
+    //TODO - loading state
+    await CreateVehicle(data)
+    setActiveStep("car-details")
+    reset({})
   }
 
   return (
@@ -71,19 +62,19 @@ export default function SellCarPage() {
             {activeStep === "car-details" && (
               <CarDetailsForm
                 register={register}
-                errors={formState.errors}
+                errors={formState.errors.carDetails}
                 onNext={() => setActiveStep("contact-details")}
                 trigger={trigger}
-                watch={watch}
+                setValue={setValue}
+                getValues={getValues}
               />
             )}
             {activeStep === "contact-details" && (
               <ContactDetailsForm
                 register={register}
-                errors={formState.errors}
+                errors={formState.errors.contactDetails}
                 onBack={() => setActiveStep("car-details")}
                 onSubmit={handleSubmit(onSubmit)}
-                watch={watch}
               />
             )}
           </div>
@@ -92,6 +83,7 @@ export default function SellCarPage() {
     </div>
   );
 }
+
 
 function StepIndicator({ num, title, subtitle, active }: {
   num: number, title: string, subtitle: string, active?: boolean
@@ -116,27 +108,43 @@ function StepIndicator({ num, title, subtitle, active }: {
   );
 }
 
-function CarDetailsForm({ register, errors, onNext, trigger, watch }: {
-  register: UseFormRegister<{
-    carDetails: CarDetailsInput,
-    contactDetails: ContactDetailsInput,
-  }>,
-  errors?: FieldErrors<{ carDetails: CarDetailsInput }>,
+function CarDetailsForm({
+  register, errors, onNext, trigger, setValue, getValues
+}: {
+  register: UseFormRegister<SellCarFormInput>,
+  errors?: FieldErrors<SellCarFormInput["carDetails"]>,
   onNext: () => void,
-  trigger: UseFormTrigger<{ carDetails: CarDetailsInput, contactDetails: ContactDetailsInput }>,
-  watch: UseFormWatch<{ carDetails: CarDetailsInput, contactDetails: ContactDetailsInput }>
+  trigger: UseFormTrigger<SellCarFormInput>,
+  setValue: UseFormSetValue<SellCarFormInput>
+  getValues: UseFormGetValues<SellCarFormInput>
 }) {
+
+  const [photoUrls, setPhotoUrls] = useState<string[]>(getValues("carDetails.imageUrls") || [])
 
   const handleNext = async () => {
     const isValid = await trigger("carDetails", { shouldFocus: true });
-    console.log(errors?.carDetails)
     if (isValid) {
       onNext();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }
 
-  const watchedFields = watch("carDetails")
+  const handleImgChange = (photoUrl: string) => {
+    setPhotoUrls(prev => {
+      console.log("PREV", prev)
+      const out = [...prev, photoUrl]
+      setValue("carDetails.imageUrls", out, { shouldValidate: true })
+      return out
+    })
+  }
+
+  const handleImgDelete = (photoUrl: string) => {
+    setPhotoUrls(prev => {
+      const out = prev.filter(url => url !== photoUrl)
+      setValue("carDetails.imageUrls", out)
+      return out
+    })
+  }
 
   const manufactureYears = useMemo(() => {
     const years: number[] = []
@@ -150,6 +158,7 @@ function CarDetailsForm({ register, errors, onNext, trigger, watch }: {
     return years
   }, []);
 
+
   return (
     <div className="p-4 rounded-lg shadow-black/20
                shadow-2xl">
@@ -158,33 +167,33 @@ function CarDetailsForm({ register, errors, onNext, trigger, watch }: {
         <TextInput
           title="Registration Number"
           placeholder="KYZ 555K"
-          register={register("carDetails.regNumber", { required: true })}
-          error={watchedFields.regNumber === "" ? errors?.carDetails?.regNumber : undefined}
+          register={register("carDetails.regNumber", { required: true, })}
+          error={errors?.regNumber}
         />
         <TextInput
           title="Make"
           placeholder="BMW "
           register={register("carDetails.make", { required: true })}
-          error={watchedFields.make === "" ? errors?.carDetails?.make : undefined}
+          error={errors?.make}
         />
         <TextInput
           title="Model"
           placeholder="X6"
           register={register("carDetails.model", { required: true })}
-          error={watchedFields.model === "" ? errors?.carDetails?.model : undefined}
+          error={errors?.model}
         />
         <TextInput
           title="Color"
           placeholder="WHITE"
           register={register("carDetails.color", { required: true })}
-          error={watchedFields.color === "" ? errors?.carDetails?.color : undefined}
+          error={errors?.color}
         />
 
         <SelectInput
           title="Year of Manufacture"
           values={manufactureYears}
           register={register("carDetails.yearOfManufacture", { required: true })}
-          error={watchedFields.yearOfManufacture === "" ? errors?.carDetails?.yearOfManufacture : undefined}
+          error={errors?.yearOfManufacture}
         />
 
         <div className="flex gap-2 md:gap-4">
@@ -193,13 +202,13 @@ function CarDetailsForm({ register, errors, onNext, trigger, watch }: {
             placeholder="200000"
             type="number"
             register={register("carDetails.mileage", { required: true })}
-            error={watchedFields.mileage === "" ? errors?.carDetails?.mileage : undefined}
+            error={errors?.mileage}
           />
           <SelectInput
             title="Mileage Unit"
             values={["KM", "MILES"]}
             register={register("carDetails.mileageUnits", { required: true })}
-            error={watchedFields.mileageUnits === "" ? errors?.carDetails?.mileageUnits : undefined}
+            error={errors?.mileageUnits}
           />
         </div>
 
@@ -207,7 +216,7 @@ function CarDetailsForm({ register, errors, onNext, trigger, watch }: {
           title="Has Accident History"
           values={["YES", "NO"]}
           register={register("carDetails.hasAccidentHistory", { required: true })}
-          error={watchedFields.hasAccidentHistory === "" ? errors?.carDetails?.hasAccidentHistory : undefined}
+          error={errors?.hasAccidentHistory}
         />
 
         <TextInput
@@ -215,13 +224,19 @@ function CarDetailsForm({ register, errors, onNext, trigger, watch }: {
           placeholder="500000"
           type="number"
           register={register("carDetails.askingPrice", { required: true })}
-          error={watchedFields.askingPrice === "" ? errors?.carDetails?.askingPrice : undefined}
+          error={errors?.askingPrice}
         />
         <TextInput
           title="Location"
           placeholder="KIAMBU"
           register={register("carDetails.location", { required: true })}
-          error={watchedFields.location === "" ? errors?.carDetails?.location : undefined}
+          error={errors?.location}
+        />
+        <ImageUpload
+          values={photoUrls}
+          onChange={handleImgChange}
+          onDelete={handleImgDelete}
+          error={errors?.imageUrls}
         />
         <button className="daisy-btn bg-gray-800 text-gray-50
                 hover:text-white hover:bg-gray-950"
@@ -236,19 +251,12 @@ function CarDetailsForm({ register, errors, onNext, trigger, watch }: {
 }
 
 
-function ContactDetailsForm({ register, errors, onBack, onSubmit, watch }: {
-  register: UseFormRegister<{
-    carDetails: CarDetailsInput,
-    contactDetails: ContactDetailsInput,
-  }>,
-  errors?: FieldErrors<{ contactDetails: ContactDetailsInput }>,
-  watch: UseFormWatch<{ carDetails: CarDetailsInput, contactDetails: ContactDetailsInput }>
+function ContactDetailsForm({ register, errors, onBack, onSubmit }: {
+  register: UseFormRegister<SellCarFormInput>,
+  errors?: FieldErrors<SellCarFormInput["contactDetails"]>,
   onBack: () => void,
   onSubmit: () => void
 }) {
-
-  const watchedFields = watch("contactDetails")
-
   const [agreedToTerms, setAgreedToTerms] = useState<boolean>(false)
 
   return (
@@ -260,26 +268,34 @@ function ContactDetailsForm({ register, errors, onBack, onSubmit, watch }: {
           title="First Name"
           placeholder="John"
           register={register("contactDetails.firstname", { required: true })}
-          error={watchedFields.firstname === "" ? errors?.contactDetails?.firstname : undefined}
+          error={errors?.firstname}
         />
         <TextInput
           title="Last Name"
           placeholder="Doe"
           register={register("contactDetails.lastname", { required: true })}
-          error={watchedFields.lastname === "" ? errors?.contactDetails?.lastname : undefined}
+          error={errors?.lastname}
         />
         <TextInput
           title="Email"
           placeholder="johndoe@mail.com"
           register={register("contactDetails.email", { required: true })}
-          error={watchedFields.email === "" ? errors?.contactDetails?.email : undefined}
+          error={errors?.email}
         />
         <TextInput
           title="Phone"
           placeholder="0700 000 000"
           register={register("contactDetails.phone", { required: true })}
-          error={watchedFields.phone === "" ? errors?.contactDetails?.phone : undefined}
+          error={errors?.phone}
         />
+
+        <SelectInput
+          title="Prefered Contact Method"
+          values={["phone - whatsapp", "email"]}
+          register={register("contactDetails.preferedContactMethod", { required: true })}
+          error={errors?.preferedContactMethod}
+        />
+
         <div className="form-control">
           <label className="daisy-label cursor-pointer flex justify-start gap-4">
             <input
@@ -289,7 +305,8 @@ function ContactDetailsForm({ register, errors, onBack, onSubmit, watch }: {
               onChange={() => setAgreedToTerms(prev => !prev)}
             />
             <span className="daisy-label-text">
-              By checking this label, I agree to the terms and conditions.
+              By checking this label, I agree to the {" "}
+              <Link href="/terms" className="daisy-link daisy-link-hover daisy-link-success">terms and conditions.</Link>
             </span>
           </label>
         </div>
@@ -299,7 +316,7 @@ function ContactDetailsForm({ register, errors, onBack, onSubmit, watch }: {
             Prev
           </button>
           <button type="submit" className="daisy-btn grow bg-gray-800 text-gray-50
-                hover:text-white hover:bg-gray-950">
+                hover:text-white hover:bg-gray-950 disabled:bg-gray-600 disabled:text-white " disabled={!agreedToTerms}>
             Submit
           </button>
         </div>
@@ -333,7 +350,6 @@ function TextInput({ title, placeholder, type, register, error }: {
     </label>
   );
 }
-
 
 function SelectInput({ title, values, register, error }: {
   title: string,

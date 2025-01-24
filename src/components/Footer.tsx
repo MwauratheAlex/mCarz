@@ -66,7 +66,9 @@ export function Footer() {
                 <nav className="px-4 md:px-0">
                     <h6 className="daisy-footer-title">Services</h6>
                     <Link href="" className="daisy-link daisy-link-hover">Buy a car</Link>
-                    <Link href="" className="daisy-link daisy-link-hover">Sell a car</Link>
+                    <Link href="/sell-car" className="daisy-link daisy-link-hover">
+                        Sell a car
+                    </Link>
                     <Link href="" className="daisy-link daisy-link-hover">Marketing</Link>
                 </nav>
                 <nav className="px-4 md:px-0">

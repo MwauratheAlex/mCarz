@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import scrollDownSvg from "@/../public/Scrolldown.svg"
 import gwagonImg from "@/../public/hero_gwagon.svg"
+import Link from "next/link";
 
 export function Hero() {
     const scrollFunc = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -28,7 +29,7 @@ export function Hero() {
                 justify-center py-4 md:py-8 z-[999]">
                     <HeroDropDown text="Explore Vehicles" active />
                     <HeroDropDown text="Buy a Bike" />
-                    <HeroButton text="Sell Your Car" />
+                    <HeroButton link="/sell-car" text="Sell Your Car" />
                 </div>
 
                 <button onClick={e => scrollFunc(e)} className="w-full scroll-smooth flex flex-col items-center gap-2 py-4 mt-2 z-[100] ">
@@ -51,13 +52,15 @@ export function Hero() {
     );
 }
 
-function HeroButton(props: { text: string }) {
+function HeroButton({ text, link }: { text: string, link: string }) {
     return (
-        <button className={cn(
-            "daisy-btn daisy-btn-outline daisy-btn-md rounded-none flex-grow  text-base hover:bg-white hover:text-black",
-        )}>
-            {props.text}
-        </button>
+        <Link
+            href={link}
+            className={cn(
+                "daisy-btn daisy-btn-outline daisy-btn-md rounded-none flex-grow  text-base hover:bg-white hover:text-black",
+            )}>
+            {text}
+        </Link>
     );
 }
 
