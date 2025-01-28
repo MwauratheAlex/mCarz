@@ -2,8 +2,7 @@ import { Vehicle } from "@prisma/client";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import { Card, CardContent } from "./ui/card";
 import { Separator } from "./ui/separator";
-import { MdOutlineCompare, MdOutlineCompareArrows } from "react-icons/md";
-import { Currency } from "lucide-react";
+import { MdOutlineCompareArrows } from "react-icons/md";
 import { formatPrice } from "@/lib/utils";
 
 export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
@@ -21,15 +20,11 @@ export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
                 </div>
                 <div className="flex flex-col gap-2 py-2">
                     <div className="flex gap-4">
-                        <Badge text="Automatic" />
-                        <Badge text="2000 CC" />
-                        <Badge text="Used" />
+                        <Badge text={vehicle.transmission} />
+                        <Badge text={`${vehicle.engineSize} CC`} />
+                        <Badge text={`${vehicle.horsePower} hp`} />
                     </div>
-                    <p>
-                        With a well crafted interior with wood trimmings and finishing, the{" "}
-                        {vehicle.make} {vehicle.model} complements its well designed body style in this
-                        metallic {vehicle.color} exterior.
-                    </p>
+                    <p className="line-clamp-3">{vehicle.description}</p>
                 </div>
                 <Separator />
                 <div className="daisy-card-actions justify-between items-center">
@@ -66,6 +61,7 @@ function ImageCorousel({ imgUrls }: { imgUrls: string[] }) {
                                     <img
                                         src={url}
                                         alt="vehicle"
+                                        className="h-48 w-full object-cover"
                                     />
                                 </CardContent>
                             </Card>

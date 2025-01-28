@@ -77,7 +77,6 @@ function NavContent({ className, setNavOpen }: {
 
     const navLinks = [
         { title: "Vehicles", url: "/vehicles" },
-        { title: "Bikes", url: "/bikes" },
         { title: "Sell Your Car", url: "/sell-car" },
         { title: "About", url: "/about" },
         { title: "Contact", url: "/contact" },

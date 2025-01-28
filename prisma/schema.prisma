@@ -13,7 +13,7 @@ model Vehicle {
   make               String
   model              String
   color              String
-  yearOfManufacture  String
+  yearOfManufacture  Int
   mileage            Int
   mileageUnits       String
   hasAccidentHistory Boolean
@@ -23,6 +23,10 @@ model Vehicle {
   sellerId           String   @db.ObjectId
   imgUrls            String[]
   verified           Boolean
+  transmission       String
+  engineSize         Int
+  horsePower         Int
+  description        String
 }
 
 model Seller {

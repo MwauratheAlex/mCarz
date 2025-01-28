@@ -1,0 +1,749 @@
+[
+    {
+        "regNumber": "KHK 185X",
+        "make": "Audi",
+        "model": "Q3",
+        "color": "White",
+        "yearOfManufacture": 2016,
+        "mileage": 60000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": false,
+        "askingPrice": 3249999,
+        "location": "Garisa",
+        "imgUrls": [
+            "audi_q3_1.jpg",
+            "audi_q3_2.jpg",
+            "audi_q3_3.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 1400,
+        "horse_power": 150,
+        "description": "The first-generation Audi Q3, produced from 2011 to 2018, is a compact luxury SUV that blends Audi's signature style with practicality and versatility. It features a sleek, sporty design, highlighted by a bold front grille, sharp headlights, and a compact yet muscular profile. Inside, the Q3 offers a premium cabin with high-quality materials, comfortable seating, and a user-friendly infotainment system, delivering the refined feel expected from Audi. Despite its compact size, it provides ample space for passengers and cargo, making it suitable for urban driving and longer journeys. The Q3 is also known for its smooth handling, efficient engines, and available all-wheel drive, ensuring a balanced driving experience that combines comfort with agility. Overall, the first-generation Audi Q3 offers a solid mix of luxury, performance, and practicality in a compact SUV package."
+    },
+    {
+        "regNumber": "KAJ 371K",
+        "make": "Porsche",
+        "model": "Macan",
+        "color": "White",
+        "yearOfManufacture": 2018,
+        "mileage": 87000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": true,
+        "askingPrice": 5699000,
+        "location": "Kiambu",
+        "imgUrls": [
+            "porsche_m_1.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 252,
+        "description": "Leather seats\r\nDual zone climate controls\r\nPorsche Communication Management System(PCMS\r\nMultifunctional steering wheel\r\nDynamic stability control\r\nCruise control\r\nEngine immobilizer\r\nFront & side impact curtain airbags\r\nAntilock braking system (ABS)"
+    },
+    {
+        "regNumber": "KGV 987X",
+        "make": "Toyota",
+        "model": "Rav4",
+        "color": "Black",
+        "yearOfManufacture": 2019,
+        "mileage": 61000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": true,
+        "askingPrice": 4449999,
+        "location": "Garisa",
+        "imgUrls": [
+            "toyota-rav-4-1.jpg",
+            "toyota-rav-4-2.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 155,
+        "description": "The 2019 Toyota RAV4 marked the debut of its fifth generation, showcasing a complete redesign with a bold, rugged exterior inspired by Toyota's off-road vehicles. Built on the Toyota New Global Architecture (TNGA) platform, it offers improved driving dynamics, a stiffer chassis, and enhanced fuel efficiency. The 2019 RAV4 features a spacious and well-appointed interior with advanced technology, including Toyota’s Entune infotainment system and standard safety features under Toyota Safety Sense 2.0, such as adaptive cruise control and lane-keeping assist. With its versatile design and strong reputation for reliability, the 2019 RAV4 remains a top choice in the compact SUV segment."
+    },
+    {
+        "regNumber": "KMG 106H",
+        "make": "Mazda",
+        "model": "Cx3",
+        "color": "Black",
+        "yearOfManufacture": 2017,
+        "mileage": 88000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": true,
+        "askingPrice": 2299999,
+        "location": "Kilifi",
+        "imgUrls": [
+            "mazda-c-1.jpg",
+            "mazda-c-2.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 1500,
+        "horse_power": 105,
+        "description": "XDL trim of the Mazda CX-3 stands out with a unique blend of sportiness and sophistication, aimed at drivers who want both style and substance. This trim level enhances the CX-3’s already sleek, compact SUV design with premium touches and additional features. The XDL offers upgraded interior materials, creating a more refined cabin experience, while its advanced infotainment system keeps drivers connected on the go. Known for its agile handling and fuel efficiency, the CX-3 XDL provides a smooth and engaging drive, ideal for urban commutes and weekend adventures alike."
+    },
+    {
+        "regNumber": "KNK 584P",
+        "make": "Subaru",
+        "model": "Forester XT",
+        "color": "White",
+        "yearOfManufacture": 2008,
+        "mileage": 168000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": false,
+        "askingPrice": 1249999,
+        "location": "Kilifi",
+        "imgUrls": [
+            "subaru_f_1.jpg",
+            "subaru_f_2.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 230,
+        "description": "Sunroof in the Subaru Forester XT adds a touch of luxury and enhances the driving experience, allowing for natural light and fresh air to fill the cabin. This sporty version of the second-generation Forester is equipped with turbocharged performance, Subaru’s Symmetrical All-Wheel Drive, and rugged practicality, making it versatile for both urban and off-road adventures. Its compact SUV design offers a spacious interior, with the sunroof adding an airy feel, and folding rear seats increase cargo flexibility. Combining performance, safety, and comfort, the 2008 Forester XT with a sunroof remains a popular choice for drivers seeking an engaging and functional compact SUV."
+    },
+    {
+        "regNumber": "KGU 815N",
+        "make": "Mazda",
+        "model": "Demio",
+        "color": "Silver",
+        "yearOfManufacture": 2017,
+        "mileage": 113000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": false,
+        "askingPrice": 1389999,
+        "location": "Eldoret",
+        "imgUrls": [
+            "mazda_demio.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 1500,
+        "horse_power": 108,
+        "description": "Mazda Demio is a very reliable and excellently performing car with the 1.5L turbo diesel engine giving sufficient power to carry up to 5 individuals and some cargo at the back. The seats have the heating functionality which is also a plus for the comfort aspect. It has a beautiful interior which gives it a different look from the traditional Demio."
+    },
+    {
+        "regNumber": "KPF 537S",
+        "make": "Mazda",
+        "model": "Cx3",
+        "color": "Grey",
+        "yearOfManufacture": 2017,
+        "mileage": 125000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": false,
+        "askingPrice": 2499999,
+        "location": "Kisumu",
+        "imgUrls": [
+            "mazda_cx3_g.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 1500,
+        "horse_power": 105,
+        "description": "XDL trim of the Mazda CX-3 stands out with a unique blend of sportiness and sophistication, aimed at drivers who want both style and substance. This trim level enhances the CX-3’s already sleek, compact SUV design with premium touches and additional features. The XDL offers upgraded interior materials, creating a more refined cabin experience, while its advanced infotainment system keeps drivers connected on the go. Known for its agile handling and fuel efficiency, the CX-3 XDL provides a smooth and engaging drive, ideal for urban commutes and weekend adventures alike."
+    },
+    {
+        "regNumber": "KFC 384H",
+        "make": "Toyota",
+        "model": "Landcruiser",
+        "color": "gray",
+        "yearOfManufacture": 2025,
+        "mileage": 67000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": true,
+        "askingPrice": 9199999,
+        "location": "Kariandusi",
+        "imgUrls": [
+            "toyota_l_1.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2800,
+        "horse_power": 174,
+        "description": "TZ-G is the top-tier variant of the Toyota Land Cruiser Prado J151, known for its luxurious features and advanced off-road capabilities. This model combines ruggedness with elegance, showcasing a bold exterior with a distinctive grille and robust body lines. Inside, the TZ-G boasts high-quality materials, spacious seating, and a range of comfort and convenience features, including premium upholstery and advanced infotainment options. Its powerful engine, paired with a sophisticated four-wheel-drive system, ensures impressive performance both on and off the road, making it ideal for adventurous trips or daily driving. With an emphasis on safety and technology, the TZ-G variant includes numerous driver-assistance features, providing peace of mind for occupants. Overall, the Toyota Land Cruiser Prado J151 TZ-G is a perfect blend of luxury, capability, and reliability, appealing to those seeking a versatile SUV for various driving conditions."
+    },
+    {
+        "regNumber": "KCU 960D",
+        "make": "Subaru",
+        "model": "Forester XT",
+        "color": "Red",
+        "yearOfManufacture": 2003,
+        "mileage": 193000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": false,
+        "askingPrice": 749999,
+        "location": "Thindigua",
+        "imgUrls": [
+            "subaru_f_11.jpeg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 200,
+        "description": "The 2003 Subaru Forester XT is a sporty variant of the second-generation Forester, blending the utility of a compact SUV with the performance characteristics of a turbocharged vehicle. It features a robust design with all-wheel drive as standard, providing excellent handling and traction across various terrains. The Forester XT is notable for its turbocharged engine, which delivers strong acceleration and makes it one of the more performance-oriented options in its class during that era. Inside, the Forester XT offers a practical and comfortable cabin, with ample space for passengers and cargo, making it suitable for both daily commuting and adventurous trips. Its combination of rugged capability, sporty performance, and practicality made it a popular choice for drivers seeking a versatile and engaging compact SUV."
+    },
+    {
+        "regNumber": "KZB 250A",
+        "make": "Volkswagen",
+        "model": "Golf TSI",
+        "color": "Gold",
+        "yearOfManufacture": 2017,
+        "mileage": 108000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": true,
+        "askingPrice": 2249999,
+        "location": "Garisa",
+        "imgUrls": [
+            "vw_golf.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 1400,
+        "horse_power": 150,
+        "description": "The Volkswagen Golf is a compact hatchback known for its refined design, high-quality build, and versatile performance. It offers a spacious and well-crafted interior, blending practicality with modern technology and comfort. The Golf is praised for its responsive handling, making it enjoyable to drive in both city and highway conditions. Available in various trims and engine options, it caters to a wide range of drivers, from those seeking efficiency to enthusiasts looking for sportier performance. With its solid reputation for reliability, safety features, and a premium feel, the Volkswagen Golf remains one of the most popular compact cars globally."
+    },
+    {
+        "regNumber": "KLX 574D",
+        "make": "Mercedes",
+        "model": "C200",
+        "color": "Black",
+        "yearOfManufacture": 2010,
+        "mileage": 162000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": true,
+        "askingPrice": 1699999,
+        "location": "Murang'a",
+        "imgUrls": [
+            "mercedes-blue.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 180,
+        "description": "The third-generation Mercedes-Benz C-Class (W204), produced from 2007 to 2014, is a luxury compact sedan that combines elegant design with sporty performance. It features a refined, muscular exterior with a bold front grille and a more dynamic stance. Inside, the cabin offers premium materials, comfortable seating, and advanced technology, including a user-friendly infotainment system and various driver assistance features. Known for its smooth ride and precise handling, the W204 offers a range of engine options focused on both performance and fuel efficiency, with the available 4MATIC all-wheel-drive system enhancing traction. This generation balances luxury, comfort, and performance, appealing to both everyday drivers and enthusiasts alike."
+    },
+    {
+        "regNumber": "KPG 781C",
+        "make": "Mercedes",
+        "model": "E200",
+        "color": "Silver",
+        "yearOfManufacture": 2016,
+        "mileage": 56000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": false,
+        "askingPrice": 3999999,
+        "location": "Garisa",
+        "imgUrls": [
+            "mercedes-black.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 184,
+        "description": "Experience the luxuries of the E200. Wide display screen which displays the instrument cluster and the infotainment system and the Co-driver's seat controls from the driver's side is among the highlights of the E-Class experienced in the S-Class. You also get other premium features like powered multi-way adjustable seats, three-position memory seats for the front occupants, dual zone climate controls, leather bucket-styled front seats, and voice commands among other specs make up these marque."
+    },
+    {
+        "regNumber": "KTJ 921J",
+        "make": "Mercedes",
+        "model": "G63 AMG",
+        "color": "Grey",
+        "yearOfManufacture": 2019,
+        "mileage": 32000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": true,
+        "askingPrice": 29131700,
+        "location": "Kisumu",
+        "imgUrls": [
+            "g63.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 4000,
+        "horse_power": 577,
+        "description": "9 speed AMG SPEEDSHIFT PLUS 9G-Tronic automatic transmission\r\nPowered leather seats\r\nHeated seats\r\nMultifunctional, heated tilt & telescopic steering wheel\r\nAMG performance steering wheel\r\nMercedes speedtronic cruise control system\r\nHarman Kardon premium surround sound system\r\nVentilated brake discs\r\nDaytime running LED lights"
+    },
+    {
+        "regNumber": "KHK 222P",
+        "make": "Audi",
+        "model": "RS7",
+        "color": "Grey",
+        "yearOfManufacture": 2020,
+        "mileage": 25000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": true,
+        "askingPrice": 17213000,
+        "location": "Kiambu",
+        "imgUrls": [
+            "audi_grey.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 4000,
+        "horse_power": 600,
+        "description": "Quattro all wheel drive\r\nSunroof\r\nPowered styled leather seats\r\nSmartphone integration\r\nISOFIX child seat mounting seats\r\nBOSE premium surround sound system\r\nCarbon fibre package\r\nAdaptive cruise control\r\nSport exhausts"
+    },
+    {
+        "regNumber": "KQW 529A",
+        "make": "Porsche",
+        "model": "Cayenne",
+        "color": "Silver",
+        "yearOfManufacture": 2022,
+        "mileage": 54000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": false,
+        "askingPrice": 16844150,
+        "location": "Thindigua",
+        "imgUrls": [
+            "porsche_c.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 4000,
+        "horse_power": 453,
+        "description": "8-speed automatic transmission\r\nDaytime running LED lights\r\nSunroof\r\nPremium surround sound system\r\nHeated seats\r\nDual climate zones\r\nMetallic paddle shifters\r\nCruise control"
+    },
+    {
+        "regNumber": "KLB 271P",
+        "make": "Toyota",
+        "model": "Rav4",
+        "color": "Grey",
+        "yearOfManufacture": 2019,
+        "mileage": 89000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": true,
+        "askingPrice": 4450000,
+        "location": "Kilifi",
+        "imgUrls": [
+            "toyota_grey.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2500,
+        "horse_power": 203,
+        "description": "Proximity sensors\r\nSunroof\r\nAdaptive cruise control\r\nKeyless entry\r\nDaytime running lights\r\nInfotainment system display screen\r\nHeated multifunctional steering wheel\r\nElectric parking brake"
+    },
+    {
+        "regNumber": "KAF 522U",
+        "make": "Audi",
+        "model": "A3",
+        "color": "Black",
+        "yearOfManufacture": 2018,
+        "mileage": 92000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": false,
+        "askingPrice": 2090000,
+        "location": "Kariandusi",
+        "imgUrls": [
+            "audi_black.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 190,
+        "description": "AUDI MMI infotainment system\r\nFabric seats\r\nFlat bottomed multifunctional steering wheel\r\nDual front & side mounted curtain airbags\r\nDaytime running LED lights\r\nDigital instrument cluster"
+    },
+    {
+        "regNumber": "KWJ 920C",
+        "make": "Lexus",
+        "model": "RX300",
+        "color": "Black",
+        "yearOfManufacture": 2018,
+        "mileage": 43000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": false,
+        "askingPrice": 5488360,
+        "location": "Thindigua",
+        "imgUrls": [
+            "lexus_white.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 235,
+        "description": "F-Sport\r\nSunroof\r\nBeige leather seats\r\nDaytime running LED lights\r\nAdaptive cruise control\r\nMark Levinson premium sound system\r\nTilt & telescopic multifunctional steering wheel"
+    },
+    {
+        "regNumber": "KRQ 513A",
+        "make": "Nissan",
+        "model": "Note",
+        "color": "Orange",
+        "yearOfManufacture": 2016,
+        "mileage": 111000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": true,
+        "askingPrice": 977499,
+        "location": "Garisa",
+        "imgUrls": [
+            "nissan_oragne.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 1200,
+        "horse_power": 87,
+        "description": "The Nissan Note is a compact hatchback that combines practicality with modern features, making it ideal for city driving. Its design emphasizes spaciousness and efficiency, with a roomy interior that comfortably accommodates passengers despite its compact size"
+    },
+    {
+        "regNumber": "KLY 193X",
+        "make": "Volkswagen",
+        "model": "Polo",
+        "color": "Brown",
+        "yearOfManufacture": 2015,
+        "mileage": 168000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": true,
+        "askingPrice": 1279999,
+        "location": "Kariandusi",
+        "imgUrls": [
+            "vw_polo.webp"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 1200,
+        "horse_power": 89,
+        "description": "The Volkswagen Polo is a compact hatchback admired for its blend of style, practicality, and German engineering quality. Known for its compact yet spacious design, it offers a comfortable interior with advanced tech features that are typically found in larger, more premium vehicles. The Polo is highly maneuverable, making it an excellent choice for city driving, while still providing stability and comfort for longer journeys. Volkswagen has equipped the Polo with efficient engines, making it economical on fuel while delivering a smooth, responsive driving experience. Its understated yet refined look, coupled with a focus on safety and reliability, makes the Volkswagen Polo a popular choice among drivers seeking a versatile, stylish, and economical small car."
+    },
+    {
+        "regNumber": "KWG 513X",
+        "make": "Audi",
+        "model": "Q5",
+        "color": "Black",
+        "yearOfManufacture": 2018,
+        "mileage": 41000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": true,
+        "askingPrice": 5499999,
+        "location": "Kisumu",
+        "imgUrls": [
+            "rohan-gangopadhyay-tbuyZltcE_o-unsplash.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 252,
+        "description": "S line on the 2018 Audi Q5 adds a distinctive, sport-oriented flair to Audi's luxury compact SUV. This package enhances the Q5's appearance with exclusive exterior features like unique bumpers, S line badging, and stylish alloy wheels that emphasize a bolder, athletic look. Inside, the S line includes premium upgrades such as sport seats in leather and Alcantara, a multifunction S line steering wheel, and brushed aluminum inlays, creating a refined, driver-centric atmosphere. Paired with Audi’s quattro all-wheel-drive system, the Q5 S line blends luxury with a dynamic driving experience, appealing to those seeking both performance and sophistication in a compact SUV."
+    },
+    {
+        "regNumber": "KHF 559M",
+        "make": "Suzuki",
+        "model": "Alto",
+        "color": "White",
+        "yearOfManufacture": 2017,
+        "mileage": 84000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": true,
+        "askingPrice": 749999,
+        "location": "Murang'a",
+        "imgUrls": [
+            "suzuki-alto.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 660,
+        "horse_power": 54,
+        "description": "They Call it the perfect Urban car, Suzuki Alto is among the top cars in the top lists of highly fuel economical cars with tops of 20Kms a liter. Quite an Easy and reliable car!"
+    },
+    {
+        "regNumber": "KBM 732W",
+        "make": "Subaru",
+        "model": "Forester",
+        "color": "Black",
+        "yearOfManufacture": 2019,
+        "mileage": 41000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": false,
+        "askingPrice": 4899999,
+        "location": "Eldoret",
+        "imgUrls": [
+            "subaru_forester.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 155,
+        "description": "The e-Boxer version of the Subaru Forester is a hybrid SUV that combines a 2.0-liter petrol engine with an electric motor for enhanced fuel efficiency and lower emissions. This hybrid system integrates seamlessly with Subaru’s signature Symmetrical All-Wheel Drive, delivering the Forester's characteristic stability and off-road capability while being more eco-friendly. The e-Boxer model offers the same spacious and versatile interior as the standard Forester, along with advanced safety features and modern technology. It’s a great choice for those who want the reliability and ruggedness of the Forester, paired with the benefits of hybrid efficiency."
+    },
+    {
+        "regNumber": "KFY 662S",
+        "make": "Subaru",
+        "model": "STI",
+        "color": "Black",
+        "yearOfManufacture": 2017,
+        "mileage": 122000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": false,
+        "askingPrice": 829999,
+        "location": "Kisumu",
+        "imgUrls": [
+            "matthew-sichkaruk-IWWtyoYvRE0-unsplash.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 650,
+        "horse_power": 58,
+        "description": "The Subaru Pleo is a compact, practical car introduced in 1998, designed to offer excellent maneuverability and fuel efficiency for urban driving. With its tall, boxy shape, the Pleo maximizes interior space, allowing for a surprisingly roomy cabin given its small exterior footprint. Often classified as a kei car, it is popular in Japan for its compact size, which benefits from tax and insurance incentives. The Pleo typically comes with a small, fuel-efficient engine and, in some models, Subaru’s all-wheel-drive (AWD) system, providing added stability in varying road conditions. Known for its affordability and ease of handling, the Pleo appeals to city dwellers looking for a budget-friendly, versatile vehicle."
+    },
+    {
+        "regNumber": "KKH 179A",
+        "make": "Toyota",
+        "model": "CHR",
+        "color": "Silver",
+        "yearOfManufacture": 2018,
+        "mileage": 65000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": true,
+        "askingPrice": 3180000,
+        "location": "Thindigua",
+        "imgUrls": [
+            "bornil-amin-zWF4s53USyc-unsplash.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 1800,
+        "horse_power": 144,
+        "description": "Heated seats\r\nPower windows\r\nPowered tailgate\r\nSteering controls\r\nInfotainment system\r\nReverse camera\r\nLane assist"
+    },
+    {
+        "regNumber": "KDK 753M",
+        "make": "Toyota",
+        "model": "TOYOTA LANDCRUISER ZX",
+        "color": "green",
+        "yearOfManufacture": 2022,
+        "mileage": 16000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": false,
+        "askingPrice": 17354000,
+        "location": "Garisa",
+        "imgUrls": [
+            "jake-fagan-fnE8McnNSIc-unsplash.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 3300,
+        "horse_power": 305,
+        "description": "Multi-terrain monitoring system\r\nLocking differentials\r\nHill descent control\r\nDynamic stability control\r\nRoof rails\r\nRunning boards\r\nEngine immobilizer"
+    },
+    {
+        "regNumber": "KVJ 378J",
+        "make": "Mercedes",
+        "model": "GLC",
+        "color": "White",
+        "yearOfManufacture": 2019,
+        "mileage": 95000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": true,
+        "askingPrice": 5580000,
+        "location": "Thindigua",
+        "imgUrls": [
+            "javier-esteban-ZFJtQcv5bRI-unsplash.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 194,
+        "description": "4MATIC all wheel drive\r\nPowered Half leather seats\r\nHeated seats\r\nMultifunctional, tilt & telescopic steering wheel\r\nMercedes speedtronic cruise control\r\nMercedes Command infotainment system\r\nBurmester premium surround sound system\r\nDaytime running LED lights"
+    },
+    {
+        "regNumber": "KVQ 185X",
+        "make": "Lexus",
+        "model": "RX450h",
+        "color": "Gold",
+        "yearOfManufacture": 2018,
+        "mileage": 62000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": false,
+        "askingPrice": 6350000,
+        "location": "Kiambu",
+        "imgUrls": [
+            "ifer-endahl-cD99jg1_0Bc-unsplash.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 3500,
+        "horse_power": 308,
+        "description": "Leather seats\r\nPanoramic sunroof\r\nHeated steering wheel\r\nDaytime running LED lights\r\nCruise control\r\nMark Levinson premium sound system\r\nSunroof"
+    },
+    {
+        "regNumber": "KUD 631N",
+        "make": "Lexus",
+        "model": "Lx570",
+        "color": "White",
+        "yearOfManufacture": 2020,
+        "mileage": 66000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": false,
+        "askingPrice": 14000000,
+        "location": "Thindigua",
+        "imgUrls": [
+            "nam-cz-zE12YnazKbY-unsplash.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 5700,
+        "horse_power": 303,
+        "description": "Powered leather seats with heating function\r\nMultifunctional steering wheel\r\nWireless phone charging functionality\r\nMultizone climate controls\r\nPremium sound system\r\nHill start & descent assist\r\nSmartphone integration\r\nStorage coolbox\r\nSunroof"
+    },
+    {
+        "regNumber": "KQB 123X",
+        "make": "Audi",
+        "model": "Q3",
+        "color": "Red",
+        "yearOfManufacture": 2018,
+        "mileage": 77000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": false,
+        "askingPrice": 3685000,
+        "location": "Murang'a",
+        "imgUrls": [
+            "i-m-zion-jvKawpHXGt4-unsplash.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 220,
+        "description": "Quattro all wheel drive\r\nSports fabric seats\r\nAudi active lane assist\r\nMatrix LED headlights\r\nFlat bottomed multifunctional steering wheel\r\nBang olufsen premium sound"
+    },
+    {
+        "regNumber": "KJB 056Z",
+        "make": "Audi",
+        "model": "TT",
+        "color": "White",
+        "yearOfManufacture": 2018,
+        "mileage": 39000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": true,
+        "askingPrice": 4455130,
+        "location": "Eldoret",
+        "imgUrls": [
+            "kalden-swart-ZrAFxf40nJc-unsplash.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 220,
+        "description": "Audi active lane assist\r\nMatrix LED headlights\r\nFlat bottomed multifunctional steering wheel\r\nBang olufsen premium sound\r\nDaytime running LED lights\r\nTraction control\r\nDual zone climate controls"
+    },
+    {
+        "regNumber": "KMQ 887J",
+        "make": "Bmw",
+        "model": "X3",
+        "color": "Blue",
+        "yearOfManufacture": 2017,
+        "mileage": 109000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": false,
+        "askingPrice": 3699999,
+        "location": "Garisa",
+        "imgUrls": [
+            "car-2220025_1280.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 188,
+        "description": "BMW X3 is based on the BMW 5 Series and classified as a Sports Activity Vehicle. This is where luxury has been fully invested by BMW. The reason BMW has fitted a lot of equipments on the X3 ranging from hill descent control, front & rear camera view, Autohold brake function, electric parking brake, Front heated seats, parking sensors, radar guided adaptive cruise control, ECO Pro modes, powered memory seats, to the multifunctional steering wheel."
+    },
+    {
+        "regNumber": "KZM 882Q",
+        "make": "Land rover",
+        "model": "Range Rover Sport",
+        "color": "White",
+        "yearOfManufacture": 2007,
+        "mileage": 230000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": false,
+        "askingPrice": 2399999,
+        "location": "Nyeri",
+        "imgUrls": [
+            "r_sport_1.jpg",
+            "r_sport_2.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 3000,
+        "horse_power": 245,
+        "description": "The first-generation Range Rover Sport, produced from 2005 to 2013, was designed to offer a more dynamic, performance-oriented option within the Range Rover lineup. It featured a sleek, modern design with a sloping roofline, giving it a sportier appearance compared to the traditional Range Rover. The Range Rover Sport was built on the same platform as the Land Rover Discovery 3, blending off-road capability with on-road handling. It came equipped with the brand's Terrain Response system, allowing the vehicle to adjust to various terrains, from rugged trails to city streets. Inside, the Sport offered a luxurious, high-tech cabin with premium materials and modern infotainment options, ensuring both comfort and convenience for passengers. The first-generation Range Rover Sport was highly regarded for its mix of luxury, performance, and off-road capability, making it a popular choice for those seeking a versatile and sophisticated SUV."
+    },
+    {
+        "regNumber": "KPM 895C",
+        "make": "Subaru",
+        "model": "Impreza",
+        "color": "Black",
+        "yearOfManufacture": 2011,
+        "mileage": 162000,
+        "mileageUnits": "KM",
+        "hasAccidentHistory": true,
+        "askingPrice": 949999,
+        "location": "Garisa",
+        "imgUrls": [
+            "subaru-impreza-2927400_1280.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 1500,
+        "horse_power": 115,
+        "description": "The Subaru Impreza is a compact car known for its practical design, and solid performance. It offers a spacious interior and a comfortable ride. With its blend of power and fuel efficiency, the Impreza delivers a balanced driving experience. Modern features include a user-friendly infotainment system, advanced safety technologies, and a well-designed cabin. The Impreza stands out for its reliability and versatility, making it a strong choice for those seeking a dependable and capable compact vehicle."
+    },
+    {
+        "regNumber": "KCT 888L",
+        "make": "Mercedes",
+        "model": "B180",
+        "color": "Black",
+        "yearOfManufacture": 2017,
+        "mileage": 53000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": true,
+        "askingPrice": 2399999,
+        "location": "Kariandusi",
+        "imgUrls": [
+            "mercedes-3417100_1280.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 1600,
+        "horse_power": 120,
+        "description": "The Mercedes-Benz B180 is part of the B-Class lineup, which combines a compact design with the luxury and precision engineering that Mercedes-Benz is known for. It offers a unique balance between the practicality of a hatchback and the premium features typically found in larger models. The B180 is powered by an efficient engine, making it a good choice for urban driving and long-distance comfort. Inside, the B180 features a high-tech cabin with modern infotainment systems, plush materials, and ample cargo space, emphasizing a user-friendly experience. It's often appreciated for its blend of driving dynamics, comfort, and versatility, making it an appealing choice for those seeking a luxury compact car with plenty of room and functionality."
+    },
+    {
+        "regNumber": "KCM 074H",
+        "make": "Audi",
+        "model": "A6",
+        "color": "White",
+        "yearOfManufacture": 2012,
+        "mileage": 102000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": true,
+        "askingPrice": 1799999,
+        "location": "Kariandusi",
+        "imgUrls": [
+            "jannis-lucas-v-QQ5EBf_bY-unsplash.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2000,
+        "horse_power": 180,
+        "description": "The Audi A6 C7 (2011-2018) is a well-regarded fourth-generation executive sedan that combines luxury, technology, and performance. Known for its refined, modern design, the C7 A6 features a sharp exterior with Audi’s iconic grille, LED lighting, and a sleek, aerodynamic profile. Inside, it offers a high-end, tech-rich cabin, with available options like the MMI infotainment system, premium materials, and the Audi Virtual Cockpit in later models, creating a sophisticated driving environment. The A6 C7 comes with a variety of engine options, delivering a smooth, responsive drive with available quattro all-wheel drive on select models. Advanced safety features, including adaptive cruise control and lane-keeping assist, make it both a comfortable and secure choice, appealing to those seeking an elegant yet dynamic luxury sedan."
+    },
+    {
+        "regNumber": "KFX 843K",
+        "make": "Mazda",
+        "model": "Cx5",
+        "color": "Grey",
+        "yearOfManufacture": 2017,
+        "mileage": 108000,
+        "mileageUnits": "Miles",
+        "hasAccidentHistory": false,
+        "askingPrice": 3049999,
+        "location": "Nyeri",
+        "imgUrls": [
+            "mazda_red_1.jpg",
+            "mazda_red_2.jpg"
+        ],
+        "verified": true,
+        "transimission": "Automatic",
+        "engine_size": 2200,
+        "horse_power": 163,
+        "description": "The Mazda CX-5 is a stylish and well-rounded compact SUV known for its sharp handling, elegant design, and high-quality interior. It combines Mazda's signature sporty driving dynamics with the practicality and versatility of an SUV, making it a popular choice for families and individuals alike. The CX-5 offers a comfortable and well-appointed cabin with modern technology and safety features, ensuring a pleasant and secure driving experience. Its sleek, aerodynamic design gives it a dynamic appearance, while the efficient engines provide a balance of performance and fuel economy. The Mazda CX-5 is an excellent option for those seeking a compact SUV that delivers both style and substance."
+    }
+]

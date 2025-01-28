@@ -2,8 +2,14 @@ import { GetVehicles } from "@/actions/actions"
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
 import { VehicleCard } from "@/components/VehicleCard";
 
-export default async function VehiclesPage() {
-  const vehicles = await GetVehicles();
+export default async function VehiclesPage(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const vehicles = await GetVehicles(searchParams);
 
   return (
     <div>
@@ -17,6 +23,7 @@ export default async function VehiclesPage() {
           ))}
         </div>
       </PaddingWrapper>
+      {JSON.stringify(searchParams)}
     </div>
   )
 }

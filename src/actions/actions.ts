@@ -17,7 +17,7 @@ export async function CreateVehicle(formData: SellCarFormInput) {
             make: vehicle.make,
             model: vehicle.model,
             color: vehicle.color,
-            yearOfManufacture: vehicle.yearOfManufacture,
+            yearOfManufacture: parseInt(vehicle.yearOfManufacture),
             mileage: parseInt(vehicle.mileage),
             mileageUnits: vehicle.mileageUnits,
             hasAccidentHistory: vehicle.hasAccidentHistory === "YES",
@@ -34,12 +34,21 @@ export async function CreateVehicle(formData: SellCarFormInput) {
                     preferedContactMethod: seller.preferedContactMethod,
                     verified: false,
                 }
-            }
+            },
+            engineSize: 0,
+            horsePower: 0,
+            description: "",
+            transmission: "",
+
         }
 
     })
 }
 
-export async function GetVehicles() {
+export async function GetVehicles(searchParams?: {
+    query?: string;
+    page?: string;
+}) {
+    console.log(searchParams)
     return await db.vehicle.findMany();
 }
