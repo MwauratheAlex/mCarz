@@ -1,5 +1,6 @@
 "use server"
 
+import { vehiclesPerPage } from "@/data/data";
 import { db } from "@/db";
 import { SellCarFormInput } from "@/types/types";
 
@@ -49,6 +50,17 @@ export async function GetVehicles(searchParams?: {
     query?: string;
     page?: string;
 }) {
-    console.log(searchParams)
-    return await db.vehicle.findMany();
+    const page = Number(searchParams?.page) || 1
+    const skip = (page - 1) * vehiclesPerPage;
+
+    console.log("skip: ", skip, "take: ", vehiclesPerPage)
+
+    return await db.vehicle.findMany({
+        take: vehiclesPerPage,
+        skip: skip,
+    });
+}
+
+export async function getVehiclePages() {
+    return Math.floor((await db.vehicle.count()) / vehiclesPerPage) + 1;
 }

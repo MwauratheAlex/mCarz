@@ -110,6 +110,6 @@ const faqs = [
     }
 ] as const;
 
+const vehiclesPerPage = 16;
 
-
-export { brands, bodyTypes, priceRanges, faqs }
+export { brands, bodyTypes, priceRanges, faqs, vehiclesPerPage }

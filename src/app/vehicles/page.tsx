@@ -1,6 +1,8 @@
-import { GetVehicles } from "@/actions/actions"
+import { getVehiclePages, GetVehicles } from "@/actions/actions"
+import { Pagination } from "@/components/Pagination";
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
 import { VehicleCard } from "@/components/VehicleCard";
+
 
 export default async function VehiclesPage(props: {
   searchParams?: Promise<{
@@ -9,6 +11,7 @@ export default async function VehiclesPage(props: {
   }>;
 }) {
   const searchParams = await props.searchParams;
+  const totalPages = await getVehiclePages()
   const vehicles = await GetVehicles(searchParams);
 
   return (
@@ -22,9 +25,12 @@ export default async function VehiclesPage(props: {
             />
           ))}
         </div>
+        <div>
+          <Pagination totalPages={totalPages} />
+        </div>
       </PaddingWrapper>
-      {JSON.stringify(searchParams)}
     </div>
   )
 }
+
 
