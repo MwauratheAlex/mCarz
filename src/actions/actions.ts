@@ -3,6 +3,7 @@
 import { vehiclesPerPage } from "@/data/data";
 import { db } from "@/db";
 import { SellCarFormInput } from "@/types/types";
+import { Vehicle } from "@prisma/client";
 
 export async function CreateVehicle(formData: SellCarFormInput) {
     const vehicle = formData.carDetails
@@ -49,7 +50,7 @@ export async function CreateVehicle(formData: SellCarFormInput) {
 export async function GetVehicles(searchParams?: {
     query?: string;
     page?: string;
-}) {
+}): Promise<Vehicle[]> {
     const page = Number(searchParams?.page) || 1
     const skip = (page - 1) * vehiclesPerPage;
 
@@ -61,6 +62,6 @@ export async function GetVehicles(searchParams?: {
     });
 }
 
-export async function getVehiclePages() {
+export async function getVehiclePages(): Promise<number> {
     return Math.floor((await db.vehicle.count()) / vehiclesPerPage) + 1;
 }
