@@ -25,14 +25,13 @@ const brands = [
     { name: "mercedes", icon: mercedes },
     { name: "mazda", icon: mazda },
     { name: "Toyota", icon: toyota },
-    { name: "honda", icon: honda },
+    { name: "honda", icon: honda },//
     { name: "land_rover", icon: land_rover },
     { name: "subaru", icon: subaru },
     { name: "lexus", icon: lexus },
     { name: "vw", icon: vw },
     { name: "nissan", icon: nissan },
     { name: "hyundai", icon: hyundai },
-
 ] as const
 
 const bodyTypes = [
@@ -110,6 +109,6 @@ const faqs = [
     }
 ] as const;
 
-const vehiclesPerPage = 16;
+const vehiclesPerPage = 14;
 
 export { brands, bodyTypes, priceRanges, faqs, vehiclesPerPage }

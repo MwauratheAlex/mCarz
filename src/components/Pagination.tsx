@@ -41,11 +41,13 @@ export function Pagination({ totalPages }: { totalPages: number }) {
 
     return (
         <div className="daisy-join float-end my-4">
-            <PaginationButton
-                onClick={createPageURL}
-                page={1}
-                active={currentPage === 1}
-            />
+            {totalPages > 1 && (
+                <PaginationButton
+                    onClick={createPageURL}
+                    page={1}
+                    active={currentPage === 1}
+                />
+            )}
 
             {middlePages.map((page, idx) => {
                 if (!page) return;

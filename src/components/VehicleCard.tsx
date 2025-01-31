@@ -4,6 +4,7 @@ import { Card, CardContent } from "./ui/card";
 import { Separator } from "./ui/separator";
 import { MdOutlineCompareArrows } from "react-icons/md";
 import { formatPrice } from "@/lib/utils";
+import Image from "next/image";
 
 export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
     return (
@@ -57,11 +58,15 @@ function ImageCorousel({ imgUrls }: { imgUrls: string[] }) {
                     {imgUrls.map((url, index) => (
                         <CarouselItem key={index}>
                             <Card>
-                                <CardContent className="flex items-center justify-center border p-0">
-                                    <img
+                                <CardContent
+                                    className="flex items-center justify-center p-0
+                                    h-48 w-full relative
+                                    ">
+                                    <Image
                                         src={url}
                                         alt="vehicle"
-                                        className="h-48 w-full object-cover"
+                                        className="object-cover"
+                                        fill
                                     />
                                 </CardContent>
                             </Card>

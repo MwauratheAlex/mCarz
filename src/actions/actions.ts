@@ -49,19 +49,29 @@ export async function CreateVehicle(formData: SellCarFormInput) {
 
 export async function GetVehicles(searchParams?: {
     query?: string;
+    brand?: string;
+    minYear?: string;
+    maxYear?: string;
+    priceGte?: string;
+    priceLte?: string
     page?: string;
 }): Promise<Vehicle[]> {
     const page = Number(searchParams?.page) || 1
     const skip = (page - 1) * vehiclesPerPage;
 
-    console.log("skip: ", skip, "take: ", vehiclesPerPage)
-
     return await db.vehicle.findMany({
+        where: {
+            askingPrice: {
+                ...(searchParams?.priceLte && { lte: Number(searchParams.priceLte) }),
+                ...(searchParams?.priceGte && { gte: Number(searchParams.priceGte) }),
+            },
+            ...(searchParams?.brand && { make: { contains: searchParams.brand, mode: "insensitive" } }),
+            yearOfManufacture: {
+                ...(searchParams?.minYear && { gte: Number(searchParams.minYear) }),
+                ...(searchParams?.maxYear && { lte: Number(searchParams.maxYear) }),
+            },
+        },
         take: vehiclesPerPage,
         skip: skip,
     });
-}
-
-export async function getVehiclePages(): Promise<number> {
-    return Math.floor((await db.vehicle.count()) / vehiclesPerPage) + 1;
 }
