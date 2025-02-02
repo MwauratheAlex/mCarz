@@ -3,6 +3,7 @@ import { Pagination } from "@/components/Pagination";
 import { SearchForm } from "@/components/SearchForm";
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
 import { VehicleCard } from "@/components/VehicleCard";
+import { Suspense } from "react";
 
 export default async function VehiclesPage(props: {
   searchParams?: Promise<{
@@ -18,24 +19,26 @@ export default async function VehiclesPage(props: {
   ])
 
   return (
-    <PaddingWrapper>
-      <div className="py-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
-          <div className="col-span-1 row-span-2">
-            <SearchForm />
+    <Suspense>
+      <PaddingWrapper>
+        <div className="py-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+            <div className="col-span-1 row-span-2">
+              <SearchForm />
+            </div>
+            {vehicles.map((vehicle) => (
+              <VehicleCard
+                key={vehicle.id}
+                vehicle={vehicle}
+              />
+            ))}
           </div>
-          {vehicles.map((vehicle) => (
-            <VehicleCard
-              key={vehicle.id}
-              vehicle={vehicle}
-            />
-          ))}
+          <div>
+            <Pagination totalPages={totalPages} />
+          </div>
         </div>
-        <div>
-          <Pagination totalPages={totalPages} />
-        </div>
-      </div>
-    </PaddingWrapper>
+      </PaddingWrapper>
+    </Suspense>
   )
 }
 

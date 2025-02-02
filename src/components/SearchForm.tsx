@@ -77,67 +77,65 @@ export function SearchForm() {
     }
 
     return (
-        <Suspense>
-            <form
-                className="flex flex-col gap-4 pr-2 sticky top-32"
-                onSubmit={handleSubmit(handleSearch)}
-            >
-                <SearchBar />
-                <div className="gap-2 flex flex-col">
-                    <p className="font-semibold">Filter by budget</p>
-                    <div className="grid grid-cols-3 gap-2">
-                        {budgets.map((budget, idx) => (
-                            <RadioInputBtn
-                                key={`budget-radio-${idx}`}
-                                content={budget.content}
-                                value={budget.value}
-                                register={register("budget")}
-                            />
-                        ))}
-                    </div>
+        <form
+            className="flex flex-col gap-4 pr-2 sticky top-32"
+            onSubmit={handleSubmit(handleSearch)}
+        >
+            <SearchBar />
+            <div className="gap-2 flex flex-col">
+                <p className="font-semibold">Filter by budget</p>
+                <div className="grid grid-cols-3 gap-2">
+                    {budgets.map((budget, idx) => (
+                        <RadioInputBtn
+                            key={`budget-radio-${idx}`}
+                            content={budget.content}
+                            value={budget.value}
+                            register={register("budget")}
+                        />
+                    ))}
                 </div>
+            </div>
 
-                <div className="gap-2 flex flex-col">
-                    <p className="font-semibold">
-                        Brand & Model
-                    </p>
-                    <select
-                        className="daisy-select w-full daisy-select-bordered rounded-none"
-                        {...register("brand")}
-                    >
-                        <option value="">All brands</option>
-                        {searchBrands.map((brand, idx) => (
-                            <option key={`$search-${brand}-${idx}`}>
-                                {brand}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+            <div className="gap-2 flex flex-col">
+                <p className="font-semibold">
+                    Brand & Model
+                </p>
+                <select
+                    className="daisy-select w-full daisy-select-bordered rounded-none"
+                    {...register("brand")}
+                >
+                    <option value="">All brands</option>
+                    {searchBrands.map((brand, idx) => (
+                        <option key={`$search-${brand}-${idx}`}>
+                            {brand}
+                        </option>
+                    ))}
+                </select>
+            </div>
 
-                <div className="gap-2 flex flex-col">
-                    <p className="font-semibold">
-                        Year of Manufacture
-                    </p>
-                    <div className="flex gap-2 w-full overflow-hidden">
-                        <label className="daisy-input daisy-input-bordered outline-red-500 
+            <div className="gap-2 flex flex-col">
+                <p className="font-semibold">
+                    Year of Manufacture
+                </p>
+                <div className="flex gap-2 w-full overflow-hidden">
+                    <label className="daisy-input daisy-input-bordered outline-red-500 
                            rounded-none flex items-center w-1/2">
-                            <input type="number" placeholder="min year" {...register("minYear")} />
-                        </label>
-                        <label className="daisy-input daisy-input-bordered outline-red-500 
+                        <input type="number" placeholder="min year" {...register("minYear")} />
+                    </label>
+                    <label className="daisy-input daisy-input-bordered outline-red-500 
                           rounded-none flex items-center w-1/2">
-                            <input type="number" placeholder="max year" {...register("maxYear")} />
-                        </label>
-                    </div>
+                        <input type="number" placeholder="max year" {...register("maxYear")} />
+                    </label>
                 </div>
+            </div>
 
-                <button className="daisy-btn bg-gray-900 text-gray-50 hover:bg-gray-950 
+            <button className="daisy-btn bg-gray-900 text-gray-50 hover:bg-gray-950 
         hover:text-white daisy-btn-md md:daisy-btn-lg rounded-none my-4">
-                    Search
-                </button>
+                Search
+            </button>
 
 
-            </form>
-        </Suspense>
+        </form>
     );
 }
 
