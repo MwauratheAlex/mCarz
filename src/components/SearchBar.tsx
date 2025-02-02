@@ -87,7 +87,7 @@ function SearchResult({ vehicles, query }: { vehicles: Vehicle[], query: string 
                         onClick={() => router.push(`/vehicles/${vehicle.id}`)}
                         className="flex gap-2 cursor-pointer hover:bg-gray-200 
                         rounded-md transition-colors">
-                        <div className="min-w-32 overflow-hidden rounded-md">
+                        <div className="min-w-32 h-20 overflow-hidden rounded-md">
                             <img
                                 className="w-full h-20 object-cover"
                                 src={vehicle.imgUrls[0]}
