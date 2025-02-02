@@ -2,8 +2,8 @@
 
 import { vehiclesPerPage } from "@/data/data";
 import { db } from "@/db";
-import { SellCarFormInput } from "@/types/types";
-import { Vehicle } from "@prisma/client";
+import { SearchParams, SellCarFormInput } from "@/types/types";
+import { Prisma, Vehicle } from "@prisma/client";
 
 export async function CreateVehicle(formData: SellCarFormInput) {
     const vehicle = formData.carDetails
@@ -47,31 +47,57 @@ export async function CreateVehicle(formData: SellCarFormInput) {
     })
 }
 
-export async function GetVehicles(searchParams?: {
-    query?: string;
-    brand?: string;
-    minYear?: string;
-    maxYear?: string;
-    priceGte?: string;
-    priceLte?: string
-    page?: string;
-}): Promise<Vehicle[]> {
+export async function getVehicles(searchParams?: SearchParams): Promise<Vehicle[]> {
+    if (searchParams?.query && searchParams.query.length > 0) {
+        return searchVehicles(searchParams.query, true)
+    }
+
     const page = Number(searchParams?.page) || 1
     const skip = (page - 1) * vehiclesPerPage;
 
     return await db.vehicle.findMany({
-        where: {
-            askingPrice: {
-                ...(searchParams?.priceLte && { lte: Number(searchParams.priceLte) }),
-                ...(searchParams?.priceGte && { gte: Number(searchParams.priceGte) }),
-            },
-            ...(searchParams?.brand && { make: { contains: searchParams.brand, mode: "insensitive" } }),
-            yearOfManufacture: {
-                ...(searchParams?.minYear && { gte: Number(searchParams.minYear) }),
-                ...(searchParams?.maxYear && { lte: Number(searchParams.maxYear) }),
-            },
-        },
+        where: getFilterFromParams(searchParams),
         take: vehiclesPerPage,
         skip: skip,
     });
+}
+
+export async function searchVehicles(searchterm: string, takeAll?: boolean): Promise<Vehicle[]> {
+    const searchWords = searchterm
+        .split(/\s+/)
+        .map(word => word.trim())
+        .filter(word => word.length > 0);
+
+    return await db.vehicle.findMany({
+        where: {
+            OR: searchWords.map(word => ({
+                OR: [
+                    { make: { contains: word, mode: "insensitive" } },
+                    { model: { contains: word, mode: "insensitive" } },
+                ],
+            })),
+        },
+        ...(takeAll ? {} : { take: 5 }),
+    })
+}
+
+export async function getVehiclePages(searchParams?: SearchParams): Promise<number> {
+    const count = db.vehicle.count({
+        where: getFilterFromParams(searchParams)
+    });
+    return Math.floor((await count) / vehiclesPerPage) + 1;
+}
+
+function getFilterFromParams(searchParams?: SearchParams): Prisma.VehicleWhereInput {
+    return {
+        askingPrice: {
+            ...(searchParams?.priceLte && { lte: Number(searchParams.priceLte) }),
+            ...(searchParams?.priceGte && { gte: Number(searchParams.priceGte) }),
+        },
+        ...(searchParams?.brand && { make: { contains: searchParams.brand, mode: "insensitive" } }),
+        yearOfManufacture: {
+            ...(searchParams?.minYear && { gte: Number(searchParams.minYear) }),
+            ...(searchParams?.maxYear && { lte: Number(searchParams.maxYear) }),
+        },
+    }
 }

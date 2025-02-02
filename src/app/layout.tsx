@@ -32,9 +32,11 @@ export default function RootLayout({
          antialiased`}
       >
         <Header />
-        <main className="grainy-light">
-          {children}
-        </main>
+        <Providers>
+          <main className="grainy-light">
+            {children}
+          </main>
+        </Providers>
         <Footer />
       </body>
     </html>

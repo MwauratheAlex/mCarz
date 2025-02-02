@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useForm, UseFormRegisterReturn } from "react-hook-form";
-import { IoSearch } from "react-icons/io5";
+import { SearchBar } from "./SearchBar";
 
 const searchBrands = [
     'Audi', 'Porsche',
@@ -159,15 +159,3 @@ function RadioInputBtn({ content, value, register }: {
     );
 }
 
-function SearchBar() {
-    return (
-        <div className="gap-2 flex flex-col">
-            <p className="font-semibold">Search Vehicle</p>
-            <p className="text-sm">Simply write the vehicle name and press the search button (i.e demio or vitz)</p>
-            <label className="daisy-input daisy-input-bordered outline-red-500 rounded-none flex items-center gap-2">
-                <IoSearch className="text-gray-600" />
-                <input type="text" className="grow" placeholder="Search vehicle name" />
-            </label>
-        </div>
-    );
-}
