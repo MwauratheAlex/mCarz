@@ -19,26 +19,26 @@ export default async function VehiclesPage(props: {
   ])
 
   return (
-    <Suspense>
-      <PaddingWrapper>
-        <div className="py-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
-            <div className="col-span-1 row-span-2">
-              <SearchForm />
-            </div>
+    <PaddingWrapper>
+      <div className="py-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+          <div className="col-span-1 row-span-2">
+            <SearchForm />
+          </div>
+          <Suspense>
             {vehicles.map((vehicle) => (
               <VehicleCard
                 key={vehicle.id}
                 vehicle={vehicle}
               />
             ))}
-          </div>
-          <div>
-            <Pagination totalPages={totalPages} />
-          </div>
+          </Suspense>
         </div>
-      </PaddingWrapper>
-    </Suspense>
+        <div>
+          <Pagination totalPages={totalPages} />
+        </div>
+      </div>
+    </PaddingWrapper>
   )
 }
 

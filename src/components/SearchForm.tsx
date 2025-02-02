@@ -132,8 +132,6 @@ export function SearchForm() {
         hover:text-white daisy-btn-md md:daisy-btn-lg rounded-none my-4">
                 Search
             </button>
-
-
         </form>
     );
 }

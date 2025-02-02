@@ -1,5 +1,6 @@
 import { SearchForm } from "@/components/SearchForm";
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
+import { Suspense } from "react";
 
 
 export default function VehiclesPage() {
@@ -12,9 +13,11 @@ export default function VehiclesPage() {
           <div className="col-span-1 row-span-2">
             <SearchForm />
           </div>
-          {vehicles.map((_, idx) => (
-            <VehicleCardLoadingSkeleton key={`loading-vehicles-${idx}`} />
-          ))}
+          <Suspense>
+            {vehicles.map((_, idx) => (
+              <VehicleCardLoadingSkeleton key={`loading-vehicles-${idx}`} />
+            ))}
+          </Suspense>
         </div>
       </div>
     </PaddingWrapper>
