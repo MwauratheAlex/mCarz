@@ -11,13 +11,13 @@ export default function VehiclesPage() {
       <div className="py-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
           <div className="col-span-1 row-span-2">
-            <SearchForm />
+            <Suspense>
+              <SearchForm />
+            </Suspense>
           </div>
-          <Suspense>
-            {vehicles.map((_, idx) => (
-              <VehicleCardLoadingSkeleton key={`loading-vehicles-${idx}`} />
-            ))}
-          </Suspense>
+          {vehicles.map((_, idx) => (
+            <VehicleCardLoadingSkeleton key={`loading-vehicles-${idx}`} />
+          ))}
         </div>
       </div>
     </PaddingWrapper>
