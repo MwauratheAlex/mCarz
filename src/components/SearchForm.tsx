@@ -3,7 +3,6 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useForm, UseFormRegisterReturn } from "react-hook-form";
 import { SearchBar } from "./SearchBar";
-import { Suspense } from "react";
 
 const searchBrands = [
     'Audi', 'Porsche',
