@@ -9,6 +9,10 @@ export const dynamic = "force-static"
 export const revalidate = 3600
 export const dynamicParams = true
 
+export function generateStaticParams() {
+  return [];
+}
+
 export default async function VehiclesPage(props: {
   searchParams?: Promise<{
     query?: string;
