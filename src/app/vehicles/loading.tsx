@@ -1,12 +1,10 @@
-"use client"
 import { SearchForm } from "@/components/SearchForm";
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 
 
 export default function VehiclesLoadingPage() {
   const vehicles = Array.from({ length: 6 });
-  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), [])
 
   return (
     <PaddingWrapper>
@@ -25,6 +23,7 @@ export default function VehiclesLoadingPage() {
     </PaddingWrapper>
   )
 }
+
 function VehicleCardLoadingSkeleton() {
   return (
     <div className="daisy-card bg-gray-100 shadow-xl">

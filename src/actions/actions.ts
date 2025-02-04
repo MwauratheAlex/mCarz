@@ -47,6 +47,7 @@ export async function CreateVehicle(formData: SellCarFormInput) {
     })
 }
 
+
 export async function getVehicles(searchParams?: SearchParams): Promise<Vehicle[]> {
     if (searchParams?.query && searchParams.query.length > 0) {
         return searchVehicles(searchParams.query, true)

@@ -5,12 +5,15 @@ import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
 import { VehicleCard } from "@/components/VehicleCard";
 import { Suspense } from "react";
 
-export const dynamic = "force-static"
 export const revalidate = 3600
 export const dynamicParams = true
 
-export function generateStaticParams() {
-  return [];
+export async function generateStaticParams() {
+  const pages = await getVehiclePages();
+  return Array.from(
+    { length: pages },
+    (_, idx) => ({ page: String(idx + 1) })
+  )
 }
 
 export default async function VehiclesPage(props: {

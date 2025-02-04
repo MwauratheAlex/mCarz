@@ -32,10 +32,14 @@ export function Hero() {
                     <HeroButton link="/sell-car" text="Sell Your Car" />
                 </div>
 
-                <button onClick={e => scrollFunc(e)} className="w-full scroll-smooth flex flex-col items-center gap-2 py-4 mt-2 z-[100] ">
-                    <Image src={scrollDownSvg} alt="scroll down image"
-                        className="md:w-32 w-28" />
-                    <ChevronDown />
+                <button onClick={e => scrollFunc(e)}
+                    className="w-full scroll-smooth flex flex-col items-center 
+                    gap-2 py-4 mt-2 z-[100] ">
+                    <Image src={scrollDownSvg}
+                        alt="scroll down image"
+                        className="md:w-32 w-28"
+                    />
+                    <ChevronDown className="animate-bounce " />
                 </button>
 
                 <div className="z-50">
