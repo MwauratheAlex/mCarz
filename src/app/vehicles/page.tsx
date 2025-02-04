@@ -7,6 +7,7 @@ import { Suspense } from "react";
 
 export const revalidate = 3600
 export const dynamicParams = true
+export const dynamic = "force-static"
 
 export async function generateStaticParams() {
   const pages = await getVehiclePages();
