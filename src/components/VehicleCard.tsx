@@ -1,14 +1,21 @@
+"use client"
+
 import { Vehicle } from "@prisma/client";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import { Card, CardContent } from "./ui/card";
 import { Separator } from "./ui/separator";
 import { MdOutlineCompareArrows } from "react-icons/md";
-import { formatPrice } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
+    const router = useRouter();
     return (
-        <div className="daisy-card bg-gray-100 shadow-xl">
+        <div
+            className="daisy-card bg-gray-100 shadow-xl cursor-pointer group"
+            onClick={() => router.push(`/vehicles/${vehicle.id}`)}
+        >
             <figure>
                 <ImageCorousel imgUrls={vehicle.imgUrls} />
             </figure>
@@ -41,16 +48,9 @@ export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
     );
 }
 
-
-function Badge({ text }: { text: string }) {
-    return (
-        <div className="daisy-badge bg-gray-300 shadow-xl shadow-black/5 border-none text-black rounded-md">
-            {text}
-        </div>
-    )
-}
-
-function ImageCorousel({ imgUrls }: { imgUrls: string[] }) {
+export function ImageCorousel({ imgUrls, className }: {
+    imgUrls: string[], className?: string
+}) {
     return (
         <div className="mx-auto relative w-full">
             <Carousel className="w-full">
@@ -58,14 +58,15 @@ function ImageCorousel({ imgUrls }: { imgUrls: string[] }) {
                     {imgUrls.map((url, index) => (
                         <CarouselItem key={index}>
                             <Card>
-                                <CardContent
-                                    className="flex items-center justify-center p-0
-                                    h-48 w-full relative
-                                    ">
+                                <CardContent className={cn(
+                                    "flex items-center justify-center p-0 h-48 w-full relative",
+                                    className,
+                                )} >
                                     <Image
                                         src={url}
                                         alt="vehicle"
-                                        className="object-cover"
+                                        className="object-cover group-hover:scale-105
+                                        transition-all duration-300"
                                         fill
                                     />
                                 </CardContent>
@@ -76,6 +77,14 @@ function ImageCorousel({ imgUrls }: { imgUrls: string[] }) {
                 <CarouselPrevious className="absolute left-2 top-1/2" />
                 <CarouselNext className="absolute right-2 top-1/2" />
             </Carousel>
-        </div>
+        </div >
     );
+}
+
+function Badge({ text }: { text: string }) {
+    return (
+        <div className="daisy-badge bg-gray-300 shadow-xl shadow-black/5 border-none text-black rounded-md">
+            {text}
+        </div>
+    )
 }

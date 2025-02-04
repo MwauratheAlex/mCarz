@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm, UseFormRegisterReturn } from "react-hook-form";
 import { SearchBar } from "./SearchBar";
 
@@ -32,17 +32,16 @@ interface searchFormInput {
 }
 
 export function SearchForm() {
-
     const {
         register, handleSubmit
     } = useForm<searchFormInput>()
 
     const searchParams = useSearchParams()
-    const pathname = usePathname();
-    const { replace } = useRouter();
+    const router = useRouter();
 
     const handleSearch = (data: searchFormInput) => {
         const params = new URLSearchParams(searchParams);
+        params.delete("query")
 
         if (data.budget && data.budget !== "all") {
             const [gte, lte] = data.budget.split("&")
@@ -72,7 +71,7 @@ export function SearchForm() {
                 params.delete(key)
             }
         })
-        replace(`${pathname}?${params.toString()}`)
+        router.replace(`/vehicles?${params.toString()}`)
     }
 
     return (
@@ -119,11 +118,20 @@ export function SearchForm() {
                 <div className="flex gap-2 w-full overflow-hidden">
                     <label className="daisy-input daisy-input-bordered outline-red-500 
                            rounded-none flex items-center w-1/2">
-                        <input type="number" placeholder="min year" {...register("minYear")} />
+                        <input
+                            type="number"
+                            className="w-full"
+                            placeholder="min year"
+                            {...register("minYear")}
+                        />
                     </label>
                     <label className="daisy-input daisy-input-bordered outline-red-500 
                           rounded-none flex items-center w-1/2">
-                        <input type="number" placeholder="max year" {...register("maxYear")} />
+                        <input
+                            type="number"
+                            className="w-full"
+                            placeholder="max year"
+                            {...register("maxYear")} />
                     </label>
                 </div>
             </div>
@@ -142,7 +150,7 @@ function RadioInputBtn({ content, value, register }: {
     register: UseFormRegisterReturn
 }) {
     return (
-        <label className="cursor-pointer hover:bg-gray-100">
+        <label className="cursor-pointer hover:bg-gray-100 min-w-[30%] grow">
             <input
                 type="radio"
                 className="sr-only peer"
@@ -150,7 +158,7 @@ function RadioInputBtn({ content, value, register }: {
                 value={value}
             />
             <div className="border border-gray-200 w-full flex items-center py-2 px-4 text-sm 
-            peer-checked:border-gray-800 peer-checked:bg-gray-200">
+            peer-checked:border-gray-800 peer-checked:bg-gray-200 justify-center">
                 {content}
             </div>
         </label>

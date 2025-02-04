@@ -43,27 +43,26 @@ export function SearchBar() {
                 {isLoading && (
                     <span className="daisy-loading daisy-loading-ring daisy-loading-sm"></span>
                 )}
-                <button className={cn(
-                    "daisy-btn daisy-btn-circle daisy-btn-sm daisy-btn-ghost bg-red-50",
-                    { "hidden": searchTerm.length === 0 },
+                {data && (
+                    <button className={cn(
+                        "daisy-btn daisy-btn-circle daisy-btn-sm daisy-btn-ghost bg-red-50",
+                    )}
+                        onClick={() => {
+                            if (searchInputRef.current) {
+                                searchInputRef.current.value = "";
+                            }
+                            setSearchTerm("")
+                        }}
+                    >
+                        <IoMdClose />
+                    </button>
                 )}
-                    onClick={() => {
-                        if (searchInputRef.current) {
-                            searchInputRef.current.value = "";
-                        }
-                        setSearchTerm("")
-                    }}
-                >
-                    <IoMdClose />
-                </button>
             </label>
-            {
-                data && (
-                    <div className="relative">
-                        <SearchResult vehicles={data} query={searchTerm} />
-                    </div>
-                )
-            }
+            {data && (
+                <div className="relative">
+                    <SearchResult vehicles={data} query={searchTerm} />
+                </div>
+            )}
         </div >
     );
 }
@@ -80,18 +79,20 @@ function SearchResult({ vehicles, query }: { vehicles: Vehicle[], query: string 
     }
     return (
         <div className="absolute w-full bg-gray-50 shadow-2xl">
-            <div className="flex w-full flex-col gap-1 px-4 h-96 overflow-y-scroll">
+            <div className="flex w-full flex-col gap-1 px-4 h-96 overflow-y-scroll
+                overscroll-contain">
                 {vehicles.map((vehicle) => (
                     <div
                         key={vehicle.id}
                         onClick={() => router.push(`/vehicles/${vehicle.id}`)}
                         className="flex gap-2 cursor-pointer hover:bg-gray-200 
                         rounded-md transition-colors">
-                        <div className="min-w-32 h-20 overflow-hidden rounded-md">
+                        <div className="min-w-32 w-32 h-20 overflow-hidden rounded-md">
                             <img
                                 className="w-full h-20 object-cover"
                                 src={vehicle.imgUrls[0]}
                                 alt={`vehicle-${vehicle.make}-${vehicle.model}`}
+                                loading="lazy"
                             />
                         </div>
                         <div className="flex flex-col text-sm gap-2 w-full p-2">

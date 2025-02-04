@@ -81,6 +81,18 @@ export async function searchVehicles(searchterm: string, takeAll?: boolean): Pro
     })
 }
 
+// function sleep(ms: number) {
+//     return new Promise(resolve => setTimeout(resolve, ms))
+// }
+
+export async function getVehicleById(vehicleID: string): Promise<Vehicle | null> {
+    return await db.vehicle.findFirst({
+        where: {
+            id: vehicleID
+        }
+    });
+}
+
 export async function getVehiclePages(searchParams?: SearchParams): Promise<number> {
     const count = db.vehicle.count({
         where: getFilterFromParams(searchParams)

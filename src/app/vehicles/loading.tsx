@@ -1,10 +1,12 @@
+"use client"
 import { SearchForm } from "@/components/SearchForm";
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 
 
-export default function VehiclesPage() {
+export default function VehiclesLoadingPage() {
   const vehicles = Array.from({ length: 6 });
+  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), [])
 
   return (
     <PaddingWrapper>
