@@ -13,8 +13,8 @@ import { usePathname } from "next/navigation";
 
 export function Header() {
     return (
-        <header className="bg-white/75 backdrop-blur-lg px-4 sticky
-            z-[999] w-full top-0">
+        <header className="bg-white/5 backdrop-blur-lg px-4 sticky
+            z-[999] w-full top-0 shadow-lg shadow-black/5">
             <div className="flex justify-between items-center shadow-black">
                 <Link href="/" className="z-[999]">
                     <Logo />
@@ -26,6 +26,8 @@ export function Header() {
                     <MobileNav />
                 </div>
             </div>
+            <div className="absolute top-0 left-0 w-full h-[100%]
+                bg-gray-500/10 -z-50"></div>
         </header>
     );
 }

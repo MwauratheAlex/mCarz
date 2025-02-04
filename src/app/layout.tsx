@@ -29,11 +29,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} select-none relative
-         antialiased`}
+         antialiased grainy-light`}
       >
         <Header />
         <Providers>
-          <main className="grainy-light">
+          <main>
             {children}
           </main>
         </Providers>

@@ -5,7 +5,7 @@ import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
 import { VehicleCard } from "@/components/VehicleCard";
 import { Suspense } from "react";
 
-export const dynamic = "force-static"
+export const dynamic = "auto"
 export const revalidate = 3600
 
 export default async function VehiclesPage(props: {

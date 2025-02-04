@@ -42,7 +42,7 @@ export function Hero() {
                     <HeroImage />
                 </div>
             </div>
-            <div className="absolute top-0 left-0 w-full h-[80%]
+            <div className="absolute -top-0 left-0 w-full h-[80%]
                 bg-gray-500/10"></div>
             <div className="absolute bottom-[24%] z-0">
                 <FadedText />
