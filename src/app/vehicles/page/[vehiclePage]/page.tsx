@@ -61,8 +61,3 @@ export default async function VehiclesPage({ params }: {
   )
 }
 
-async function vehicles() {
-  return (<>
-  </>);
-}
-

@@ -1,5 +1,4 @@
 import { getVehiclePages, getVehicles } from "@/actions/actions"
-import { Pagination } from "@/components/Pagination";
 import { SearchForm } from "@/components/SearchForm";
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
 import { VehicleCard } from "@/components/VehicleCard";
@@ -14,7 +13,7 @@ export default async function VehiclesPage(props: {
 }) {
   const searchParams = await props.searchParams;
 
-  const [vehicles, totalPages] = await Promise.all([
+  const [vehicles] = await Promise.all([
     getVehicles(searchParams),
     getVehiclePages(searchParams),
   ])
@@ -45,9 +44,6 @@ export default async function VehiclesPage(props: {
               </p>
             </div>
           )}
-        </div>
-        <div>
-          <Pagination totalPages={totalPages} />
         </div>
       </div>
     </PaddingWrapper>
