@@ -1,4 +1,4 @@
-import { getVehiclePages, getVehicles } from "@/actions/actions"
+import { getAllVehicles, getVehiclePages } from "@/actions/actions"
 import { Pagination } from "@/components/Pagination";
 import { SearchForm } from "@/components/SearchForm";
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
@@ -6,17 +6,24 @@ import { VehicleCard } from "@/components/VehicleCard";
 import { Suspense } from "react";
 
 
-export default async function VehiclesPage(props: {
-  searchParams?: Promise<{
-    query?: string;
-    page?: string;
-  }>;
+export const revalidate = 3600
+
+export const dynamicParams = true
+
+export async function generateStaticParams() {
+  const pages = Array.from({ length: 2 }, (_, idx) => String(idx + 1))
+  return pages.map(page => ({ vehiclePage: page }))
+}
+
+
+export default async function VehiclesPage({ params }: {
+  params: Promise<{ vehiclePage: string }>
 }) {
-  const searchParams = await props.searchParams;
+  const vehiclePage = (await params).vehiclePage
 
   const [vehicles, totalPages] = await Promise.all([
-    getVehicles(searchParams),
-    getVehiclePages(searchParams),
+    getAllVehicles(parseInt(vehiclePage)),
+    getVehiclePages(),
   ])
 
   return (

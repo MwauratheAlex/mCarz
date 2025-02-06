@@ -78,7 +78,7 @@ function NavContent({ className, setNavOpen }: {
     const pathname = usePathname()
 
     const navLinks = [
-        { title: "Vehicles", url: "/vehicles" },
+        { title: "Vehicles", url: "/vehicles/page/1" },
         { title: "Sell Your Car", url: "/sell-car" },
         { title: "About", url: "/about" },
         { title: "Contact", url: "/contact" },

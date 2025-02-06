@@ -47,6 +47,15 @@ export async function CreateVehicle(formData: SellCarFormInput) {
     })
 }
 
+export async function getAllVehicles(page: number): Promise<Vehicle[]> {
+    const skip = (page - 1) * vehiclesPerPage;
+
+    return await db.vehicle.findMany({
+        take: vehiclesPerPage,
+        skip: skip,
+    });
+}
+
 
 export async function getVehicles(searchParams?: SearchParams): Promise<Vehicle[]> {
     if (searchParams?.query && searchParams.query.length > 0) {
