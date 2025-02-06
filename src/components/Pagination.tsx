@@ -1,20 +1,11 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-export function Pagination({ totalPages }: { totalPages: number }) {
-    const pathname = usePathname()
-    const searchParams = useSearchParams()
-    const currentPage = Number(searchParams.get("page")) || 1
-    const { replace } = useRouter()
-
-    const createPageURL = (pageNumber: number | string) => {
-        const params = new URLSearchParams(searchParams);
-        params.set('page', pageNumber.toString());
-        replace(`${pathname}?${params.toString()}`);
-    };
-
+export function Pagination({ totalPages, currentPage }: {
+    totalPages: number, currentPage: number
+}) {
     const getPaginationRange = () => {
         let start = currentPage - 4;
         if (start < 2) {
@@ -43,7 +34,6 @@ export function Pagination({ totalPages }: { totalPages: number }) {
         <div className="daisy-join float-end my-4">
             {totalPages > 1 && (
                 <PaginationButton
-                    onClick={createPageURL}
                     page={1}
                     active={currentPage === 1}
                 />
@@ -58,7 +48,6 @@ export function Pagination({ totalPages }: { totalPages: number }) {
                 return (
                     <PaginationButton
                         key={`page-${idx}`}
-                        onClick={createPageURL}
                         page={page}
                         active={active}
                         disabled={disabled}
@@ -66,7 +55,6 @@ export function Pagination({ totalPages }: { totalPages: number }) {
             })}
 
             <PaginationButton
-                onClick={createPageURL}
                 page={totalPages}
                 active={currentPage === totalPages}
             />
@@ -74,12 +62,13 @@ export function Pagination({ totalPages }: { totalPages: number }) {
     );
 }
 
-function PaginationButton({ page, active, disabled, onClick }: {
+function PaginationButton({ page, active, disabled }: {
     page: number | string,
     active?: boolean,
     disabled?: boolean,
-    onClick: (pageNumber: number | string) => void
 }) {
+    const router = useRouter()
+
     return (
         <button
             className={cn(
@@ -87,9 +76,10 @@ function PaginationButton({ page, active, disabled, onClick }: {
                 active && "daisy-btn-active",
             )}
             disabled={disabled}
-            onClick={() => onClick(page)}
+            onClick={() => router.push(`/vehicles/page/${page}`)}
         >
             {page}
         </button>
     );
 }
+

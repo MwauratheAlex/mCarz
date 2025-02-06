@@ -19,10 +19,10 @@ export async function generateStaticParams() {
 export default async function VehiclesPage({ params }: {
   params: Promise<{ vehiclePage: string }>
 }) {
-  const vehiclePage = (await params).vehiclePage
+  const vehiclePage = parseInt((await params).vehiclePage)
 
   const [vehicles, totalPages] = await Promise.all([
-    getAllVehicles(parseInt(vehiclePage)),
+    getAllVehicles(vehiclePage),
     getVehiclePages(),
   ])
 
@@ -54,10 +54,15 @@ export default async function VehiclesPage({ params }: {
           )}
         </div>
         <div>
-          <Pagination totalPages={totalPages} />
+          <Pagination totalPages={totalPages} currentPage={vehiclePage} />
         </div>
       </div>
     </PaddingWrapper>
   )
+}
+
+async function vehicles() {
+  return (<>
+  </>);
 }
 

@@ -71,7 +71,7 @@ export function SearchForm() {
                 params.delete(key)
             }
         })
-        router.replace(`/vehicles?${params.toString()}`)
+        router.replace(`/vehicles/search?${params.toString()}`)
     }
 
     return (
