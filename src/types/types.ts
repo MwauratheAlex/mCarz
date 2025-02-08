@@ -1,13 +1,15 @@
 import { z } from "zod";
 
+type searchParam = string | null;
+
 export type SearchParams = {
-	query?: string;
-	brand?: string;
-	minYear?: string;
-	maxYear?: string;
-	priceGte?: string;
-	priceLte?: string
-	page?: string;
+	query: searchParam;
+	brand: searchParam;
+	minYear: searchParam;
+	maxYear: searchParam;
+	priceGte: searchParam;
+	priceLte: searchParam
+	page: searchParam;
 }
 
 const contactDetails = z.object({

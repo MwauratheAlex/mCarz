@@ -34,7 +34,11 @@ interface searchFormInput {
 export function SearchForm() {
     const {
         register, handleSubmit
-    } = useForm<searchFormInput>()
+    } = useForm<searchFormInput>({
+        defaultValues: {
+            budget: budgets[0].value
+        }
+    })
 
     const searchParams = useSearchParams()
     const router = useRouter();
@@ -71,7 +75,7 @@ export function SearchForm() {
                 params.delete(key)
             }
         })
-        router.replace(`/vehicles/search?${params.toString()}`)
+        router.replace(`/vehicles?${params.toString()}`)
     }
 
     return (
