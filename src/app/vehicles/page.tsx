@@ -2,6 +2,8 @@
 import { SearchForm } from "@/components/SearchForm";
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
 import { Vehicles } from "@/components/Vehicles";
+import { VehicleSkeletons } from "@/components/VehicleSkeletons";
+import { Suspense } from "react";
 
 export default function VehiclesPage() {
   return (
@@ -9,9 +11,13 @@ export default function VehiclesPage() {
       <div className="py-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
           <div className="col-span-1 row-span-2">
-            <SearchForm />
+            <Suspense fallback=<VehicleSkeletons amount={2} />>
+              <SearchForm />
+            </Suspense>
           </div>
-          <Vehicles />
+          <Suspense fallback=<VehicleSkeletons amount={6} /> >
+            <Vehicles />
+          </Suspense>
         </div>
         <div>
           {/*
