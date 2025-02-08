@@ -1,11 +1,31 @@
 "use client"
 
+import { getVehiclePages } from "@/actions/actions";
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
+import { SearchParams } from "@/types/types";
+import { useQuery } from "@tanstack/react-query";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export function Pagination({ totalPages, currentPage }: {
-    totalPages: number, currentPage: number
-}) {
+export function Pagination() {
+
+    const searchParams = Object.fromEntries(
+        useSearchParams().entries()
+    ) as SearchParams;
+
+    let currentPage = 1;
+    if (searchParams.page) {
+        currentPage = Number(searchParams.page)
+    }
+
+    const { data: totalPages, error } = useQuery({
+        queryKey: ["totalPages", searchParams],
+        queryFn: () => getVehiclePages(searchParams),
+    })
+
+    if (!totalPages || error) {
+        return <PaginationLoading />
+    }
+
     const getPaginationRange = () => {
         let start = currentPage - 4;
         if (start < 2) {
@@ -73,6 +93,7 @@ function PaginationButton({ page, active, disabled }: {
         <button
             className={cn(
                 "daisy-join-item daisy-btn disabled:bg-gray-100/75 disabled:text-gray-500",
+                "",
                 active && "daisy-btn-active",
             )}
             disabled={disabled}
@@ -83,3 +104,11 @@ function PaginationButton({ page, active, disabled }: {
     );
 }
 
+
+function PaginationLoading() {
+    return (
+        <div className="daisy-join float-end my-4">
+            <div className="daisy-skeleton h-12 w-32 "></div>
+        </div>
+    );
+}

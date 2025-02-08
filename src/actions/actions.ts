@@ -47,21 +47,7 @@ export async function CreateVehicle(formData: SellCarFormInput) {
     })
 }
 
-export async function getAllVehicles(page: number): Promise<Vehicle[]> {
-    const skip = (page - 1) * vehiclesPerPage;
-
-    return await db.vehicle.findMany({
-        take: vehiclesPerPage,
-        skip: skip,
-    });
-}
-
-
 export async function getVehicles(searchParams?: SearchParams): Promise<Vehicle[]> {
-    if (searchParams?.query && searchParams.query.length > 0) {
-        return searchVehicles(searchParams.query, true)
-    }
-
     const page = Number(searchParams?.page) || 1
     const skip = (page - 1) * vehiclesPerPage;
 
@@ -69,6 +55,14 @@ export async function getVehicles(searchParams?: SearchParams): Promise<Vehicle[
         where: getFilterFromParams(searchParams),
         take: vehiclesPerPage,
         skip: skip,
+    });
+}
+
+export async function getVehicleById(vehicleID: string): Promise<Vehicle | null> {
+    return await db.vehicle.findFirst({
+        where: {
+            id: vehicleID
+        }
     });
 }
 
@@ -91,18 +85,6 @@ export async function searchVehicles(searchterm: string, takeAll?: boolean): Pro
     })
 }
 
-// function sleep(ms: number) {
-//     return new Promise(resolve => setTimeout(resolve, ms))
-// }
-
-export async function getVehicleById(vehicleID: string): Promise<Vehicle | null> {
-    return await db.vehicle.findFirst({
-        where: {
-            id: vehicleID
-        }
-    });
-}
-
 export async function getVehiclePages(searchParams?: SearchParams): Promise<number> {
     const count = db.vehicle.count({
         where: getFilterFromParams(searchParams)
@@ -111,7 +93,7 @@ export async function getVehiclePages(searchParams?: SearchParams): Promise<numb
 }
 
 function getFilterFromParams(searchParams?: SearchParams): Prisma.VehicleWhereInput {
-    return {
+    const filter: Prisma.VehicleWhereInput = {
         askingPrice: {
             ...(searchParams?.priceLte && { lte: Number(searchParams.priceLte) }),
             ...(searchParams?.priceGte && { gte: Number(searchParams.priceGte) }),
@@ -122,4 +104,21 @@ function getFilterFromParams(searchParams?: SearchParams): Prisma.VehicleWhereIn
             ...(searchParams?.maxYear && { lte: Number(searchParams.maxYear) }),
         },
     }
+
+    if (searchParams?.query && searchParams.query.length > 0) {
+        const searchWords = searchParams.query
+            .split(/\s+/)
+            .map(word => word.trim())
+            .filter(word => word.length > 0);
+
+        filter.OR = searchWords.map(word => ({
+            OR: [
+                { make: { contains: word, mode: "insensitive" } },
+                { model: { contains: word, mode: "insensitive" } },
+            ],
+        }))
+    }
+
+    return filter;
 }
+

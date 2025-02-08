@@ -5,24 +5,17 @@ import { useQuery } from "@tanstack/react-query";
 import { VehicleCard } from "./VehicleCard";
 import { VehicleSkeletons } from "./VehicleSkeletons";
 import { useSearchParams } from "next/navigation";
+import { SearchParams } from "@/types/types";
 
 
 export function Vehicles() {
-    const searchParams = useSearchParams();
-    const vehicleSearchParams = {
-        page: searchParams.get("page"),
-        query: searchParams.get("query"),
-        brand: searchParams.get("brand"),
-        minYear: searchParams.get("minYear"),
-        maxYear: searchParams.get("maxYear"),
-        priceGte: searchParams.get("priceGte"),
-        priceLte: searchParams.get("priceLte")
-    }
-
+    const searchParams = Object.fromEntries(
+        useSearchParams().entries()
+    ) as SearchParams;
 
     const { data: vehicles, error, isLoading } = useQuery({
-        queryKey: ["vehicles", vehicleSearchParams],
-        queryFn: () => getVehicles(vehicleSearchParams),
+        queryKey: ["vehicles", searchParams],
+        queryFn: () => getVehicles(searchParams),
     })
 
     if (isLoading) {

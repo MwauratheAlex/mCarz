@@ -1,4 +1,5 @@
 "use client"
+import { Pagination } from "@/components/Pagination";
 import { SearchForm } from "@/components/SearchForm";
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
 import { Vehicles } from "@/components/Vehicles";
@@ -20,13 +21,12 @@ export default function VehiclesPage() {
           </Suspense>
         </div>
         <div>
-          {/*
           <Suspense
             fallback=<span className="daisy-loading daisy-loading-dots" />
           >
-            <Paginator currentPage={1} />
+            <Pagination />
+
           </Suspense>
-          */}
         </div>
       </div>
     </PaddingWrapper>
