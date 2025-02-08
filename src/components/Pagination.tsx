@@ -4,7 +4,7 @@ import { getVehiclePages } from "@/actions/actions";
 import { cn } from "@/lib/utils";
 import { SearchParams } from "@/types/types";
 import { useQuery } from "@tanstack/react-query";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export function Pagination() {
 
@@ -87,7 +87,19 @@ function PaginationButton({ page, active, disabled }: {
     active?: boolean,
     disabled?: boolean,
 }) {
-    const router = useRouter()
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = new URLSearchParams(useSearchParams());
+
+    const handleClick = () => {
+        // deleting page 1 because we aready prefetched /vehicles
+        if (page === 1) {
+            searchParams.delete("page")
+        } else {
+            searchParams.set("page", page.toString());
+        }
+        router.replace(`${pathname}?${searchParams.toString()}`)
+    }
 
     return (
         <button
@@ -97,7 +109,7 @@ function PaginationButton({ page, active, disabled }: {
                 active && "daisy-btn-active",
             )}
             disabled={disabled}
-            onClick={() => router.push(`/vehicles/page/${page}`)}
+            onClick={handleClick}
         >
             {page}
         </button>

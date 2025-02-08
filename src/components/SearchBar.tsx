@@ -30,7 +30,10 @@ export function SearchBar() {
     return (
         <div className="gap-2 flex flex-col">
             <p className="font-semibold">Search Vehicle</p>
-            <p className="text-sm">Simply write the vehicle name and press the search button (i.e demio or vitz)</p>
+            <p className="text-sm">
+                Simply write the vehicle name and press the search
+                button (i.e demio or vitz)
+            </p>
             <label className="daisy-input daisy-input-bordered outline-red-500 rounded-none flex items-center gap-2">
                 <IoSearch className="text-gray-600" />
                 <input

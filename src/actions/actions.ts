@@ -51,10 +51,16 @@ export async function getVehicles(searchParams?: SearchParams): Promise<Vehicle[
     const page = Number(searchParams?.page) || 1
     const skip = (page - 1) * vehiclesPerPage;
 
+    let sort: Prisma.VehicleOrderByWithRelationInput = {}
+    if (searchParams?.sort === "asc" || searchParams?.sort === "desc") {
+        sort = { askingPrice: searchParams.sort }
+    }
+
     return await db.vehicle.findMany({
         where: getFilterFromParams(searchParams),
         take: vehiclesPerPage,
         skip: skip,
+        orderBy: sort
     });
 }
 
@@ -118,6 +124,7 @@ function getFilterFromParams(searchParams?: SearchParams): Prisma.VehicleWhereIn
             ],
         }))
     }
+
 
     return filter;
 }

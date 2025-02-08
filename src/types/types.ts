@@ -8,8 +8,9 @@ export type SearchParams = {
 	minYear: searchParam;
 	maxYear: searchParam;
 	priceGte: searchParam;
-	priceLte: searchParam
+	priceLte: searchParam;
 	page: searchParam;
+	sort: searchParam;
 }
 
 const contactDetails = z.object({

@@ -14,7 +14,8 @@ export const prefetchVehicles = async () => {
         minYear: null,
         maxYear: null,
         priceGte: null,
-        priceLte: null
+        priceLte: null,
+        sort: null,
     }
     await client.prefetchQuery({
         queryKey: ["vehicles", vehicleSearchParams],

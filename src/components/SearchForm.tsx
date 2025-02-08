@@ -148,7 +148,7 @@ export function SearchForm() {
     );
 }
 
-function RadioInputBtn({ content, value, register }: {
+export function RadioInputBtn({ content, value, register }: {
     content: string,
     value: string,
     register: UseFormRegisterReturn
