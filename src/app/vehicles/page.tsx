@@ -1,4 +1,3 @@
-"use client"
 import { breadBrumbLink, BreadBrumbs } from "@/components/BreadCrumbs";
 import { Pagination } from "@/components/Pagination";
 import { SearchForm } from "@/components/SearchForm";
@@ -49,5 +48,3 @@ export default function VehiclesPage() {
     </PaddingWrapper>
   )
 }
-
-

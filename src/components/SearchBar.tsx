@@ -10,7 +10,6 @@ import { useDebouncedCallback } from "use-debounce"
 import { cn, formatPrice } from "@/lib/utils";
 import { Separator } from "./ui/separator";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import Image from "next/image";
 
 export function SearchBar() {
     const [searchTerm, setSearchTerm] = useState<string>("")

@@ -4,7 +4,7 @@ import { getVehicleById } from "@/actions/actions";
 import { breadBrumbLink, BreadBrumbs } from "./BreadCrumbs";
 import { Badge, ImageCorousel } from "./VehicleCard";
 import { useQuery } from "@tanstack/react-query";
-import { FaInstagram, FaPhone, FaWhatsapp, FaXTwitter, FaYoutube } from "react-icons/fa6";
+import { FaInstagram, FaPhone, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import { useState } from "react";
 import { cn, formatPrice } from "@/lib/utils";
 import { Vehicle as VehicleT } from "@prisma/client";
@@ -32,7 +32,7 @@ export function Vehicle({ id }: { id: string }) {
     ];
 
     return (
-        <div className="divide-y space-y-8 pb-8">
+        <div className="divide-y space-y-8 pb-4">
             <div className="flex flex-col">
                 <div className="flex gap-4">
                     <div className="flex-1">
