@@ -34,7 +34,7 @@ export function Vehicle({ id }: { id: string }) {
     return (
         <div className="divide-y space-y-8 pb-4">
             <div className="flex flex-col">
-                <div className="flex gap-4">
+                <div className="flex md:gap-4 flex-col md:flex-row">
                     <div className="flex-1">
                         <div className="sticky top-28">
                             <div className="flex items-center mb-1">
@@ -44,7 +44,7 @@ export function Vehicle({ id }: { id: string }) {
                         </div>
                     </div>
                     <div className="flex-1">
-                        <div className="h-11"></div>
+                        <div className="md:h-11 h-4">{/* placeholder for the breadbrumb on the right */}</div>
                         <VehicleRight vehicle={vehicle} />
                     </div>
                 </div>
@@ -56,10 +56,10 @@ export function Vehicle({ id }: { id: string }) {
 
 function VehicleLeft({ vehicle }: { vehicle: VehicleT }) {
     return (
-        <div className="rounded-lg overflow-hidden flex flex-col gap-2 sticky top-32">
+        <div className="rounded-lg overflow-hidden flex flex-col gap-1 md:gap-2 sticky top-32">
             <ImageCorousel
                 imgUrls={vehicle.imgUrls}
-                className="h-[50vh]"
+                className="md:h-[50vh] h-60"
             />
             <div className="flex justify-between items-center mt-4">
                 <div>Price</div>
@@ -70,11 +70,11 @@ function VehicleLeft({ vehicle }: { vehicle: VehicleT }) {
             <div>
                 <Rating />
             </div>
-            <div className="flex gap-4 py-3 pb-0">
+            <div className="flex gap-2 md:gap-4 py-3 pb-0">
                 <button className="daisy-btn bg-green-600 text-white
                             hover:bg-green-700 flex-1">
                     <FaWhatsapp className="size-5" />
-                    Enquire via whatsapp
+                    Whatsapp us
                 </button>
                 <button className="daisy-btn text-gray-100 bg-gray-900 hover:bg-gray-950
                             hover:text-white w-auto flex-1">
@@ -102,10 +102,10 @@ function VehicleLeft({ vehicle }: { vehicle: VehicleT }) {
 }
 
 function VehicleRight({ vehicle }: { vehicle: VehicleT }) {
-    const [lineClamp, setLineClamp] = useState<boolean>(false);
+    const [lineClamp, setLineClamp] = useState<boolean>(true);
 
     return (
-        <div className="px-4 pr-0 flex flex-col gap-2">
+        <div className="md:px-4 pr-0 flex flex-col gap-2">
             <h1 className="font-semibold text-4xl">
                 {`${vehicle.make} ${vehicle.model}`}
             </h1>
@@ -115,8 +115,10 @@ function VehicleRight({ vehicle }: { vehicle: VehicleT }) {
                 <Badge text={`${vehicle.horsePower} hp`} />
             </div>
             <p className={cn("text-gray-900 tracking-wide",
-                "transition-all duration-300",
-                { "line-clamp-3": lineClamp },)}>
+                "transition-all duration-300 line-clamp-3 md:line-clamp-4",
+                { "line-clamp-none": !lineClamp },
+                ""
+            )}>
                 {vehicle.description}
             </p>
             <button
@@ -182,7 +184,7 @@ function VehicleSpecification({ title, value }: { title: string, value: string }
     return (
         <div className="flex justify-between text-sm py-4">
             <div className="flex-1">{title}</div>
-            <div className="w-1/6 px-3">
+            <div className="w-1/4 md:w-1/6">
                 {value}
             </div>
         </div>
