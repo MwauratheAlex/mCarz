@@ -28,7 +28,12 @@ export default function VehiclesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
             <div className="col-span-1 row-span-2">
               <Suspense fallback=<VehicleSkeletons amount={2} />>
-                <SearchForm />
+                <span className="hidden md:block">
+                  <SearchForm cannotCollapse />
+                </span>
+                <span className="md:hidden">
+                  <SearchForm />
+                </span>
               </Suspense>
             </div>
             <Suspense fallback=<VehicleSkeletons amount={6} /> >

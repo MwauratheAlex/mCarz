@@ -26,6 +26,13 @@ export function SearchBar() {
         setSearchTerm(term)
     }, 300)
 
+    if (data && data.length !== 0) {
+        const search = document.getElementById("search");
+        if (search) {
+            search.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    }
+
     return (
         <div className="gap-2 flex flex-col">
             <p className="font-semibold">Search Vehicle</p>
@@ -90,7 +97,7 @@ function SearchResult({ vehicles, query }: { vehicles: Vehicle[], query: string 
         );
     }
     return (
-        <div className="absolute w-full bg-gray-50 shadow-2xl">
+        <div className="absolute w-full bg-gray-50 shadow-2xl z-[999]">
             <div className="flex w-full flex-col gap-1 px-4 h-96 overflow-y-scroll
                 overscroll-contain">
                 {vehicles.map((vehicle) => (

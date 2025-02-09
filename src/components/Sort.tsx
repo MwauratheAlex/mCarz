@@ -27,8 +27,9 @@ export function Sort() {
 
 
     return (
-        <div className="flex gap-2 items-center border border-gray-100 rounded-2xl py-1 px-4">
-            <p className="tracking-wider text-gray-900">sort price</p>
+        <div className="flex gap-2 items-center border border-gray-100 rounded-2xl py-1 
+            md:px-4 md:flex-row">
+            <p className="md:tracking-wider text-gray-900">sort price</p>
             <SelectInput
                 handleValueChange={handleValueChange}
                 value={sortValue}
@@ -43,7 +44,7 @@ function SelectInput({ handleValueChange, value }: {
 }) {
     return (
         <Select onValueChange={handleValueChange} value={value}>
-            <SelectTrigger className="w-32 border-gray-50 shadow-lg shadow-black/10 bg-gray-100 text-gray-900 tracking-wide">
+            <SelectTrigger className="md:w-32 w-28 border-gray-50 shadow-lg shadow-black/10 bg-gray-100 text-gray-900 tracking-wide">
                 <SelectValue placeholder={value} />
             </SelectTrigger>
             <SelectContent className="">

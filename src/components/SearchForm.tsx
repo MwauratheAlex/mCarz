@@ -3,6 +3,8 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm, UseFormRegisterReturn } from "react-hook-form";
 import { SearchBar } from "./SearchBar";
+import { ReactNode } from "react";
+import { CiFilter } from "react-icons/ci";
 
 const searchBrands = [
     'Audi', 'Porsche',
@@ -31,7 +33,7 @@ interface searchFormInput {
     maxYear: string
 }
 
-export function SearchForm() {
+export function SearchForm({ cannotCollapse }: { cannotCollapse?: boolean }) {
     const {
         register, handleSubmit
     } = useForm<searchFormInput>({
@@ -84,67 +86,108 @@ export function SearchForm() {
             onSubmit={handleSubmit(handleSearch)}
         >
             <SearchBar />
-            <div className="gap-2 flex flex-col">
-                <p className="font-semibold">Filter by budget</p>
-                <div className="grid grid-cols-3 gap-2">
-                    {budgets.map((budget, idx) => (
-                        <RadioInputBtn
-                            key={`budget-radio-${idx}`}
-                            content={budget.content}
-                            value={budget.value}
-                            register={register("budget")}
-                        />
-                    ))}
+            <span className="hidden md:block">
+                <div className="gap-2 flex flex-col">
+                    <p className="font-semibold">Filter by budget</p>
+                    <div className="grid grid-cols-3 gap-2">
+                        {budgets.map((budget, idx) => (
+                            <RadioInputBtn
+                                key={`budget-radio-${idx}`}
+                                content={budget.content}
+                                value={budget.value}
+                                register={register("budget")}
+                            />
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </span>
 
-            <div className="gap-2 flex flex-col">
-                <p className="font-semibold">
-                    Brand & Model
-                </p>
-                <select
-                    className="daisy-select w-full daisy-select-bordered rounded-none"
-                    {...register("brand")}
-                >
-                    <option value="">All brands</option>
-                    {searchBrands.map((brand, idx) => (
-                        <option key={`$search-${brand}-${idx}`}>
-                            {brand}
-                        </option>
-                    ))}
-                </select>
-            </div>
+            <ShowHide cannotCollapse={cannotCollapse}>
+                <span className="block md:hidden my-2">
+                    <div className="gap-2 flex flex-col">
+                        <p className="font-semibold">Filter by budget</p>
+                        <div className="grid grid-cols-3 gap-2">
+                            {budgets.map((budget, idx) => (
+                                <RadioInputBtn
+                                    key={`budget-radio-${idx}`}
+                                    content={budget.content}
+                                    value={budget.value}
+                                    register={register("budget")}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </span>
+                <div className="gap-2 flex flex-col">
+                    <p className="font-semibold">
+                        Brand & Model
+                    </p>
+                    <select
+                        className="daisy-select w-full daisy-select-bordered rounded-none"
+                        {...register("brand")}
+                    >
+                        <option value="">All brands</option>
+                        {searchBrands.map((brand, idx) => (
+                            <option key={`$search-${brand}-${idx}`}>
+                                {brand}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-            <div className="gap-2 flex flex-col">
-                <p className="font-semibold">
-                    Year of Manufacture
-                </p>
-                <div className="flex gap-2 w-full overflow-hidden">
-                    <label className="daisy-input daisy-input-bordered outline-red-500 
+                <div className="gap-2 flex flex-col">
+                    <p className="font-semibold">
+                        Year of Manufacture
+                    </p>
+                    <div className="flex gap-2 w-full overflow-hidden">
+                        <label className="daisy-input daisy-input-bordered outline-red-500 
                            rounded-none flex items-center w-1/2">
-                        <input
-                            type="number"
-                            className="w-full"
-                            placeholder="min year"
-                            {...register("minYear")}
-                        />
-                    </label>
-                    <label className="daisy-input daisy-input-bordered outline-red-500 
+                            <input
+                                type="number"
+                                className="w-full"
+                                placeholder="min year"
+                                {...register("minYear")}
+                            />
+                        </label>
+                        <label className="daisy-input daisy-input-bordered outline-red-500 
                           rounded-none flex items-center w-1/2">
-                        <input
-                            type="number"
-                            className="w-full"
-                            placeholder="max year"
-                            {...register("maxYear")} />
-                    </label>
+                            <input
+                                type="number"
+                                className="w-full"
+                                placeholder="max year"
+                                {...register("maxYear")} />
+                        </label>
+                    </div>
                 </div>
-            </div>
+            </ShowHide>
 
             <button className="daisy-btn bg-gray-900 text-gray-50 hover:bg-gray-950 
         hover:text-white daisy-btn-md md:daisy-btn-lg rounded-none my-4">
                 Search
             </button>
         </form>
+    );
+}
+
+function ShowHide({ children, cannotCollapse }: {
+    children: ReactNode, cannotCollapse?: boolean
+}) {
+    if (cannotCollapse) return children;
+
+    return (
+        <div className="daisy-collapse rounded-none">
+            <input type="checkbox" />
+            <div className="daisy-collapse-title px-0
+                border-b flex items-center justify-between">
+                <div>
+                    Click here for advanced search
+                </div>
+                <CiFilter size={18} />
+            </div>
+            <div className="daisy-collapse-content px-0 pt-2">
+                {children}
+            </div>
+        </div>
     );
 }
 
@@ -161,7 +204,7 @@ export function RadioInputBtn({ content, value, register }: {
                 {...register}
                 value={value}
             />
-            <div className="border border-gray-200 w-full flex items-center py-2 px-4 text-sm 
+            <div className="border border-gray-200 w-full h-full flex items-center py-2 px-4 text-sm 
             peer-checked:border-gray-800 peer-checked:bg-gray-200 justify-center">
                 {content}
             </div>

@@ -27,9 +27,15 @@ export function Hero() {
 
                 <div className="flex flex-col md:flex-row gap-4 
                 justify-center py-4 md:py-8 z-[999]">
-                    <HeroDropDown text="Explore Vehicles" active />
-                    <HeroDropDown text="Buy a Bike" />
-                    <HeroButton link="/sell-car" text="Sell Your Car" />
+                    <HeroLink
+                        link="/vehicles"
+                        text="Explore Vehicles"
+                    />
+                    <HeroLink
+                        link="/sell-car"
+                        text="Sell Your Car"
+                        outline
+                    />
                 </div>
 
                 <button onClick={e => scrollFunc(e)}
@@ -56,38 +62,20 @@ export function Hero() {
     );
 }
 
-function HeroButton({ text, link }: { text: string, link: string }) {
+function HeroLink({ text, link, outline }: {
+    text: string, link: string, outline?: boolean,
+}) {
     return (
         <Link
             href={link}
             className={cn(
-                "daisy-btn daisy-btn-outline daisy-btn-md rounded-none flex-grow  text-base hover:bg-white hover:text-black",
+                "daisy-btn daisy-btn-md rounded-none flex-grow  text-base",
+                "daisy-btn-outline",
+                { "hover:bg-white hover:text-black": outline },
+                { "daisy-btn-active hover:bg-black hover:text-white": !outline }
             )}>
             {text}
         </Link>
-    );
-}
-
-function HeroDropDown(props: { text: string, active?: boolean }) {
-    return (
-        <div className="daisy-dropdown flex-grow border relative">
-            <div tabIndex={0} role="button" className={cn(
-                "daisy-btn daisy-btn-outline daisy-btn-md text-base rounded-none w-full",
-                props.active ? "daisy-btn-active hover:bg-black hover:text-white" : "hover:bg-white hover:text-black"
-            )}>
-                <div className="flex justify-center  items-center">
-                    <span >
-                        {props.text}
-                    </span>
-                    <ChevronDown className="font-normal w-4 absolute right-4" />
-                </div>
-            </div>
-            <ul tabIndex={0} className="daisy-dropdown-content daisy-menu bg-base-100 rounded-box z-[1] p-2 w-full shadow">
-                <li><a>Available in Kenya</a></li>
-                <li><a>Direct Import/International</a></li>
-            </ul>
-        </div>
-
     );
 }
 

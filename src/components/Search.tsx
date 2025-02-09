@@ -18,7 +18,7 @@ export function Search() {
                 <p className="text-center">
                     We help you find a car that fits your <span className="text-green-600 font-semibold">personality, dream and pocket!</span>
                 </p>
-                <div className="w-2/4">
+                <div className="md:w-2/4 w-full">
                     <div className="flex gap-2 md:gap-4 justify-center border-2 
                     border-gray-100 md:my-2
                     w-max mx-auto rounded-xl p-1">

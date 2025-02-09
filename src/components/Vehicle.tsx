@@ -251,11 +251,11 @@ function VehicleLoading() {
             <div className="flex py-2 items-center">
                 <div className="daisy-skeleton h-8 w-32 rounded-md"></div>
             </div>
-            <div className="flex gap-2 mb-4">
-                <div className="w-1/2 rounded-lg overflow-hidden">
-                    <div className="daisy-skeleton h-96 rounded-md"></div>
+            <div className="flex gap-2 mb-4 flex-col md:flex-row">
+                <div className="md:w-1/2 w-full rounded-lg overflow-hidden">
+                    <div className="daisy-skeleton h-60 md:h-96 rounded-md"></div>
                 </div>
-                <div className="w-1/2 px-4 pr-0 flex flex-col gap-2">
+                <div className="md:w-1/2 w-full md:px-4 pr-0 flex gap-2 flex-col">
                     <div>
                         <div className="daisy-skeleton h-16 rounded-md"></div>
                     </div>
