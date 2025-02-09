@@ -115,8 +115,8 @@ function VehicleRight({ vehicle }: { vehicle: VehicleT }) {
                 <Badge text={`${vehicle.horsePower} hp`} />
             </div>
             <p className={cn("text-gray-900 tracking-wide",
-                "transition-all duration-300 line-clamp-3 md:line-clamp-4",
-                { "line-clamp-none": !lineClamp },
+                "transition-all duration-300",
+                { "line-clamp-4": lineClamp },
                 ""
             )}>
                 {vehicle.description}
