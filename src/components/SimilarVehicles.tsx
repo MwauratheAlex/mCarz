@@ -5,10 +5,10 @@ import { useQuery } from "@tanstack/react-query";
 import { VehicleSkeletons } from "./VehicleSkeletons";
 import { VehicleCard } from "./VehicleCard";
 
-export function SimilarVehicles({ price }: { price: number }) {
+export function SimilarVehicles({ price, id }: { price: number, id: string }) {
     const { data: vehicles, isLoading, error } = useQuery({
-        queryKey: ["similar_vehicles", price],
-        queryFn: () => getSimilarVehicles(price),
+        queryKey: ["similar_vehicles", price, id],
+        queryFn: () => getSimilarVehicles(price, id),
     })
 
     if (isLoading) return <VehicleSkeletons amount={3} />

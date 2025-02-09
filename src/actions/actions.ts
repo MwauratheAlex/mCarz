@@ -72,7 +72,7 @@ export async function getVehicleById(vehicleID: string): Promise<Vehicle | null>
     });
 }
 
-export async function getSimilarVehicles(price: number): Promise<Vehicle[]> {
+export async function getSimilarVehicles(price: number, id: string): Promise<Vehicle[]> {
     const delta = 500000;
     const upperBound = price + delta;
     const lowerBound = price - delta;
@@ -82,7 +82,8 @@ export async function getSimilarVehicles(price: number): Promise<Vehicle[]> {
             askingPrice: {
                 gte: lowerBound,
                 lte: upperBound,
-            }
+            },
+            id: { not: id }
         }
     });
 }

@@ -32,7 +32,7 @@ export function Vehicle({ id }: { id: string }) {
     ];
 
     return (
-        <div className="divide-y space-y-8">
+        <div className="divide-y space-y-8 pb-8">
             <div className="flex flex-col">
                 <div className="flex gap-4">
                     <div className="flex-1">
@@ -49,7 +49,7 @@ export function Vehicle({ id }: { id: string }) {
                     </div>
                 </div>
             </div>
-            <SimilarVehicles price={vehicle.askingPrice} />
+            <SimilarVehicles price={vehicle.askingPrice} id={id} />
         </div>
     );
 }
