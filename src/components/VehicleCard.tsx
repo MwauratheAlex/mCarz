@@ -81,7 +81,7 @@ export function ImageCorousel({ imgUrls, className }: {
     );
 }
 
-function Badge({ text }: { text: string }) {
+export function Badge({ text }: { text: string }) {
     return (
         <div className="daisy-badge bg-gray-300 shadow-xl shadow-black/5 border-none text-black rounded-md">
             {text}

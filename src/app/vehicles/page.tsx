@@ -18,11 +18,8 @@ export default function VehiclesPage() {
     <PaddingWrapper>
       <div className="">
         <div className="flex py-2 border-b border-gray-200 justify-between items-center">
-          <BreadBrumbs
-            links={breadBrumbsLinks}
-            className=""
-          />
-          <div className="">
+          <BreadBrumbs links={breadBrumbsLinks} />
+          <div>
             <Suspense>
               <Sort />
             </Suspense>

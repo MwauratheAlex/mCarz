@@ -9,8 +9,8 @@ import { IoMdClose } from "react-icons/io";
 import { useDebouncedCallback } from "use-debounce"
 import { cn, formatPrice } from "@/lib/utils";
 import { Separator } from "./ui/separator";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 
 export function SearchBar() {
     const [searchTerm, setSearchTerm] = useState<string>("")
@@ -72,6 +72,16 @@ export function SearchBar() {
 
 function SearchResult({ vehicles, query }: { vehicles: Vehicle[], query: string }) {
     const router = useRouter()
+    const pathname = usePathname();
+    const nextSearchParams = useSearchParams();
+    const searchParams = new URLSearchParams();
+
+    const handleViewAll = (query: string) => {
+        const sort = nextSearchParams.get("sort")
+        searchParams.set("query", query);
+        if (sort) searchParams.set("sort", sort);
+        router.replace(`${pathname}?${searchParams.toString()}`)
+    }
 
     if (vehicles.length === 0) {
         return (
@@ -95,7 +105,7 @@ function SearchResult({ vehicles, query }: { vehicles: Vehicle[], query: string 
                                 className="w-full h-20 object-cover"
                                 src={vehicle.imgUrls[0]}
                                 alt={`vehicle-${vehicle.make}-${vehicle.model}`}
-                                loading="lazy"
+                                loading="eager"
                             />
                         </div>
                         <div className="flex flex-col text-sm gap-2 w-full p-2">
@@ -111,12 +121,15 @@ function SearchResult({ vehicles, query }: { vehicles: Vehicle[], query: string 
             </div>
             <div className="p-4">
                 <Separator className="" />
-                <Link className="daisy-btn daisy-btn-sm w-full mt-4 
+                <button className="daisy-btn daisy-btn-sm w-full mt-4 
                     daisy-btn-outline"
-                    href={`/vehicles?query=${query}`}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        handleViewAll(query)
+                    }}
                 >
                     View All
-                </Link>
+                </button>
             </div>
         </div>
     );

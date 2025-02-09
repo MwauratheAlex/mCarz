@@ -1,12 +1,21 @@
+import { breadBrumbLink, BreadBrumbs } from "@/components/BreadCrumbs";
 import { PaddingWrapper } from "@/components/ui/PaddingWrapper";
 import { IoMdMail } from "react-icons/io";
 import { IoPersonSharp } from "react-icons/io5";
 
+const breadBrumbsLinks: breadBrumbLink[] = [
+  { name: "Home", url: "/" },
+  { name: "Contact" },
+];
+
 export default function ContactPage() {
   return (
-    <div className="py-10">
-      <PaddingWrapper>
-        <div className="text-center flex flex-col gap-4">
+    <PaddingWrapper>
+      <div>
+        <div className="flex py-2 min-h-16 items-center">
+          <BreadBrumbs links={breadBrumbsLinks} />
+        </div>
+        <div className="text-center flex flex-col gap-4 py-4 mb-8">
           <h1 className="text-5xl font-semibold">Get in Touch</h1>
           <form className="md:max-w-2xl mx-auto flex flex-col gap-4">
             <div className="flex justify-between gap-4 flex-col md:flex-row">
@@ -32,7 +41,7 @@ export default function ContactPage() {
 
           </form>
         </div>
-      </PaddingWrapper >
-    </div >
+      </div >
+    </PaddingWrapper >
   );
 }

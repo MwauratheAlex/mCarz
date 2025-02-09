@@ -5,6 +5,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function formatPrice(price: number): string {
-  return `KES ${new Intl.NumberFormat().format(price)}`;
+export function formatPrice(price: number, noUnits?: boolean): string {
+  let units = "KES"
+  if (noUnits) {
+    units = "";
+  }
+  return `${units} ${new Intl.NumberFormat().format(price)}`;
 }

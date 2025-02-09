@@ -17,7 +17,12 @@ import Link from "next/link";
 import { CreateVehicle } from "@/actions/actions";
 import { SellCarFormDataSchema, SellCarFormInput } from "@/types/types";
 import { ImageUpload } from "@/components/ui/ImageUpload";
+import { breadBrumbLink, BreadBrumbs } from "@/components/BreadCrumbs";
 
+const breadBrumbsLinks: breadBrumbLink[] = [
+  { name: "Home", url: "/" },
+  { name: "Sell Your Car" },
+];
 
 
 export default function SellCarPage() {
@@ -38,10 +43,13 @@ export default function SellCarPage() {
   }
 
   return (
-    <div>
-      <PaddingWrapper>
+    <PaddingWrapper>
+      <div>
+        <div className="flex py-2 min-h-16 items-center">
+          <BreadBrumbs links={breadBrumbsLinks} />
+        </div>
         <div className="flex relative flex-col md:flex-row md:gap-4">
-          <div className="w-full md:w-1/3 py-4 ">
+          <div className="w-full md:w-1/3">
             <div className="flex flex-col gap-4 sticky top-32">
               <StepIndicator
                 num={1}
@@ -58,7 +66,7 @@ export default function SellCarPage() {
 
             </div>
           </div>
-          <div className="w-full md:w-2/3 md:py-4 pb-4">
+          <div className="w-full md:w-2/3 mb-8">
             {activeStep === "car-details" && (
               <CarDetailsForm
                 register={register}
@@ -79,8 +87,8 @@ export default function SellCarPage() {
             )}
           </div>
         </div>
-      </PaddingWrapper>
-    </div>
+      </div>
+    </PaddingWrapper>
   );
 }
 
