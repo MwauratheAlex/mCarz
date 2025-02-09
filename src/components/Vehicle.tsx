@@ -8,6 +8,8 @@ import { FaInstagram, FaPhone, FaWhatsapp, FaXTwitter, FaYoutube } from "react-i
 import { useState } from "react";
 import { cn, formatPrice } from "@/lib/utils";
 import { Vehicle as VehicleT } from "@prisma/client";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { SimilarVehicles } from "./SimilarVehicles";
 
 export function Vehicle({ id }: { id: string }) {
     const { data: vehicle, isLoading, error } = useQuery({
@@ -30,21 +32,24 @@ export function Vehicle({ id }: { id: string }) {
     ];
 
     return (
-        <div className="flex flex-col">
-            <div className="flex gap-4">
-                <div className="flex-1">
-                    <div className="sticky top-28">
-                        <div className="flex items-center mb-1">
-                            <BreadBrumbs links={breadBrumbsLinks} />
+        <div className="divide-y space-y-8">
+            <div className="flex flex-col">
+                <div className="flex gap-4">
+                    <div className="flex-1">
+                        <div className="sticky top-28">
+                            <div className="flex items-center mb-1">
+                                <BreadBrumbs links={breadBrumbsLinks} />
+                            </div>
+                            <VehicleLeft vehicle={vehicle} />
                         </div>
-                        <VehicleLeft vehicle={vehicle} />
+                    </div>
+                    <div className="flex-1">
+                        <div className="h-11"></div>
+                        <VehicleRight vehicle={vehicle} />
                     </div>
                 </div>
-                <div className="flex-1">
-                    <div className="h-11"></div>
-                    <VehicleRight vehicle={vehicle} />
-                </div>
             </div>
+            <SimilarVehicles price={vehicle.askingPrice} />
         </div>
     );
 }
@@ -65,7 +70,7 @@ function VehicleLeft({ vehicle }: { vehicle: VehicleT }) {
             <div>
                 <Rating />
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 py-3 pb-0">
                 <button className="daisy-btn bg-green-600 text-white
                             hover:bg-green-700 flex-1">
                     <FaWhatsapp className="size-5" />
@@ -79,7 +84,7 @@ function VehicleLeft({ vehicle }: { vehicle: VehicleT }) {
             </div>
             <div className="flex items-center">
                 <div className="font-semibold text-gray-800">Share this vehicle</div>
-                <div className="text-sm px-4 py-2 text-left font-mono flex
+                <div className="text-sm px-4 text-left font-mono flex
                     gap-4">
                     <a className="daisy-btn daisy-btn-sm daisy-btn-circle">
                         <FaWhatsapp size={18} />
@@ -188,7 +193,7 @@ function Rating() {
     const randomRating = Math.floor(Math.random() * 4) + 2;
 
     return (
-        <div className="">
+        <div className="space-y-2">
             <div className="font-semibold">
                 Condition score
             </div>
@@ -205,17 +210,36 @@ function Rating() {
                         />
                     ))}
                 </div>
-                <div className="daisy-tooltip daisy-tooltip-bottom"
-                    data-tip="The rating is random"
-                >
-                    <button className="text-sm shadow-lg shadow-black/20 rounded-full 
-                        size-5 text-center font-semibold border border-gray-200">
-                        ?
-                    </button>
-                </div>
+                <ToolTip />
             </div>
         </div>
 
+    );
+}
+
+function ToolTip() {
+    return (
+        <TooltipProvider delayDuration={50}>
+            <Tooltip>
+                <TooltipTrigger
+                    className="shadow-lg shadow-black/60 rounded-full size-5 
+                    text-sm font-semibold"
+                >
+                    ?
+                </TooltipTrigger>
+                <TooltipContent side="bottom"
+                    className="divide-y flex gap-2 flex-col tracking-wide">
+                    <div className="space-y-1">
+                        <p>5 Star: Excelent condition</p>
+                        <p>4 Star: Very good</p>
+                        <p>3 Star: Average</p>
+                        <p>2 Star: Below average</p>
+                        <p>1 Star: Accident / Salvaged vehicle</p>
+                    </div>
+                    <p className="py-2">The rating has been randomly generated.</p>
+                </TooltipContent>
+            </Tooltip>
+        </TooltipProvider>
     );
 }
 

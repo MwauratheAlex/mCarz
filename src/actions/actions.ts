@@ -72,6 +72,21 @@ export async function getVehicleById(vehicleID: string): Promise<Vehicle | null>
     });
 }
 
+export async function getSimilarVehicles(price: number): Promise<Vehicle[]> {
+    const delta = 500000;
+    const upperBound = price + delta;
+    const lowerBound = price - delta;
+
+    return await db.vehicle.findMany({
+        where: {
+            askingPrice: {
+                gte: lowerBound,
+                lte: upperBound,
+            }
+        }
+    });
+}
+
 export async function searchVehicles(searchterm: string, takeAll?: boolean): Promise<Vehicle[]> {
     const searchWords = searchterm
         .split(/\s+/)
