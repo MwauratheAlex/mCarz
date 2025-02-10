@@ -139,7 +139,7 @@ export function SearchForm({ cannotCollapse }: { cannotCollapse?: boolean }) {
                     <p className="font-semibold">
                         Year of Manufacture
                     </p>
-                    <div className="flex gap-2 w-full overflow-hidden">
+                    <div className="flex gap-2 w-full">
                         <label className="daisy-input daisy-input-bordered outline-red-500 
                            rounded-none flex items-center w-1/2">
                             <input

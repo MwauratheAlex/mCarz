@@ -6,6 +6,7 @@ import { Vehicles } from "@/components/Vehicles";
 import { VehicleSkeletons } from "@/components/VehicleSkeletons";
 import { Suspense } from "react";
 import { Sort } from "@/components/Sort";
+import { VehicleComparator } from "@/components/VehicleComperator";
 
 const breadBrumbsLinks: breadBrumbLink[] = [
   { name: "Home", url: "/" },
@@ -24,11 +25,14 @@ export default function VehiclesPage() {
             </Suspense>
           </div>
         </div>
+        <div>
+          <VehicleComparator />
+        </div>
         <div className="py-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
             <div className="col-span-1 row-span-2">
               <Suspense fallback=<VehicleSkeletons amount={2} />>
-                <span className="hidden md:block">
+                <span className="hidden md:block h-full">
                   <SearchForm cannotCollapse />
                 </span>
                 <span className="md:hidden">

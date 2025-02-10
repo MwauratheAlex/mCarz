@@ -17,6 +17,7 @@ export function Vehicle({ id }: { id: string }) {
         queryFn: () => getVehicleById(id),
     });
 
+
     if (isLoading) return <VehicleLoading />
 
     if (!vehicle || error) {
@@ -49,7 +50,11 @@ export function Vehicle({ id }: { id: string }) {
                     </div>
                 </div>
             </div>
-            <SimilarVehicles price={vehicle.askingPrice} id={id} />
+            <SimilarVehicles
+                price={vehicle.askingPrice}
+                id={id}
+                vehicleName={`${vehicle.make} ${vehicle.model}`}
+            />
         </div>
     );
 }
@@ -135,59 +140,61 @@ function VehicleRight({ vehicle }: { vehicle: VehicleT }) {
     );
 }
 
-function VehicleSpecifications({ vehicle }: { vehicle: VehicleT }) {
+export function VehicleSpecifications({ vehicle }: { vehicle: VehicleT }) {
     return (
-        <div className="divide-y divide-gray-200">
-            <VehicleSpecification
-                title="Year of manufacture"
-                value={String(vehicle.yearOfManufacture)}
-            />
-            <VehicleSpecification
-                title="Current Location"
-                value={String(vehicle.location)}
-            />
-            <VehicleSpecification
-                title="Availability"
-                value="Available"
-            />
-            <VehicleSpecification
-                title="Mileage"
-                value={`${formatPrice(vehicle.mileage, true)} ${vehicle.mileageUnits}`}
-            />
-            <VehicleSpecification
-                title="Engine Size"
-                value={`${vehicle.engineSize} Cc`}
-            />
-            <VehicleSpecification
-                title="Horse Power"
-                value={`${vehicle.horsePower} hp`}
-            />
-            <VehicleSpecification
-                title="Transmission"
-                value={vehicle.transmission}
-            />
-            <VehicleSpecification
-                title="Color"
-                value={vehicle.color}
-            />
-            <VehicleSpecification
-                title="Has accident history"
-                value={
-                    vehicle.hasAccidentHistory ? "Yes" : "No"
-                }
-            />
-        </div>
+        <table className="daisy-table  daisy-table-sm daisy-table-zebra-zebra">
+            <tbody>
+                <VehicleSpecification
+                    title="Year of manufacture"
+                    value={String(vehicle.yearOfManufacture)}
+                />
+                <VehicleSpecification
+                    title="Current Location"
+                    value={String(vehicle.location)}
+                />
+                <VehicleSpecification
+                    title="Availability"
+                    value="Available"
+                />
+                <VehicleSpecification
+                    title="Mileage"
+                    value={`${formatPrice(vehicle.mileage, true)} ${vehicle.mileageUnits}`}
+                />
+                <VehicleSpecification
+                    title="Engine Size"
+                    value={`${vehicle.engineSize} Cc`}
+                />
+                <VehicleSpecification
+                    title="Horse Power"
+                    value={`${vehicle.horsePower} hp`}
+                />
+                <VehicleSpecification
+                    title="Transmission"
+                    value={vehicle.transmission}
+                />
+                <VehicleSpecification
+                    title="Color"
+                    value={vehicle.color}
+                />
+                <VehicleSpecification
+                    title="Has accident history"
+                    value={
+                        vehicle.hasAccidentHistory ? "Yes" : "No"
+                    }
+                />
+            </tbody>
+        </table>
     );
 }
 
 function VehicleSpecification({ title, value }: { title: string, value: string }) {
     return (
-        <div className="flex justify-between text-sm py-4">
-            <div className="flex-1">{title}</div>
-            <div className="w-1/4 md:w-1/6">
+        <tr className="grid grid-cols-2 gap-[22%]">
+            <td className="pl-2">{title}</td>
+            <td className="pr-0">
                 {value}
-            </div>
-        </div>
+            </td>
+        </tr>
     );
 }
 

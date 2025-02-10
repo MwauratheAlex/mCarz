@@ -56,12 +56,29 @@ export async function getVehicles(searchParams?: SearchParams): Promise<Vehicle[
         sort = { askingPrice: searchParams.sort }
     }
 
-    return await db.vehicle.findMany({
+    return (await db.vehicle.findMany({
         where: getFilterFromParams(searchParams),
         take: vehiclesPerPage,
         skip: skip,
-        orderBy: sort
-    });
+        orderBy: sort,
+        select: {
+            id: true,
+            imgUrls: true,
+            yearOfManufacture: true,
+            make: true,
+            model: true,
+            transmission: true,
+            engineSize: true,
+            horsePower: true,
+            description: true,
+            askingPrice: true,
+            location: true,
+            mileage: true,
+            mileageUnits: true,
+            color: true,
+            hasAccidentHistory: true,
+        }
+    })) as Vehicle[];
 }
 
 export async function getVehicleById(vehicleID: string): Promise<Vehicle | null> {
@@ -74,18 +91,28 @@ export async function getVehicleById(vehicleID: string): Promise<Vehicle | null>
 
 export async function getSimilarVehicles(price: number, id: string): Promise<Vehicle[]> {
     const delta = 500000;
-    const upperBound = price + delta;
-    const lowerBound = price - delta;
 
-    return await db.vehicle.findMany({
+    return (await db.vehicle.findMany({
         where: {
             askingPrice: {
-                gte: lowerBound,
-                lte: upperBound,
+                gte: price - delta,
+                lte: price + delta,
             },
             id: { not: id }
+        },
+        select: {
+            id: true,
+            imgUrls: true,
+            yearOfManufacture: true,
+            make: true,
+            model: true,
+            transmission: true,
+            engineSize: true,
+            horsePower: true,
+            description: true,
+            askingPrice: true,
         }
-    });
+    })) as Vehicle[];
 }
 
 export async function searchVehicles(searchterm: string, takeAll?: boolean): Promise<Vehicle[]> {

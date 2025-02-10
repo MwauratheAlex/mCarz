@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import Providers from "@/components/Providers";
+import Providers, { prefetchVehicles } from "@/components/Providers";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,10 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} select-none relative
-         antialiased grainy-light`}
+         antialiased grainy-light`
+        }
+        onMouseOver={prefetchVehicles}
+        onTouchStart={prefetchVehicles}
       >
         <Header />
         <Providers>
@@ -38,6 +42,7 @@ export default function RootLayout({
           </main>
         </Providers>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );

@@ -8,16 +8,44 @@ import { MdOutlineCompareArrows } from "react-icons/md";
 import { cn, formatPrice } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useComperatorStore } from "@/providers/ComperatorStoreProvider";
+import { ReactNode } from "react";
+import { queryClient } from "./Providers";
+import { useToast } from "@/hooks/use-toast";
 
-export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
+export function VehicleCard({
+    vehicle,
+    cannotCompare,
+    removeFromComparator,
+    fullComparison,
+    notClickable,
+}: {
+    vehicle: Vehicle,
+    cannotCompare?: boolean,
+    removeFromComparator?: ReactNode,
+    fullComparison?: ReactNode,
+    notClickable?: boolean
+}) {
     const router = useRouter();
+
+    const handleClick = () => {
+        if (notClickable) return;
+        // set vehicle data to avoid fetching same vehicle again
+        queryClient.setQueryData(["vehicle", vehicle.id], () => vehicle);
+        router.push(`/vehicles/${vehicle.id}`)
+    }
+
+
     return (
         <div
-            className="daisy-card bg-gray-100 shadow-xl cursor-pointer group"
-            onClick={() => router.push(`/vehicles/${vehicle.id}`)}
+            className={cn("daisy-card bg-gray-100 shadow-xl cursor-pointer group",
+                { "cursor-default": notClickable }
+            )}
+            onClick={handleClick}
         >
+            {removeFromComparator && removeFromComparator}
             <figure>
-                <ImageCorousel imgUrls={vehicle.imgUrls} />
+                <ImageCorousel imgUrls={vehicle.imgUrls} zoomHover={!cannotCompare} />
             </figure>
             <div className="daisy-card-body">
                 <div className="flex items-center gap-2">
@@ -37,19 +65,45 @@ export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
                 <Separator />
                 <div className="daisy-card-actions justify-between items-center">
                     <div className="text-lg">{formatPrice(vehicle.askingPrice)}</div>
-                    <div className="daisy-tooltip" data-tip="compare">
-                        <button className="daisy-btn daisy-btn-square bg-gray-200">
-                            <MdOutlineCompareArrows size={20} className="text-black" />
-                        </button>
-                    </div>
+                    {!cannotCompare && <CompareButton vehicle={vehicle} />}
                 </div>
+                {fullComparison && fullComparison}
             </div>
         </div >
     );
 }
 
-export function ImageCorousel({ imgUrls, className }: {
-    imgUrls: string[], className?: string
+function CompareButton({ vehicle }: { vehicle: Vehicle }) {
+    const { add } = useComperatorStore((state) => state)
+    const { toast } = useToast();
+
+
+    const handleClick = () => {
+        toast({
+            title: `${vehicle.make} ${vehicle.model} added for comparison`,
+            description: "Scroll to the top of the page to view the vehicles.",
+            subheading: "You can compare upto 3 vehicles."
+        })
+        add(vehicle);
+    }
+
+    return (
+        <div className="daisy-tooltip" data-tip="compare">
+            <button
+                className="daisy-btn daisy-btn-square bg-gray-200"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    handleClick();
+                }}
+            >
+                <MdOutlineCompareArrows size={20} className="text-black" />
+            </button>
+        </div>
+    );
+}
+
+export function ImageCorousel({ imgUrls, className, zoomHover }: {
+    imgUrls: string[], className?: string, zoomHover?: boolean,
 }) {
     return (
         <div className="mx-auto relative w-full">
@@ -65,8 +119,10 @@ export function ImageCorousel({ imgUrls, className }: {
                                     <Image
                                         src={url}
                                         alt="vehicle"
-                                        className="object-cover group-hover:scale-105
-                                        transition-all duration-300"
+                                        className={cn(
+                                            "object-cover transition-all duration-300",
+                                            { "group-hover:scale-105": zoomHover }
+                                        )}
                                         fill
                                     />
                                 </CardContent>

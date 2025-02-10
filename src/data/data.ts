@@ -111,4 +111,5 @@ const faqs = [
 
 const vehiclesPerPage = 14;
 
+
 export { brands, bodyTypes, priceRanges, faqs, vehiclesPerPage }
