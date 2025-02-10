@@ -111,6 +111,11 @@ export async function getSimilarVehicles(price: number, id: string): Promise<Veh
             horsePower: true,
             description: true,
             askingPrice: true,
+            location: true,
+            mileage: true,
+            mileageUnits: true,
+            color: true,
+            hasAccidentHistory: true,
         }
     })) as Vehicle[];
 }
