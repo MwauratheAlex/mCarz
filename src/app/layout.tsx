@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Providers, { prefetchVehicles } from "@/components/Providers";
 import { Toaster } from "@/components/ui/toaster";
+import { PageLoadingStoreProvider } from "@/providers/LoadingStoreProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,14 +36,16 @@ export default function RootLayout({
         onMouseOver={prefetchVehicles}
         onTouchStart={prefetchVehicles}
       >
-        <Header />
-        <Providers>
-          <main>
-            {children}
-          </main>
-        </Providers>
-        <Footer />
-        <Toaster />
+        <PageLoadingStoreProvider>
+          <Header />
+          <Providers>
+            <main>
+              {children}
+            </main>
+          </Providers>
+          <Footer />
+          <Toaster />
+        </PageLoadingStoreProvider>
       </body>
     </html>
   );

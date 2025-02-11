@@ -10,8 +10,10 @@ import { IoClose } from "react-icons/io5";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { usePageLoadingStore } from "@/providers/LoadingStoreProvider";
 
 export function Header() {
+    const { isPageLoading } = usePageLoadingStore(state => state)
     return (
         <header className="bg-white/5 backdrop-blur-lg px-4 sticky
             z-[999] w-full top-0 shadow-lg shadow-black/5">
@@ -28,6 +30,7 @@ export function Header() {
             </div>
             <div className="absolute top-0 left-0 w-full h-[100%]
                 bg-gray-500/10 -z-50"></div>
+            {isPageLoading && <ProgressBar />}
         </header>
     );
 }
@@ -170,5 +173,16 @@ function ThemeChangeBtn() {
                     d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
         </label>
+    );
+}
+
+function ProgressBar() {
+    return (
+        <div className="w-full absolute bottom-0 left-0">
+            <div className="h-1.5 w-full bg-black/0 overflow-hidden">
+                <div className="animate-progress w-full h-full bg-gradient-to-r 
+                    from-transparent via-purple-600 to-transparent origin-left-right"></div>
+            </div>
+        </div>
     );
 }

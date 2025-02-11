@@ -5,12 +5,13 @@ import { breadBrumbLink, BreadBrumbs } from "./BreadCrumbs";
 import { Badge, ImageCorousel } from "./VehicleCard";
 import { useQuery } from "@tanstack/react-query";
 import { FaInstagram, FaPhone, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { cn, formatPrice } from "@/lib/utils";
 import { Vehicle as VehicleT } from "@prisma/client";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 import { SimilarVehicles } from "./SimilarVehicles";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { usePageLoadingStore } from "@/providers/LoadingStoreProvider";
 
 export function Vehicle({ id }: { id: string }) {
     const { data: vehicle, isLoading, error } = useQuery({
@@ -18,6 +19,10 @@ export function Vehicle({ id }: { id: string }) {
         queryFn: () => getVehicleById(id),
         placeholderData: (prev) => prev,
     });
+
+    const { setIsPageLoading } = usePageLoadingStore(prev => prev)
+
+    useEffect(() => setIsPageLoading(false), [setIsPageLoading])
 
 
     if (isLoading) return <VehicleLoading />

@@ -12,6 +12,7 @@ import { useComperatorStore } from "@/providers/ComperatorStoreProvider";
 import { ReactNode } from "react";
 import { queryClient } from "./Providers";
 import { useToast } from "@/hooks/use-toast";
+import { usePageLoadingStore } from "@/providers/LoadingStoreProvider";
 
 export function VehicleCard({
     vehicle,
@@ -28,8 +29,11 @@ export function VehicleCard({
 }) {
     const router = useRouter();
 
+    const { setIsPageLoading } = usePageLoadingStore(state => state)
+
     const handleClick = () => {
         if (notClickable) return;
+        setIsPageLoading(true)
         // set vehicle data to avoid fetching same vehicle again
         const queryKey = ["vehicle", vehicle.id]
         queryClient.setQueryData(queryKey, () => vehicle);
