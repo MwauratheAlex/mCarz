@@ -41,6 +41,10 @@ export function VehicleCard({
         router.push(`/vehicles/${vehicle.id}`)
     }
 
+    const prefetchVehicle = () => {
+        router.prefetch(`/vehicles/${vehicle.id}`)
+    }
+
 
     return (
         <div
@@ -48,6 +52,8 @@ export function VehicleCard({
                 { "cursor-default": notClickable }
             )}
             onClick={handleClick}
+            onMouseEnter={prefetchVehicle}
+            onTouchStart={prefetchVehicle}
         >
             {removeFromComparator && removeFromComparator}
             <figure>
