@@ -16,6 +16,7 @@ export function Vehicle({ id }: { id: string }) {
     const { data: vehicle, isLoading, error } = useQuery({
         queryKey: ["vehicle", id],
         queryFn: () => getVehicleById(id),
+        placeholderData: (prev) => prev,
     });
 
 
