@@ -12,11 +12,15 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/t
 import { SimilarVehicles } from "./SimilarVehicles";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { usePageLoadingStore } from "@/providers/LoadingStoreProvider";
+import { usePathname } from "next/navigation";
 
-export function Vehicle({ id }: { id: string }) {
+export function Vehicle() {
+    const pathname = usePathname().split("/");
+    const vehicleID = pathname[pathname.length - 1]
+
     const { data: vehicle, isLoading, error } = useQuery({
-        queryKey: ["vehicle", id],
-        queryFn: () => getVehicleById(id),
+        queryKey: ["vehicle", vehicleID],
+        queryFn: () => getVehicleById(vehicleID),
     });
 
     const { setIsPageLoading } = usePageLoadingStore(prev => prev)
@@ -58,7 +62,7 @@ export function Vehicle({ id }: { id: string }) {
             </div>
             <SimilarVehicles
                 price={vehicle.askingPrice}
-                id={id}
+                id={vehicleID}
                 vehicleName={`${vehicle.make} ${vehicle.model}`}
             />
         </div>
