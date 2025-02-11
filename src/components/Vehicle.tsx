@@ -292,7 +292,7 @@ function ToolTipDesktop({ children }: { children: ReactNode }) {
     );
 }
 
-function VehicleLoading() {
+export function VehicleLoading() {
     return (
         <div>
             <div className="flex py-2 items-center">

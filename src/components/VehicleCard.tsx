@@ -31,14 +31,10 @@ export function VehicleCard({
     const handleClick = () => {
         if (notClickable) return;
         // set vehicle data to avoid fetching same vehicle again
-        queryClient.setQueryData(["vehicle", vehicle.id], () => vehicle);
-        router.push(`/vehicles/${vehicle.id}`)
-    }
-
-    const onHover = () => {
         const queryKey = ["vehicle", vehicle.id]
-        if (!queryClient.getQueryData<Vehicle>(queryKey))
-            queryClient.setQueryData(queryKey, () => vehicle);
+        queryClient.setQueryData(queryKey, () => vehicle);
+        console.log("clicked")
+        router.push(`/vehicles/${vehicle.id}`)
     }
 
 
@@ -48,8 +44,6 @@ export function VehicleCard({
                 { "cursor-default": notClickable }
             )}
             onClick={handleClick}
-            onMouseEnter={onHover}
-            onTouchStart={onHover}
         >
             {removeFromComparator && removeFromComparator}
             <figure>
