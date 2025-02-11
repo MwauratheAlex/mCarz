@@ -9,7 +9,7 @@ export const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
             staleTime: 1000 * 60 * 20 // 20 minutes
-        }
+        },
     }
 })
 
@@ -17,6 +17,7 @@ export const prefetchVehicles = async () => {
     await queryClient.prefetchQuery({
         queryKey: ["vehicles", {}],
         queryFn: () => getVehicles({} as SearchParams),
+        staleTime: 1000 * 60 * 20,
     })
 
 }

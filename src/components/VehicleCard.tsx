@@ -35,6 +35,12 @@ export function VehicleCard({
         router.push(`/vehicles/${vehicle.id}`)
     }
 
+    const onHover = () => {
+        const queryKey = ["vehicle", vehicle.id]
+        if (!queryClient.getQueryData<Vehicle>(queryKey))
+            queryClient.setQueryData(queryKey, () => vehicle);
+    }
+
 
     return (
         <div
@@ -42,6 +48,8 @@ export function VehicleCard({
                 { "cursor-default": notClickable }
             )}
             onClick={handleClick}
+            onMouseEnter={onHover}
+            onTouchStart={onHover}
         >
             {removeFromComparator && removeFromComparator}
             <figure>
