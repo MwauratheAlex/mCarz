@@ -139,7 +139,8 @@ export function ImageCorousel({ imgUrls, className, zoomHover }: {
 
 export function Badge({ text }: { text: string }) {
     return (
-        <div className="daisy-badge bg-gray-300 shadow-xl shadow-black/5 border-none text-black rounded-md">
+        <div className="daisy-badge bg-gray-300 shadow-xl shadow-black/5 border-none text-black rounded-md
+            text-nowrap">
             {text}
         </div>
     )

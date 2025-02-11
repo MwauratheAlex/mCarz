@@ -3,7 +3,7 @@
 import { useComperatorStore } from "@/providers/ComperatorStoreProvider";
 import { VehicleCard } from "./VehicleCard";
 import { IoMdClose } from "react-icons/io";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { VehicleSpecifications } from "./Vehicle";
 import { useRouter } from "next/navigation";
 
@@ -18,8 +18,17 @@ export function VehicleComparator() {
 
     if (numberOfVehicles === 0) return;
 
+    const SwipeToViewMore: ReactNode = (
+        <div className="md:hidden text-sm text-center animate-pulse flex 
+                    items-center gap-1 justify-center">
+            <span className="rotate-180 text-base text-gray-600">&rarr;</span>
+            <span className="text-gray-800">Swipe to view more</span>
+            <span className="text-base text-gray-600">&rarr;</span>
+        </div>
+    );
+
     return (
-        <div className="rounded-3xl p-8 py-4 space-y-2 bg-gray-200 my-4">
+        <div className="rounded-3xl p-4 md:p-8 md:py-4 space-y-2 bg-gray-200 my-4">
             <div className="font-semibold text-2xl flex items-center justify-between">
                 <div>
                     Vehicles to Compare
@@ -33,7 +42,9 @@ export function VehicleComparator() {
                     </button>
                 )}
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
+            {numberOfVehicles > 1 && SwipeToViewMore}
+            <div className="overflow-x-scroll flex space-x-1 md:grid md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4
+                 ">
                 {[...vehicles.values()].map(vehicle => (
                     <VehicleCard
                         key={vehicle.id}
@@ -67,6 +78,7 @@ export function VehicleComparator() {
                     />
                 ))}
             </div>
+            {numberOfVehicles > 1 && SwipeToViewMore}
             <div className="flex justify-center pt-2">
                 <ComparitorButton
                     text={viewFullComparison ? "Hide Comparison" : "View Full Comparison"}

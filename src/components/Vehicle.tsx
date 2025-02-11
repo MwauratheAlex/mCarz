@@ -5,11 +5,12 @@ import { breadBrumbLink, BreadBrumbs } from "./BreadCrumbs";
 import { Badge, ImageCorousel } from "./VehicleCard";
 import { useQuery } from "@tanstack/react-query";
 import { FaInstagram, FaPhone, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { cn, formatPrice } from "@/lib/utils";
 import { Vehicle as VehicleT } from "@prisma/client";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 import { SimilarVehicles } from "./SimilarVehicles";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 export function Vehicle({ id }: { id: string }) {
     const { data: vehicle, isLoading, error } = useQuery({
@@ -226,7 +227,54 @@ function Rating() {
     );
 }
 
+
 function ToolTip() {
+    const toolTipContent: ReactNode = (
+        <div className="space-y-2 md:space-y-4 tracking-wide text-gray-100 text-xs divide-y divide-gray-600">
+            <div className="space-y-2">
+                <p>5 Star: Excelent condition</p>
+                <p>4 Star: Very good</p>
+                <p>3 Star: Average</p>
+                <p>2 Star: Below average</p>
+                <p>1 Star: Accident / Salvaged vehicle</p>
+            </div>
+            <p className="py-2 md:py-4">The rating has been randomly generated.</p>
+        </div>
+    );
+
+    return (
+        <>
+            <span className="hidden md:block">
+                <ToolTipDesktop>
+                    {toolTipContent}
+                </ToolTipDesktop>
+            </span>
+            <span className="md:hidden">
+                <ToolTipMobile>
+                    {toolTipContent}
+                </ToolTipMobile>
+            </span>
+        </>
+    );
+}
+
+function ToolTipMobile({ children }: { children: ReactNode }) {
+    return (
+        <Popover>
+            <PopoverTrigger className="shadow-lg shadow-black/60 rounded-full size-5 
+                    text-sm font-semibold"
+            >
+                ?
+            </PopoverTrigger>
+            <PopoverContent className="w-72 bg-neutral-900 border-none">
+                {children}
+            </PopoverContent>
+        </Popover>
+    )
+}
+
+
+function ToolTipDesktop({ children }: { children: ReactNode }) {
     return (
         <TooltipProvider delayDuration={50}>
             <Tooltip>
@@ -236,16 +284,8 @@ function ToolTip() {
                 >
                     ?
                 </TooltipTrigger>
-                <TooltipContent side="bottom"
-                    className="divide-y flex gap-2 flex-col tracking-wide">
-                    <div className="space-y-1">
-                        <p>5 Star: Excelent condition</p>
-                        <p>4 Star: Very good</p>
-                        <p>3 Star: Average</p>
-                        <p>2 Star: Below average</p>
-                        <p>1 Star: Accident / Salvaged vehicle</p>
-                    </div>
-                    <p className="py-2">The rating has been randomly generated.</p>
+                <TooltipContent side="bottom" className="w-72 bg-neutral-900 border-none">
+                    {children}
                 </TooltipContent>
             </Tooltip>
         </TooltipProvider>
