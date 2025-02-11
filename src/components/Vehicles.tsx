@@ -16,7 +16,6 @@ export function Vehicles() {
     const { data: vehicles, error, isLoading } = useQuery({
         queryKey: ["vehicles", searchParams],
         queryFn: () => getVehicles(searchParams),
-        placeholderData: prev => prev,
     })
 
     if (isLoading) {

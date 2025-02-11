@@ -12,7 +12,7 @@ export default {
 	theme: {
 		extend: {
 			animation: {
-				progress: 'progress 0.4s infinite linear',
+				progress: 'progress 0.5s infinite linear',
 			},
 			keyframes: {
 				progress: {
