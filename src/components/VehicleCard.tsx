@@ -34,17 +34,12 @@ export function VehicleCard({
     const handleClick = () => {
         if (notClickable) return;
         setIsPageLoading(true)
-        // set vehicle data to avoid fetching same vehicle again
         const queryKey = ["vehicle", vehicle.id]
         queryClient.setQueryData(queryKey, () => vehicle);
-        console.log("clicked")
         router.push(`/vehicles/${vehicle.id}`)
     }
 
-    const prefetchVehicle = () => {
-        router.prefetch(`/vehicles/${vehicle.id}`)
-    }
-
+    router.prefetch(`/vehicles/${vehicle.id}`)
 
     return (
         <div
@@ -52,8 +47,6 @@ export function VehicleCard({
                 { "cursor-default": notClickable }
             )}
             onClick={handleClick}
-            onMouseEnter={prefetchVehicle}
-            onTouchStart={prefetchVehicle}
         >
             {removeFromComparator && removeFromComparator}
             <figure>

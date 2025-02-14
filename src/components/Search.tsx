@@ -2,9 +2,9 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Suspense, useState } from "react";
-
-import { bodyTypes, brands } from "@/data/data";
+import { brands } from "@/data/data";
 import { SearchForm } from "./SearchForm";
+import Link from "next/link";
 
 export function Search() {
     const [searchType, setSearchType] = useState<string>("name");
@@ -43,16 +43,6 @@ export function Search() {
                         >
                             Filter by Brand
                         </button>
-                        <button
-                            className={cn(
-                                "daisy-btn bg-gray-200 daisy-btn-sm transition-colors whitespace-normal max-w-[90px] md:max-w-96",
-                                searchType != "body" && "font-normal text-gray-600 bg-gray-50"
-
-                            )}
-                            onClick={() => setSearchType("body")}
-                        >
-                            Filter by BodyType
-                        </button>
                     </div>
                     <div className="w-full">
                         {searchType == "name" && (
@@ -61,7 +51,6 @@ export function Search() {
                             </Suspense>
                         )}
                         {searchType == "brand" && <FilterByBrand />}
-                        {searchType == "body" && <FilterByBobyType />}
                     </div>
                 </div>
             </div>
@@ -74,26 +63,13 @@ function FilterByBrand() {
         <div className="grid grid-cols-3 md:grid-cols-4 gap-2 p-4 
             md:gap-6 md:p-4">
             {brands.map(type => (
-                <button key={type.name} className="daisy-btn daisy-btn-ghost 
+                <Link
+                    href={`/vehicles?brand=${type.name}`}
+                    key={type.name} className="daisy-btn daisy-btn-ghost 
                     md:w-40 md:h-36 w-28 h-24 shadow-lg shadow-gray-600/5 rounded-none bg-gray-100">
                     <Image src={type.icon} alt="type.name" priority
                         className="w-20 h-20" />
-                </button>
-            ))}
-        </div>
-    );
-}
-
-function FilterByBobyType() {
-    return (
-        <div className=" grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
-            {bodyTypes.map(type => (
-                <button key={type.name} className="daisy-btn md:px-16 md:py-8
-                    daisy-btn-ghost w-full h-full shadow-lg shadow-gray-600/5 
-                    rounded-none bg-gray-100">
-                    <Image src={type.icon} alt={type.name}
-                        className="w-20 h-20 md:w-28 md:h-28" priority />
-                </button>
+                </Link>
             ))}
         </div>
     );

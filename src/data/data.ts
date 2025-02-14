@@ -3,13 +3,13 @@ import bmw from "@/../public/bmw.svg"
 import mercedes from "@/../public/mercedes.svg"
 import mazda from "@/../public/mazda.svg"
 import toyota from "@/../public/toyota.svg"
-import honda from "@/../public/honda.svg"
 import land_rover from "@/../public/land_rover.svg"
 import subaru from "@/../public/subaru.svg"
 import lexus from "@/../public/lexus.svg"
 import vw from "@/../public/VW.svg"
 import nissan from "@/../public/nissan.svg"
-import hyundai from "@/../public/hyundai.svg"
+import porsche from "@/../public/porsche.svg"
+import suzuki from "@/../public/suzuki.svg"
 
 
 import suvs from "@/../public/suvs.svg"
@@ -25,13 +25,13 @@ const brands = [
     { name: "mercedes", icon: mercedes },
     { name: "mazda", icon: mazda },
     { name: "Toyota", icon: toyota },
-    { name: "honda", icon: honda },//
-    { name: "land_rover", icon: land_rover },
+    { name: "porsche", icon: porsche },
+    { name: "land rover", icon: land_rover },
     { name: "subaru", icon: subaru },
     { name: "lexus", icon: lexus },
-    { name: "vw", icon: vw },
+    { name: "volkswagen", icon: vw },
     { name: "nissan", icon: nissan },
-    { name: "hyundai", icon: hyundai },
+    { name: "suzuki", icon: suzuki },
 ] as const
 
 const bodyTypes = [
