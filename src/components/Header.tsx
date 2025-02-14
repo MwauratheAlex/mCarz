@@ -79,7 +79,7 @@ function NavContent({ className, setNavOpen }: {
 }) {
     const pathname = usePathname()
     const { setIsPageLoading } = usePageLoadingStore(state => state)
-    useEffect(() => setIsPageLoading(false), [pathname]);
+    useEffect(() => setIsPageLoading(false), [pathname, setIsPageLoading]);
 
     const navLinks = [
         { title: "Vehicles", url: "/vehicles" },

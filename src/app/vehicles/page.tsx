@@ -7,6 +7,8 @@ import { VehicleSkeletons } from "@/components/VehicleSkeletons";
 import { Suspense } from "react";
 import { Sort } from "@/components/Sort";
 import { VehicleComparator } from "@/components/VehicleComperator";
+import { vehiclesPerPage } from "@/data/data";
+import { getVehicleCount } from "@/actions/actions";
 
 const breadBrumbsLinks: breadBrumbLink[] = [
   { name: "Home", url: "/" },
@@ -44,16 +46,23 @@ export default function VehiclesPage() {
               <Vehicles />
             </Suspense>
           </div>
-          <div>
-            <Suspense
-              fallback=<span className="daisy-loading daisy-loading-dots" />
-            >
+          <Suspense>
+            <div className="flex items-center justify-between">
+              <NumberShowing />
               <Pagination />
-
-            </Suspense>
-          </div>
+            </div>
+          </Suspense>
         </div>
       </div>
     </PaddingWrapper>
   )
+}
+
+async function NumberShowing() {
+  const vehicleCount = await getVehicleCount();
+  return (
+    <div>
+      Showing {vehiclesPerPage} of {vehicleCount} vehicles
+    </div>
+  );
 }

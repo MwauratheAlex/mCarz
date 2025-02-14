@@ -146,6 +146,13 @@ export async function getVehiclePages(searchParams?: SearchParams): Promise<numb
     return Math.floor((await count) / vehiclesPerPage) + 1;
 }
 
+export async function sleep(millis: number) {
+    return new Promise((resolve) => setTimeout(resolve, millis))
+}
+export async function getVehicleCount(): Promise<number> {
+    return db.vehicle.count();
+}
+
 function getFilterFromParams(searchParams?: SearchParams): Prisma.VehicleWhereInput {
     const filter: Prisma.VehicleWhereInput = {
         askingPrice: {
