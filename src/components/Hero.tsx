@@ -40,10 +40,11 @@ export function Hero() {
 
                 <button onClick={e => scrollFunc(e)}
                     className="w-full scroll-smooth flex flex-col items-center 
-                    gap-2 py-4 mt-2 z-[100] ">
+                    gap-2 md:gap-3 mt-2 z-[100]">
                     <Image src={scrollDownSvg}
                         alt="scroll down image"
-                        className="md:w-32 w-28"
+                        width={130}
+                        height={130}
                     />
                     <ChevronDown className="animate-bounce " />
                 </button>
@@ -52,8 +53,8 @@ export function Hero() {
                     <HeroImage />
                 </div>
             </div>
-            <div className="absolute -top-0 left-0 w-full h-[80%]
-                bg-gray-500/10"></div>
+            <div className="absolute -top-0 left-0 w-full h-[80%] bg-gradient-to-t
+                 from-gray-500/20 to-gray-500/0"></div>
             <div className="absolute bottom-[24%] z-0">
                 <FadedText />
             </div>
@@ -71,8 +72,8 @@ function HeroLink({ text, link, outline }: {
             className={cn(
                 "daisy-btn daisy-btn-md rounded-none flex-grow  text-base",
                 "daisy-btn-outline",
-                { "hover:bg-white hover:text-black": outline },
-                { "daisy-btn-active hover:bg-black hover:text-white": !outline }
+                { "hover:bg-white/50 hover:text-black": outline },
+                { "hover:bg-black/85 hover:text-white bg-black/90 text-gray-50": !outline }
             )}>
             {text}
         </Link>

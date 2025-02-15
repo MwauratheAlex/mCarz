@@ -5,6 +5,7 @@ import { useForm, UseFormRegisterReturn } from "react-hook-form";
 import { SearchBar } from "./SearchBar";
 import { ReactNode } from "react";
 import { CiFilter } from "react-icons/ci";
+import { cn } from "@/lib/utils";
 
 const searchBrands = [
     'Audi', 'Porsche',
@@ -33,7 +34,7 @@ interface searchFormInput {
     maxYear: string
 }
 
-export function SearchForm({ cannotCollapse }: { cannotCollapse?: boolean }) {
+export function SearchForm({ cannotCollapse, mobile }: { cannotCollapse?: boolean, mobile?: boolean }) {
     const {
         register, handleSubmit
     } = useForm<searchFormInput>({
@@ -86,7 +87,7 @@ export function SearchForm({ cannotCollapse }: { cannotCollapse?: boolean }) {
             onSubmit={handleSubmit(handleSearch)}
         >
             <SearchBar />
-            <span className="hidden md:block">
+            <span className={cn({ "hidden": mobile })}>
                 <div className="gap-2 flex flex-col">
                     <p className="font-semibold">Filter by budget</p>
                     <div className="grid grid-cols-3 gap-2">
@@ -103,7 +104,7 @@ export function SearchForm({ cannotCollapse }: { cannotCollapse?: boolean }) {
             </span>
 
             <ShowHide cannotCollapse={cannotCollapse}>
-                <span className="block md:hidden my-2">
+                <span className={cn("hidden", { "block": mobile })}>
                     <div className="gap-2 flex flex-col">
                         <p className="font-semibold">Filter by budget</p>
                         <div className="grid grid-cols-3 gap-2">
@@ -135,7 +136,7 @@ export function SearchForm({ cannotCollapse }: { cannotCollapse?: boolean }) {
                     </select>
                 </div>
 
-                <div className="gap-2 flex flex-col">
+                <div className="gap-2 mt-2 flex flex-col">
                     <p className="font-semibold">
                         Year of Manufacture
                     </p>
@@ -205,7 +206,7 @@ export function RadioInputBtn({ content, value, register }: {
                 value={value}
             />
             <div className="border border-gray-200 w-full h-full flex items-center py-2 px-4 text-sm 
-            peer-checked:border-gray-800 peer-checked:bg-gray-200 justify-center">
+            peer-checked:border-gray-800 peer-checked:bg-gray-200 justify-center text-nowrap">
                 {content}
             </div>
         </label>

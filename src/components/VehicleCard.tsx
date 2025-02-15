@@ -1,18 +1,16 @@
 "use client"
 
 import { Vehicle } from "@prisma/client";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
-import { Card, CardContent } from "./ui/card";
 import { Separator } from "./ui/separator";
 import { MdOutlineCompareArrows } from "react-icons/md";
 import { cn, formatPrice } from "@/lib/utils";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useComperatorStore } from "@/providers/ComperatorStoreProvider";
 import { ReactNode } from "react";
 import { queryClient } from "./Providers";
 import { useToast } from "@/hooks/use-toast";
 import { usePageLoadingStore } from "@/providers/LoadingStoreProvider";
+import { ImageCorousel } from "./ImageViewer";
 
 export function VehicleCard({
     vehicle,
@@ -107,40 +105,6 @@ function CompareButton({ vehicle }: { vehicle: Vehicle }) {
     );
 }
 
-export function ImageCorousel({ imgUrls, className, zoomHover }: {
-    imgUrls: string[], className?: string, zoomHover?: boolean,
-}) {
-    return (
-        <div className="mx-auto relative w-full">
-            <Carousel className="w-full">
-                <CarouselContent>
-                    {imgUrls.map((url, index) => (
-                        <CarouselItem key={index}>
-                            <Card>
-                                <CardContent className={cn(
-                                    "flex items-center justify-center p-0 h-48 w-full relative",
-                                    className,
-                                )} >
-                                    <Image
-                                        src={url}
-                                        alt="vehicle"
-                                        className={cn(
-                                            "object-cover transition-all duration-300",
-                                            { "group-hover:scale-105": zoomHover }
-                                        )}
-                                        fill
-                                    />
-                                </CardContent>
-                            </Card>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
-                <CarouselPrevious className="absolute left-2 top-1/2" />
-                <CarouselNext className="absolute right-2 top-1/2" />
-            </Carousel>
-        </div >
-    );
-}
 
 export function Badge({ text }: { text: string }) {
     return (

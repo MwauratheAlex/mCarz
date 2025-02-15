@@ -2,7 +2,7 @@
 
 import { getVehicleById } from "@/actions/actions";
 import { breadBrumbLink, BreadBrumbs } from "./BreadCrumbs";
-import { Badge, ImageCorousel } from "./VehicleCard";
+import { Badge } from "./VehicleCard";
 import { useQuery } from "@tanstack/react-query";
 import { FaInstagram, FaPhone, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import { ReactNode, useEffect, useState } from "react";
@@ -12,6 +12,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/t
 import { SimilarVehicles } from "./SimilarVehicles";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { usePageLoadingStore } from "@/providers/LoadingStoreProvider";
+import { ImageViewer } from "./ImageViewer";
 
 export function Vehicle({ id }: { id: string }) {
 
@@ -69,10 +70,8 @@ export function Vehicle({ id }: { id: string }) {
 function VehicleLeft({ vehicle }: { vehicle: VehicleT }) {
     return (
         <div className="rounded-lg overflow-hidden flex flex-col gap-1 md:gap-2 sticky top-32">
-            <ImageCorousel
-                imgUrls={vehicle.imgUrls}
-                className="md:h-[50vh] h-60"
-            />
+            <ImageViewer imgUrls={vehicle.imgUrls} />
+
             <div className="flex justify-between items-center mt-4">
                 <div>Price</div>
                 <div className="font-semibold">

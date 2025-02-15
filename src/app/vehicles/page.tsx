@@ -38,7 +38,7 @@ export default function VehiclesPage() {
                   <SearchForm cannotCollapse />
                 </span>
                 <span className="md:hidden">
-                  <SearchForm />
+                  <SearchForm mobile />
                 </span>
               </Suspense>
             </div>

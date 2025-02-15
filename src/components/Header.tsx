@@ -3,7 +3,6 @@
 import Image from "next/image";
 import logoImg from "@/../public/logo.svg"
 
-import { ChevronDown } from "lucide-react";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
@@ -15,10 +14,10 @@ import { usePageLoadingStore } from "@/providers/LoadingStoreProvider";
 export function Header() {
     const { isPageLoading } = usePageLoadingStore(state => state)
     return (
-        <header className="bg-white/5 backdrop-blur-lg px-4 sticky
-            z-[999] w-full top-0 shadow-lg shadow-black/5">
+        <header className="bg-black/0 backdrop-blur-lg px-4 sticky
+            w-full top-0 z-[999]">
             <div className="flex justify-between items-center shadow-black">
-                <Link href="/" className="z-[999]">
+                <Link href="/" className="z-[99999]">
                     <Logo />
                 </ Link>
 
@@ -28,7 +27,7 @@ export function Header() {
                 </div>
             </div>
             <div className="absolute top-0 left-0 w-full h-[100%]
-                bg-gray-500/10 -z-50"></div>
+                bg-gray-500/0 -z-50"></div>
             {isPageLoading && <ProgressBar />}
         </header>
     );
@@ -45,15 +44,10 @@ function MobileNav() {
         <div className="md:hidden" >
             <label
                 className="daisy-btn daisy-btn-circle daisy-swap 
-                daisy-swap-rotate z-[999]"
+                daisy-swap-rotate z-[99999]"
             >
-                {/* this hidden checkbox controls the state */}
                 <input type="checkbox" onChange={handleToggle} checked={isOpen} />
-
-                {/* hamburger icon */}
                 <IoIosMenu size={30} className="daisy-swap-off" />
-
-                {/* close icon */}
                 <IoClose className="daisy-swap-on" size={30} />
             </label>
             {isOpen && (
@@ -110,8 +104,9 @@ function NavContent({ className, setNavOpen }: {
                         "hover:bg-white/0 font-normal hover:underline",
                         "underline-offset-8 w-full md:w-max py-8 md:py-2",
                         "md:border-none border border-gray-200",
-                        pathname === link.url && "font-semibold underline"
-                    )}>
+                        { "font-semibold underline": pathname.indexOf(link.url) !== -1 }
+                    )}
+                >
                     {link.title}
                 </Link>
             ))}
@@ -121,35 +116,12 @@ function NavContent({ className, setNavOpen }: {
 
 function Logo() {
     return (
-        <div className="text-center z-[999]">
+        <div className="text-center">
             <Image src={logoImg} priority alt="logo image" className="w-20" />
             <div className="text-sm font-mono tracking-wider font-semibold">
                 <span className="text-green-600 text-base">m</span>Carz
             </div>
         </div>
-    );
-}
-
-export function NavDropDown(props: { text: string }) {
-    return (
-        <div className="daisy-dropdown">
-            <div tabIndex={0} role="button" className="daisy-btn daisy-btn-ghost 
-            daisy-btn-sm rounded-none hover:bg-white/0 hover:underline
-            underline-offset-8">
-                <div className="flex gap-1 items-center font-normal">
-                    <span>
-                        {props.text}
-                    </span>
-                    <ChevronDown className="font-normal w-4" />
-                </div>
-            </div>
-            <ul tabIndex={0} className="daisy-dropdown-content daisy-menu bg-base-100  z-[1] p-2 w-max shadow rounded-md">
-                <li><a>All {props.text}</a></li>
-                <li><a>Available in Kenya</a></li>
-                <li><a>Direct Import/International</a></li>
-            </ul>
-        </div>
-
     );
 }
 

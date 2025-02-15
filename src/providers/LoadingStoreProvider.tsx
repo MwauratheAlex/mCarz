@@ -1,5 +1,5 @@
 "use client"
-import { createPageLoadingStore, initPageLoadingStore, PageLoadingStore } from "@/stores/loadingStore"
+import { createPageLoadingStore, PageLoadingStore } from "@/stores/loadingStore"
 import { createContext, ReactNode, useContext, useRef } from "react"
 import { useStore } from 'zustand'
 
@@ -13,7 +13,7 @@ export const PageLoadingStoreProvider = ({ children }: {
 }) => {
     const storeRef = useRef<PageLoadingStoreApi>(null);
     if (!storeRef.current) {
-        storeRef.current = createPageLoadingStore(initPageLoadingStore())
+        storeRef.current = createPageLoadingStore()
     }
 
     return (

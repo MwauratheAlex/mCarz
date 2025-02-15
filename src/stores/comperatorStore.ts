@@ -13,10 +13,6 @@ export type ComperatorActions = {
 
 export type ComperatorStore = ComperatorState & ComperatorActions
 
-export const initComperatorStore = (): ComperatorState => {
-    return { vehicles: new Map<string, Vehicle>() }
-}
-
 export const defaultInitState: ComperatorState = {
     vehicles: new Map<string, Vehicle>(),
 }

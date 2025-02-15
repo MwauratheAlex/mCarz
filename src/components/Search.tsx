@@ -24,8 +24,8 @@ export function Search() {
                     w-max mx-auto rounded-xl p-1">
                         <button
                             className={cn(
-                                "daisy-btn text-wrap bg-gray-200 daisy-btn-sm transition-colors whitespace-normal max-w-[90px]",
-                                "md:max-w-96",
+                                "daisy-btn text-wrap bg-gray-200 daisy-btn-sm transition-colors whitespace-normal max-w-min",
+                                "md:max-w-96 text-nowrap",
                                 searchType != "name" && "font-normal text-gray-600 bg-gray-50"
 
                             )}
@@ -35,7 +35,8 @@ export function Search() {
                         </button>
                         <button
                             className={cn(
-                                "daisy-btn bg-gray-200 daisy-btn-sm transition-colors whitespace-normal max-w-[90px] md:max-w-96",
+                                "daisy-btn bg-gray-200 daisy-btn-sm transition-colors whitespace-normal max-w-min md:max-w-96",
+                                "text-nowrap",
                                 searchType != "brand" && "font-normal text-gray-600 bg-gray-50"
 
                             )}
@@ -44,7 +45,7 @@ export function Search() {
                             Filter by Brand
                         </button>
                     </div>
-                    <div className="w-full">
+                    <div className="w-full py-2">
                         {searchType == "name" && (
                             <Suspense>
                                 <SearchForm />

@@ -1,6 +1,6 @@
 "use client"
 
-import { ComperatorStore, createComperatorStore, initComperatorStore } from "@/stores/comperatorStore"
+import { ComperatorStore, createComperatorStore } from "@/stores/comperatorStore"
 import { createContext, ReactNode, useContext, useRef } from "react"
 import { useStore } from 'zustand'
 
@@ -14,7 +14,7 @@ export const ComperatorStoreProvider = ({ children }: {
 }) => {
     const storeRef = useRef<ComperatorStoreApi>(null);
     if (!storeRef.current) {
-        storeRef.current = createComperatorStore(initComperatorStore())
+        storeRef.current = createComperatorStore()
     }
 
     return (

@@ -10,10 +10,6 @@ export type PageLoadingActions = {
 
 export type PageLoadingStore = PageLoadingState & PageLoadingActions
 
-export const initPageLoadingStore = (): PageLoadingState => {
-    return { isPageLoading: false }
-}
-
 export const defaultInitState: PageLoadingState = {
     isPageLoading: false,
 }

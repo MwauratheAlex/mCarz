@@ -1,4 +1,5 @@
 "use client"
+import { GrNext, GrPrevious } from "react-icons/gr";
 
 import * as React from "react"
 import useEmblaCarousel, {
@@ -258,6 +259,71 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
+const CustomCarouselPrevious = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentProps<typeof Button>
+>(({ className, ...props }, ref) => {
+  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
+
+  return (
+    <button
+      ref={ref}
+      className={cn(
+        "absolute rounded-full",
+        orientation === "horizontal"
+          ? "-left-12 top-1/2 -translate-y-1/2"
+          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+        "text-gray-200 size-16 group",
+        "hover:text-blue-500 transition-colors duration-75",
+        className
+      )}
+      disabled={!canScrollPrev}
+      onClick={(e) => {
+        e.stopPropagation()
+        scrollPrev()
+      }}
+      {...props}
+    >
+      <GrPrevious className="w-full h-full group-hover:scale-110 transition-all duration-300" />
+      <span className="sr-only">Next slide</span>
+    </button>
+  )
+})
+CustomCarouselPrevious.displayName = "CarouselPrevious"
+
+const CustomCarouselNext = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentProps<typeof Button>
+>(({ className, ...props }, ref) => {
+  const { orientation, scrollNext, canScrollNext } = useCarousel()
+
+  return (
+    <button
+      ref={ref}
+      className={cn(
+        "absolute rounded-full",
+        orientation === "horizontal"
+          ? "-right-12 top-1/2 -translate-y-1/2"
+          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+        "text-gray-200 size-16 group",
+        "hover:text-blue-500 transition-colors duration-75",
+        className
+      )}
+      disabled={!canScrollNext}
+      onClick={(e) => {
+        e.stopPropagation()
+        scrollNext()
+      }}
+      {...props}
+    >
+      <GrNext className="w-full h-full group-hover:scale-110 transition-all duration-300" />
+      <span className="sr-only">Next slide</span>
+    </button>
+  )
+})
+
+CustomCarouselNext.displayName = "CustomCarouselNext"
+
 export {
   type CarouselApi,
   Carousel,
@@ -265,4 +331,7 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CustomCarouselNext,
+  CustomCarouselPrevious,
 }
+
